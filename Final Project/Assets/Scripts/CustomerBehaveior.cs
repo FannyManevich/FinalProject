@@ -19,6 +19,9 @@ public class CustomerBehaveior : MonoBehaviour
     Vector2 PlantOffset;
     public GameObject[] Plants;
 
+    bool onPlant;
+    GameObject PlantYouPick;
+
     LineManagment LineManager;
     public int CurrentCustomerNumber = 0;
 
@@ -64,16 +67,26 @@ public class CustomerBehaveior : MonoBehaviour
                 MoveToPointXFirst(FlowerPoint);
                 break;
             case StateMachine.Wait:
-                TimerBar.gameObject.SetActive(true);
-                if (CurrentWaitTimer < WaitTime)
+                if (onPlant == true)
                 {
-                    CurrentWaitTimer += 1;
-                    TimerBar.value = (1-(float)CurrentWaitTimer / (float)WaitTime);
+                    TimerBar.gameObject.SetActive(true);
+                    if (CurrentWaitTimer < WaitTime)
+                    {
+                        CurrentWaitTimer += 1;
+                        TimerBar.value = (1 - (float)CurrentWaitTimer / (float)WaitTime);
+                    }
+                    else
+                    {
+                        CurrentWaitTimer = 0;
+                        NextState();
+                    }
                 }
                 else
                 {
+                    CurrentState = StateMachine.WalkToFlower;
+                    SetRandomPlantToWalkTo();
+                    TimerBar.gameObject.SetActive(false);
                     CurrentWaitTimer = 0;
-                    NextState();
                 }
                 break;
             case StateMachine.WalkToLine:
@@ -108,6 +121,23 @@ public class CustomerBehaveior : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Plant")
+        {
+            onPlant = true;
+            PlantYouPick = collider.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Plant")
+        {
+            onPlant = false;
+        }
+    }
+
     public void OnDestroy()
     {
         EventManager.LineLeaveEvent -= ProgInLine;
@@ -124,21 +154,19 @@ public class CustomerBehaveior : MonoBehaviour
         {
             CurrentState = StateMachine.InLine;
         }
-        else if (CurrentState == StateMachine.Wait || CurrentState == StateMachine.InLine)
+        else if (CurrentState == StateMachine.Wait)
+        {
+            PlantYouPick.SetActive(false);
+            TimerBar.gameObject.SetActive(false);
+            EventManager.EnterLine();
+            CurrentCustomerNumber = LineManager.CustomerNumber;
+            LineOffset = new Vector2(0- CurrentCustomerNumber, 0);
+            CurrentState = StateMachine.WalkToLine;
+        }else if (CurrentState == StateMachine.InLine)
         {
             TimerBar.gameObject.SetActive(false);
-            if (transform.position.y != 0)
-            {
-                EventManager.EnterLine();
-                CurrentCustomerNumber = LineManager.CustomerNumber;
-                LineOffset = new Vector2(0- CurrentCustomerNumber, 0);
-                CurrentState = StateMachine.WalkToLine;
-            }
-            else
-            {
-                EventManager.LeaveLine();
-                CurrentState = StateMachine.Exit;
-            }
+            EventManager.LeaveLine();
+            CurrentState = StateMachine.Exit;
         }
     }
 
@@ -198,8 +226,22 @@ public class CustomerBehaveior : MonoBehaviour
 
     public void SetRandomPlantToWalkTo()
     {
-        GameObject RandPlant = Plants[Random.Range(0, Plants.Length)];
-        FlowerPoint = new Vector2(RandPlant.transform.position.x + PlantOffset.x, RandPlant.transform.position.y + PlantOffset.y);
+        if (Plants.Length==0)
+        {
+            if (transform.position.x == StartPoint.x && transform.position.y == StartPoint.y)
+            {
+                SetRandomWalkToPoint();
+            }
+            else
+            {
+                CurrentState = StateMachine.Exit;
+            }
+        }
+        else
+        {
+            GameObject RandPlant = Plants[Random.Range(0, Plants.Length)];
+            FlowerPoint = new Vector2(RandPlant.transform.position.x + PlantOffset.x, RandPlant.transform.position.y + PlantOffset.y);
+        }
     }
 
     public void SetRandomWalkToPoint()

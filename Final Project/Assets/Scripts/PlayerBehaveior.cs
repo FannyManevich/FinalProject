@@ -10,12 +10,17 @@ public class PlayerBehavier : MonoBehaviour
     private Vector2 moveInput;
 
     public bool onRegister;
+    public bool onPlant;
+    public GameObject PlantYouAreOn;
+    public List<GameObject> PlantsYouAreHolding;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlantsYouAreHolding = new List<GameObject>();
         rb = GetComponent<Rigidbody2D>();
         onRegister = false;
+        onPlant = false;
     }
 
     // Update is called once per frame
@@ -30,6 +35,12 @@ public class PlayerBehavier : MonoBehaviour
         {
             onRegister = true;
         }
+        else if (collider.gameObject.tag == "Plant")
+        {
+            onPlant = true;
+            PlantYouAreOn = collider.gameObject;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -37,6 +48,10 @@ public class PlayerBehavier : MonoBehaviour
         if (collider.gameObject.name == "register")
         {
             onRegister = false;
+        }else if (collider.gameObject.tag == "Plant")
+        {
+            onPlant = false;
+            PlantYouAreOn = null;
         }
     }
 
@@ -47,9 +62,28 @@ public class PlayerBehavier : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (onRegister==true)
+        if (context.performed)
         {
-            EventManager.RegisterRealese();
+            if (onRegister == true)
+            {
+                EventManager.RegisterRealese();
+            }
+            else if (onPlant == true)
+            {
+                PlantsYouAreHolding.Add(PlantYouAreOn);
+                PlantYouAreOn.SetActive(false);
+            }
+            else
+            {
+                float tempOffset = 0;
+                foreach (GameObject plant in PlantsYouAreHolding)
+                {
+                    plant.SetActive(true);
+                    plant.transform.position = new Vector3(transform.position.x, transform.position.y + tempOffset, transform.position.z);
+                    tempOffset += 0.5f;
+                }
+                PlantsYouAreHolding.Clear();
+            }
         }
     }
 }
