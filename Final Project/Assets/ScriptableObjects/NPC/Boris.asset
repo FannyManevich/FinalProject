@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b7ff243e18c4a45871da00b9816c1e, type: 3}
+  m_Name: Boris
+  m_EditorClassIdentifier: 
+  NPCname: Boris
+  NPCportrait: {fileID: 21300000, guid: 6929b9b76cc7b804184488d4e70a28a0, type: 3}
+  sentences: []
