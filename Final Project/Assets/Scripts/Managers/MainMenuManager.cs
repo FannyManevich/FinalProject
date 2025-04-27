@@ -1,8 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -23,7 +21,6 @@ public class MainMenuManager : MonoBehaviour
     public PlayerSO itanSO;
     public PlayerSO shiraSO;
 
-
     public void OnPlayClicked()
     {
         Debug.Log("Play Button clicked");
@@ -33,19 +30,19 @@ public class MainMenuManager : MonoBehaviour
     public void OnMaleSelected()
     {
         Debug.Log("Male button clicked");
-        Time.timeScale = 2f;
+        Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = malePlayerPrefab;
         PlayerSelector.SelectPlayer(malePlayerPrefab, itanSO);
-        SceneManager.LoadScene("Store");
+        GameStateManager.Instance.TransitionToScene("Store");
     }
 
     public void OnFemaleSelected()
     {
         Debug.Log("Female button clicked");
-        Time.timeScale = 2f;
+        Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = femalePlayerPrefab;
         PlayerSelector.SelectPlayer(femalePlayerPrefab, shiraSO);
-        SceneManager.LoadScene("Store");
+        GameStateManager.Instance.TransitionToScene("Store");
     }
 
     public void ActiveGeneralPanel(string type)
@@ -89,7 +86,7 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        #endif
     }
     public void ClosePanelButton()
     {

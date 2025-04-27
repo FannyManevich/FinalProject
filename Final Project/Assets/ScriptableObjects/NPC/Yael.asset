@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b7ff243e18c4a45871da00b9816c1e, type: 3}
   m_Name: Yael
   m_EditorClassIdentifier: 
+  NPC_Id: 3
   NPC_name: Yael
   NPC_portrait: {fileID: 21300000, guid: b5bd9aca9ba6c134281e715794a376e4, type: 3}
   NPC_Animation: {fileID: 0}

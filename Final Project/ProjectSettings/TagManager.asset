@@ -9,6 +9,7 @@ TagManager:
   - Register
   - NPC
   - Restock
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b7ff243e18c4a45871da00b9816c1e, type: 3}
   m_Name: Shosh
   m_EditorClassIdentifier: 
+  NPC_Id: 1
   NPC_name: Shosh
   NPC_portrait: {fileID: 21300000, guid: bb3d70a97bb252d4788289d61459351f, type: 3}
   NPC_Animation: {fileID: 0}

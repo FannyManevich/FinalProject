@@ -7,11 +7,15 @@ public class CashRegister : MonoBehaviour
 
     public DialogueManager dialogueManager;
     public GameStateManager instance;
-
+    
     public PlayerSelector selectedPlayer;
     public PlayerSO activePlayer;
     public NPC_SO[] npcList;
     public GameObject newNPC;
+
+    public PlantSO[] plantSO;
+    public PlantSO randomPlantSO;
+    private int randomP;
 
     void Start()
     {
@@ -41,23 +45,8 @@ public class CashRegister : MonoBehaviour
         {
             Debug.LogError("newNPC is null in ReadNPCData!");
             return;
-        }
-
-        NPCIdentity identity = newNPC.GetComponent<NPCIdentity>();
-        if(identity == null)
-        {
-            Debug.Log("In CashRegister script: NPCIdentity is null.");
-            return;
-        }
-
-        if(identity.npcData == null)
-        {
-            Debug.Log("In CashRegister script: npcData is null.");
-            return;
-        }
-        Debug.Log("NPC: " + identity.npcData.NPC_name + "is ready for dialogue.");
-    }       
-
+        }   
+    }
     
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -69,16 +58,19 @@ public class CashRegister : MonoBehaviour
 
         if (playerInZone && npcInZone)
         {
-            NPCIdentity npcEnterd = other.GetComponent<NPCIdentity>();
+            dialogueManager.StartPlayerDialogue();
+            Time.timeScale = 3f;
 
-            if (npcEnterd != null && npcEnterd.npcData != null)
+            dialogueManager.EndPlayerDialogue();
+
+            if (randomP >= 0 && randomP < 6)
             {
-                dialogueManager.StartPlayerDialogue(activePlayer);
-                dialogueManager.StartNpcDialogue(npcEnterd);
-                Debug.LogError("Dialog activated");
-            }
-            else 
-                Debug.LogError("NPC Error");                  
+                randomP = UnityEngine.Random.Range(0, 5);
+                randomPlantSO = plantSO[randomP];
+                Debug.Log("In CashRegister:  randomPlantSO : " + randomPlantSO);
+
+                dialogueManager.StartNpcDialogue(randomPlantSO);
+            }        
         }
     }
 
@@ -90,4 +82,5 @@ public class CashRegister : MonoBehaviour
         if (other.CompareTag("NPC"))
             npcInZone = false;
     }
+
 }

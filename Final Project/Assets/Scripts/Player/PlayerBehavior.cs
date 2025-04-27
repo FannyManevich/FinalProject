@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerBehavior : MonoBehaviour
 {
     public PlayerSO playerData;

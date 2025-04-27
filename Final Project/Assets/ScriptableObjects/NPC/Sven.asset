@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b7ff243e18c4a45871da00b9816c1e, type: 3}
   m_Name: Sven
   m_EditorClassIdentifier: 
+  NPC_Id: 2
   NPC_name: Sven
   NPC_portrait: {fileID: 21300000, guid: c4fd45b0065785c47b8e18855e890de6, type: 3}
   NPC_Animation: {fileID: 0}

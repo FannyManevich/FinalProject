@@ -205,8 +205,6 @@ GameObject:
   - component: {fileID: 3452712840568201755}
   - component: {fileID: 3945025627511453370}
   - component: {fileID: 7308198310856913237}
-  - component: {fileID: 8392979903603951956}
-  - component: {fileID: 9077534584502821145}
   m_Layer: 3
   m_Name: Customer
   m_TagString: NPC
@@ -394,36 +392,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8392979903603951956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246296473204041928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd094b3e2f080d448a68dada7e5f787c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcList:
-  - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
-  - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
-  - {fileID: 11400000, guid: 171c06f9b42f50d4997a07ae950a7208, type: 2}
-  - {fileID: 11400000, guid: b8e6cba29df286c4c9d85f180d983179, type: 2}
---- !u!114 &9077534584502821145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246296473204041928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9aff03b7a148e54a8d29999a1f020b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcData: {fileID: 0}
 --- !u!1 &3446920658394853491
 GameObject:
   m_ObjectHideFlags: 0

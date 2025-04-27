@@ -11,11 +11,10 @@ namespace Assets.Scripts.Managers
     public enum GameState
     {
         MainMenu,
+        UI,
         Playing,
-        Paused,
+        Book,
         Dialogue,
         EndGame
     }
-
-
 }

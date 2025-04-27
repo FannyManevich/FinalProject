@@ -6,11 +6,12 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
-    [SerializeField] GameObject PlayerDialoguePanel;
-    [SerializeField] GameObject NPCDialoguePanel;
+    [SerializeField] GameObject playerDialoguePanel;
+    [SerializeField] GameObject npcDialoguePanel;
     [SerializeField] Button cancelButton;
 
-    private PlantSO request;
+    private DialogueManager dm;
+    // private PlantSO request;
 
     public Image portraitImage;
     public TextMeshProUGUI nameText;
@@ -28,17 +29,37 @@ public class DialogueUI : MonoBehaviour
     public Sprite partialShade;
     public Sprite fullShade;
 
-    public void DisplayPlantRequest(PlantSO request)
+    private void OnEnable()
     {
-        if(request == null)
+        dm = FindObjectOfType<DialogueManager>();
+        dm.OnPlayerDialogue += DisplayPlayerDialogue;
+        dm.OnNpcDialogue += DisplayNpcDialogue;
+        dm.EndPdialogue += EndPlayerDialogue;
+        dm.EndNpcDialogue += EndNpcDialogue;
+    }
+
+    private void OnDisable()
+    {        
+        if (dm != null)
+        {
+            dm.OnPlayerDialogue -= DisplayPlayerDialogue;
+            dm.OnNpcDialogue -= DisplayNpcDialogue;
+            dm.EndPdialogue -= EndPlayerDialogue;
+            dm.EndNpcDialogue -= EndNpcDialogue;
+
+        }
+    }
+    public void DisplayPlantRequest(PlantSO randomPlantSO)
+    {
+        if(randomPlantSO == null)
         {
             Debug.LogWarning("PlantRequest is null.");
             return;
         }
 
-        int waterLevel = request.waterRequirement;
-        int diffLevel = request.difficultyLevel;
-        int sunLevel = request.sunRequirement;
+        int waterLevel = randomPlantSO.waterRequirement;
+        int diffLevel = randomPlantSO.difficultyLevel;
+        int sunLevel = randomPlantSO.sunRequirement;
 
         switch (sunLevel)
         {
@@ -73,44 +94,31 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void DisplayPlayerDialogue()
     {
-        DialogueManager dm = FindObjectOfType<DialogueManager>();
-        dm.OnPlayerDialogue += DisplayPlayerDialogue;
-        dm.OnNpcDialogue += DisplayNpcDialogue;
+        playerDialoguePanel.SetActive(true);
     }
 
-    private void OnDisable()
-    {
-        DialogueManager dm = FindObjectOfType<DialogueManager>();
-        dm.OnPlayerDialogue -= DisplayPlayerDialogue;
-        dm.OnNpcDialogue -= DisplayNpcDialogue;
-    }
-
-    public void DisplayPlayerDialogue(PlayerSO player)
-    {
-        PlayerDialoguePanel.SetActive(true);
-    }
-
-    public void DisplayNpcDialogue(NPCIdentity npc)
-    {
-        PlayerDialoguePanel.SetActive(false);
-        
+    public void DisplayNpcDialogue(PlantSO randomPlantSO)
+    {       
         cancelButton.gameObject.SetActive(true);
-        NPCDialoguePanel.SetActive(true);
+        npcDialoguePanel.SetActive(true);
 
-        request = npc.npcData.plantRequest;
-        Debug.LogWarning("PlantRequest: diff:"+ request.difficultyLevel + "water:" + request.waterRequirement);
-        DisplayPlantRequest(request);
+        Debug.LogWarning("PlantRequest: diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+        DisplayPlantRequest(randomPlantSO);
 
-        portraitImage.sprite = npc.npcData.NPC_portrait;
-        nameText.text = npc.npcData.NPC_name;
+      //  portraitImage.sprite = npc.NPC_portrait;
+       // nameText.text = npc.NPC_name;
     }
 
-    public void EndDialogue()
+    public void EndNpcDialogue()
     {
         cancelButton.gameObject.SetActive(false);
-        PlayerDialoguePanel.SetActive(false);
-        NPCDialoguePanel.SetActive(false);
+        npcDialoguePanel.SetActive(false);
+    }
+
+    public void EndPlayerDialogue()
+    {
+        playerDialoguePanel.SetActive(false);
     }
 }
