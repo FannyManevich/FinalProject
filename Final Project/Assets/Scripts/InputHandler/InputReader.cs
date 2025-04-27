@@ -77,4 +77,9 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
             Debug.Log("cancel detected!");
         }
     }
+
+    public void OnBook(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   NPC_Id: 1
   NPC_name: Shosh
   NPC_portrait: {fileID: 21300000, guid: bb3d70a97bb252d4788289d61459351f, type: 3}
-  NPC_Animation: {fileID: 0}
-  plantRequest: {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
+  NPC_Animation: {fileID: 9100000, guid: 714132de367dcd84ebeecfeb72d86cb6, type: 2}
+  plantRequest: {fileID: 11400000, guid: 402d819f05459864f9758c4e3b5053ec, type: 2}

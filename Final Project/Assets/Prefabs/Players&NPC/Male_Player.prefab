@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8315155219231710213}
   m_Layer: 3
   m_Name: Male_Player
-  m_TagString: Player
+  m_TagString: PlayerSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

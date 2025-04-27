@@ -16,6 +16,8 @@ public class NPCSpawnerScript : MonoBehaviour
     public int minSpawnTime = 1400;
     public int maxSpawnTime = 3400;
 
+    public static Action OnCustomerSpawnedEvent;
+
     public static event Action<GameObject> OnCustomerSpawned;
 
     private void Start()

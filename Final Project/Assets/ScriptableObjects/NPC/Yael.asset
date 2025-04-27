@@ -16,4 +16,4 @@ MonoBehaviour:
   NPC_name: Yael
   NPC_portrait: {fileID: 21300000, guid: b5bd9aca9ba6c134281e715794a376e4, type: 3}
   NPC_Animation: {fileID: 0}
-  plantRequest: {fileID: 11400000, guid: 43388a2370c4a824bb0bbdcc23c051df, type: 2}
+  plantRequest: {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
