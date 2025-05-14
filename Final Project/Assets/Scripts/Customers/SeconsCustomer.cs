@@ -42,6 +42,9 @@ public class SeconsCustomer : MonoBehaviour
             UiManager = GameObject.Find("UiManager");
         }
 
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
         step = 4.0f * Time.deltaTime;
         TimerBar.gameObject.SetActive(false);
         StartPoint = new Vector2(11, -4.5f);
