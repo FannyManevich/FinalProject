@@ -28,6 +28,9 @@ public class SeconsCustomer : MonoBehaviour
     NPC_LineManagement LineManager;
     public int CurrentCustomerNumber = 0;
 
+    public Animator animator;
+    public SpriteRenderer sr;
+
     public NPC_State CurrentState;
 
 
@@ -144,14 +147,38 @@ public class SeconsCustomer : MonoBehaviour
     {
         if (transform.position.x != PointToWalkTo.x)
         {
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isWalkingSide", true);
+            if (transform.position.x - PointToWalkTo.x > 0)
+            {
+                sr.flipX = true;
+            }
+            else
+            {
+                sr.flipX = false;
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(PointToWalkTo.x, transform.position.y, 0), step);
         }
         else if (transform.position.y != PointToWalkTo.y)
         {
+            sr.flipX = false;
+            animator.SetBool("isWalkingSide", false);
+            animator.SetBool("isWalking", true);
+            if (transform.position.y - PointToWalkTo.y < 0)
+            {
+                animator.SetBool("isWalkingDown", true);
+            }
+            else
+            {
+                animator.SetBool("isWalkingDown", false);
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, PointToWalkTo.y, 0), step);
         }
         else
         {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isWalkingDown", false);
+            animator.SetBool("isWalkingSide", false);
             NextState();
         }
     }
@@ -160,14 +187,38 @@ public class SeconsCustomer : MonoBehaviour
     {
         if (transform.position.y != PointToWalkTo.y)
         {
+            animator.SetBool("isWalking", true);
+            if (transform.position.y - PointToWalkTo.y < 0)
+            {
+                animator.SetBool("isWalkingDown", true);
+            }
+            else
+            {
+                animator.SetBool("isWalkingDown", false);
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, PointToWalkTo.y, 0), step);
         }
         else if (transform.position.x != PointToWalkTo.x)
         {
+            animator.SetBool("isWalkingDown", false);
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isWalkingSide", true);
+            if (transform.position.x - PointToWalkTo.x > 0)
+            {
+                sr.flipX = true;
+            }
+            else
+            {
+                sr.flipX = false;
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(PointToWalkTo.x, transform.position.y, 0), step);
         }
         else
         {
+            sr.flipX = false;
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isWalkingDown", false);
+            animator.SetBool("isWalkingSide", false);
             NextState();
         }
     }

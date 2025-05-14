@@ -1183,10 +1183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792dde891eab20f478d6287683643e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plants:
-  - {fileID: 0}
-  PlantParent: {fileID: 0}
-  PlantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
 --- !u!1 &420459218
 GameObject:
   m_ObjectHideFlags: 0
