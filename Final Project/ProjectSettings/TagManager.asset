@@ -59,12 +59,15 @@ TagManager:
   - name: Plant requirements
     uniqueID: 326892143
     locked: 0
-  - name: Plants
-    uniqueID: 2817504327
-    locked: 0
   - name: UI
     uniqueID: 1632706469
     locked: 0
   - name: Panels
     uniqueID: 1432031885
+    locked: 0
+  - name: Furniture
+    uniqueID: 1530984263
+    locked: 0
+  - name: Plants
+    uniqueID: 2817504327
     locked: 0
