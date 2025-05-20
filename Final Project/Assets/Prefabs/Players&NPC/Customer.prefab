@@ -267,7 +267,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1576704785
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -1861822216, guid: 6136bba9a760d26438ce46a0a2104043, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -298,6 +298,8 @@ MonoBehaviour:
   WaitTime: 500
   Plants: []
   CurrentCustomerNumber: 0
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   CurrentState: 0
 --- !u!61 &3452712840568201755
 BoxCollider2D:
@@ -381,7 +383,7 @@ Animator:
   m_GameObject: {fileID: 3246296473204041928}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e94dc839a3b903642931c75738861d25, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
