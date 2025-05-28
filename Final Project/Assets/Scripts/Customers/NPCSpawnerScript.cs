@@ -41,7 +41,6 @@ public class NPCSpawnerScript : MonoBehaviour
             {
                 c.GetComponent<SpriteRenderer>().sprite = npcList[npcIndex].NPC_portrait;
             }
-
             OnCustomerSpawnedEvent?.Invoke(c);
             npcIndex++;
             CustomerTypeRNG = Random.Range(0, 10);

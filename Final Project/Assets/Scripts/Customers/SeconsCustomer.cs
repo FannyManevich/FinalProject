@@ -20,7 +20,7 @@ public class SeconsCustomer : MonoBehaviour
     Vector2 PlantOffset;
     public GameObject[] Plants;
 
-    bool onPlant;
+    //bool onPlant;
     GameObject PlantYouPick;
 
     GameObject UiManager;
@@ -105,7 +105,7 @@ public class SeconsCustomer : MonoBehaviour
     {
         if (collider.gameObject.tag == "Plant")
         {
-            onPlant = true;
+            //onPlant = true;
             PlantYouPick = collider.gameObject;
         }
     }
@@ -114,7 +114,7 @@ public class SeconsCustomer : MonoBehaviour
     {
         if (collider.gameObject.tag == "Plant")
         {
-            onPlant = false;
+            //onPlant = false;
         }
     }
 
