@@ -33,8 +33,8 @@ public class MainMenuManager : MonoBehaviour
         Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = malePlayerPrefab;
         PlayerSelector.SelectPlayer(malePlayerPrefab, itanSO);
-        //GameStateManager.Instance.TransitionToScene("Store"); 
-        GameStateManager.Instance.TransitionToScene("Scenechanges");
+        GameStateManager.Instance.TransitionToScene("Store"); 
+        //GameStateManager.Instance.TransitionToScene("Scenechanges");
     }
 
     public void OnFemaleSelected()
@@ -43,8 +43,8 @@ public class MainMenuManager : MonoBehaviour
         Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = femalePlayerPrefab;
         PlayerSelector.SelectPlayer(femalePlayerPrefab, shiraSO);
-        //GameStateManager.Instance.TransitionToScene("Store");
-        GameStateManager.Instance.TransitionToScene("Scenechanges");
+        GameStateManager.Instance.TransitionToScene("Store");
+        //GameStateManager.Instance.TransitionToScene("Scenechanges");
     }
 
     public void ActiveGeneralPanel(string type)

@@ -188,8 +188,8 @@ public class GameStateManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-       // if (scene.name == "Store")
-       if(scene.name == "Scenechanges")
+        if (scene.name == "Store")
+      // if(scene.name == "Scenechanges")
         {
             //Debug.Log("Store scene loaded! Spawning player...");
             Debug.Log("Scenechanges scene loaded! Spawning player...");
