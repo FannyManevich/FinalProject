@@ -50,24 +50,24 @@ TagManager:
   - name: Background
     uniqueID: 2135202209
     locked: 0
+  - name: Plants
+    uniqueID: 2817504327
+    locked: 0
+  - name: Furniture
+    uniqueID: 1530984263
+    locked: 0
   - name: Player&NPC
     uniqueID: 2718262511
     locked: 0
   - name: Plant requirements
     uniqueID: 326892143
     locked: 0
-  - name: Furniture
-    uniqueID: 1530984263
-    locked: 0
-  - name: Plants
-    uniqueID: 2817504327
-    locked: 0
-  - name: Buttons
-    uniqueID: 3091090407
-    locked: 0
   - name: UI
     uniqueID: 1632706469
     locked: 0
   - name: Panels
     uniqueID: 1432031885
+    locked: 0
+  - name: Buttons
+    uniqueID: 3091090407
     locked: 0

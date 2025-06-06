@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 3945025627511453370}
   - component: {fileID: 7308198310856913237}
   - component: {fileID: -7889776427896770483}
+  - component: {fileID: 3907513888626611321}
   m_Layer: 3
   m_Name: SecondCustomer.prefab
   m_TagString: NPC
@@ -267,7 +268,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1576704785
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -1861822216, guid: 6136bba9a760d26438ce46a0a2104043, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -312,7 +313,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.080951214, y: -0.12033339}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -323,7 +324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.69164944, y: 0.73540676}
   m_EdgeRadius: 0
 --- !u!50 &3945025627511453370
 Rigidbody2D:
@@ -394,6 +395,51 @@ MonoBehaviour:
   animator: {fileID: 0}
   sr: {fileID: 0}
   CurrentState: 1
+--- !u!61 &3907513888626611321
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246296473204041928}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.041570187, y: -0.7963875}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 0.16, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7479906, y: 0.54214823}
+  m_EdgeRadius: 0
 --- !u!1 &3446920658394853491
 GameObject:
   m_ObjectHideFlags: 0
