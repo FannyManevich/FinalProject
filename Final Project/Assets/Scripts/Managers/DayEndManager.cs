@@ -22,7 +22,6 @@ public class DayEndManager : MonoBehaviour
         continueButton.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     public void EndDay()
     {
         CurrentMoney = this.GetComponent<MoneyManager>().currentMoney;

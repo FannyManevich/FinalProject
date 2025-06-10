@@ -22,8 +22,9 @@ public class TimerController : MonoBehaviour
         if (stopTimer == false)
         {
             timerSlider.value--;
-            if (timerSlider.value == 0)
+            if (timerSlider.value <= 0)
             {
+                Debug.Log("day ended");
                 stopTimer = true;
                 this.GetComponent<DayEndManager>().EndDay();
             }
