@@ -14,7 +14,7 @@ public class SeconsCustomer : MonoBehaviour
     [SerializeField] Slider TimerBar;
     private float minX, minY, maxX, maxY;
     public int CurrentWaitTimer = 0;
-    public int WaitTime = 500;
+    public int WaitTime = 1500;
     float step;
 
     Vector2 PlantOffset;
@@ -70,7 +70,7 @@ public class SeconsCustomer : MonoBehaviour
         switch (CurrentState)
         {
             case NPC_State.WalkToLine:
-                MoveToPointYFirst(RegisterPoint + LineOffset);
+                MoveToPointXFirst(RegisterPoint + LineOffset);
                 WaitTime = 5000;
                 break;
             case NPC_State.InLine:
@@ -91,7 +91,7 @@ public class SeconsCustomer : MonoBehaviour
                 }
                 break;
             case NPC_State.Exit:
-                MoveToPointXFirst(StartPoint);
+                MoveToPointYFirst(StartPoint);
                 if (transform.position == new Vector3(StartPoint.x, StartPoint.y, 0))
                 {
                     Destroy(this.gameObject);

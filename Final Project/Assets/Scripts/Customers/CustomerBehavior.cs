@@ -47,7 +47,7 @@ public class CustomerBehavior : MonoBehaviour
 
         step = 4.0f * Time.deltaTime;
         TimerBar.gameObject.SetActive(false);
-        StartPoint = new Vector2(11, -4.5f);
+        StartPoint = new Vector2(14, -4f);
         RegisterPoint = new Vector2(0, 1.3f);
         transform.position.Set(StartPoint.x, StartPoint.y, 0);
         SetMinMax();
@@ -122,7 +122,7 @@ public class CustomerBehavior : MonoBehaviour
                 }
                 break;
             case NPC_State.Exit:
-                MoveToPointXFirst(StartPoint);
+                MoveToPointYFirst(StartPoint);
                 if (transform.position == new Vector3(StartPoint.x, StartPoint.y, 0))
                 {
                     Destroy(this.gameObject);
