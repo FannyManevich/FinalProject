@@ -12,28 +12,23 @@ public class DialogueUI : MonoBehaviour
 
     private DialogueManager dm;
     public Input playerInput;
-    // private PlantSO request;
 
     public Image portraitImage;
     public TextMeshProUGUI nameText;
 
-    public Image[] waterDrops;
-    public Sprite fullDrop;
-    public Sprite emptyDrop;
+    public Sprite sunImage;
+    public Sprite difficultyImage;
+    public Sprite waterImage;
 
-    public Image[] difficultyIcons;
-    public Sprite activeIcon;
-    public Sprite inactiveIcon;
-
-    public Image sunImage;
-    public Sprite fullSun;
-    public Sprite partialShade;
-    public Sprite fullShade;
+    [SerializeField] public Sprite[] sunIcons;
+    [SerializeField] public Sprite[] diffIcons;
+    [SerializeField] public Sprite[] waterIcons;
 
     private void Start()
     {
         cancelButton.onClick.AddListener(EndNpcDialogue);
     }
+
     private void OnEnable()
     {
         dm = FindObjectOfType<DialogueManager>();
@@ -62,43 +57,15 @@ public class DialogueUI : MonoBehaviour
             return;
         }
 
-        int waterLevel = randomPlantSO.waterRequirement;
-        int diffLevel = randomPlantSO.difficultyLevel;
         int sunLevel = randomPlantSO.sunRequirement;
+        int diffLevel = randomPlantSO.difficultyLevel;
+        int waterLevel = randomPlantSO.waterRequirement;
 
-        switch (sunLevel)
-        {
-            case 1:
-                sunImage.sprite = fullSun;
-                break;
-            case 2:
-                sunImage.sprite = partialShade;
-                break;
-            case 3:
-                sunImage.sprite = fullShade;
-                break;
-        }
-
-        SetDifficulty(diffLevel);
-        SetWater(waterLevel);
+        sunImage = sunIcons[sunLevel];
+        difficultyImage = diffIcons[diffLevel];
+        waterImage = waterIcons[waterLevel];
     }
-
-    private void SetDifficulty(int level)
-    {
-        for (int i = 0; i < difficultyIcons.Length; i++)
-        {
-            difficultyIcons[i].sprite = i < level ? activeIcon : inactiveIcon;
-        }
-    }
-
-    private void SetWater(int level)
-    {
-        for (int i = 0; i < waterDrops.Length; i++)
-        {
-            waterDrops[i].sprite = i < level ? fullDrop : emptyDrop;
-        }
-    }
-
+    
     public void DisplayPlayerDialogue()
     {
         playerDialoguePanel.SetActive(true);
@@ -122,10 +89,9 @@ public class DialogueUI : MonoBehaviour
             npcDialoguePanel.SetActive(true);
 
             Debug.LogWarning("PlantRequest: diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
-            //DisplayPlantRequest(randomPlantSO);
-        }
-        
-      //  portraitImage.sprite = npc.NPC_portrait;
+            DisplayPlantRequest(randomPlantSO);
+        }      
+       // portraitImage.sprite = npc.NPC_portrait;
        // nameText.text = npc.NPC_name;
     }
 

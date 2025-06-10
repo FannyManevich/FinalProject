@@ -1,2 +1,2 @@
 # FinalProject
-RPG Game where you're a plant boutique manager. 
+  A Game where you're a plant boutique manager. 
