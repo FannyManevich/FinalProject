@@ -39,7 +39,7 @@ public class CustomerBehavior : MonoBehaviour
     {
         if (UiManager == null)
         {
-            UiManager = GameObject.Find("UiManager");
+            UiManager = GameObject.Find("UIManager");
         }
 
         sr = GetComponent<SpriteRenderer>();
