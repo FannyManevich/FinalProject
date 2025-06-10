@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DayEndManager : MonoBehaviour
 {
     [SerializeField] GameObject dayEndScreen;
+    [SerializeField] GameObject dayEndButtons;
     [SerializeField] TextMeshProUGUI MoneyMadeText;
     [SerializeField] TextMeshProUGUI WonText;
     [SerializeField] Button againButton;
@@ -17,6 +18,7 @@ public class DayEndManager : MonoBehaviour
     void Start()
     {
         dayEndScreen.SetActive(false);
+        dayEndButtons.SetActive(false);
         ThisDayMoneyGoal = 100;
         againButton.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
@@ -26,6 +28,7 @@ public class DayEndManager : MonoBehaviour
     {
         CurrentMoney = this.GetComponent<MoneyManager>().currentMoney;
         dayEndScreen.SetActive(true);
+        dayEndButtons.SetActive(true);
         MoneyMadeText.text="Money Made: "+ CurrentMoney + "/"+ ThisDayMoneyGoal;
         if(CurrentMoney >= ThisDayMoneyGoal)
         {
@@ -50,6 +53,7 @@ public class DayEndManager : MonoBehaviour
     public void OnContinueClicked()
     {
         dayEndScreen.SetActive(false);
+        dayEndButtons.SetActive(false);
         ThisDayMoneyGoal += 100;
         this.GetComponent<TimerController>().ResetTimer();
         //ResetDay
@@ -60,6 +64,7 @@ public class DayEndManager : MonoBehaviour
     public void OnPlayAgainClicked()
     {
         dayEndScreen.SetActive(false);
+        dayEndButtons.SetActive(false);
         ThisDayMoneyGoal = 100;
         this.GetComponent<TimerController>().ResetTimer();
         //ResetDay
