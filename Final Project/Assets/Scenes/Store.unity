@@ -6467,12 +6467,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 392138696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792dde891eab20f478d6287683643e81, type: 3}
+  m_Script: {fileID: 11500000, guid: dd5cff40a2ee95948a6c287915000c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plants:
-  - {fileID: 0}
-  PlantParent: {fileID: 0}
+  Plants: []
+  PlantParent: {fileID: 381442567}
   PlantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
 --- !u!1001 &445974781
 PrefabInstance:
