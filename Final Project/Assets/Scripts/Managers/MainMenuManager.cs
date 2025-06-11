@@ -32,7 +32,8 @@ public class MainMenuManager : MonoBehaviour
         Debug.Log("Male button clicked");
         Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = malePlayerPrefab;
-        PlayerSelector.SelectPlayer(malePlayerPrefab, itanSO);
+        PlayerSelector.SelectPlayer(malePlayerPrefab, itanSO); 
+        //GameStateManager.Instance.TransitionToScene("Store_Fix");
         GameStateManager.Instance.TransitionToScene("Store"); 
         //GameStateManager.Instance.TransitionToScene("Scenechanges");
     }
@@ -43,6 +44,7 @@ public class MainMenuManager : MonoBehaviour
         Time.timeScale = 1f;
         PlayerSelector.selectedPlayer = femalePlayerPrefab;
         PlayerSelector.SelectPlayer(femalePlayerPrefab, shiraSO);
+        //GameStateManager.Instance.TransitionToScene("Store_Fix");
         GameStateManager.Instance.TransitionToScene("Store");
         //GameStateManager.Instance.TransitionToScene("Scenechanges");
     }
@@ -80,7 +82,6 @@ public class MainMenuManager : MonoBehaviour
                 panelBodyText.text = "ERROR";
                 break;
         }
-
     }
 
     public void OnQuitClicked()

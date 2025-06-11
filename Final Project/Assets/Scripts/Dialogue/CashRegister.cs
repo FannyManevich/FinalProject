@@ -17,6 +17,14 @@ public class CashRegister : MonoBehaviour
     public PlantSO randomPlantSO;
     private int randomP;
 
+    public DialogueUI dialogueUI;
+    public PlantSO emptyPlant;
+    public PlayerSO playerPickedPlant;
+    public MoneyManager cash;
+    public Plant plant;
+    public PlantRequest pr;
+    private int pcount = 0;
+
     void Start()
     {
         if (dialogueManager == null)
@@ -51,35 +59,54 @@ public class CashRegister : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInZone = true;
+            pcount++;
+        }
+            
 
-        if (other.CompareTag("NPC"))       
+        if (other.CompareTag("Boris"))       
             npcInZone = true;
 
         if (playerInZone && npcInZone)
         {
+            Debug.Log("In CashRegister: player and NPC r in cash register");
+ 
             dialogueManager.StartPlayerDialogue();
-            //Time.timeScale = 3f;
 
             dialogueManager.EndPlayerDialogue();
 
-            if (randomP >= 0 && randomP < 6)
-            {
-                randomP = UnityEngine.Random.Range(0, plantSO.Length);
-                randomPlantSO = plantSO[randomP];
-                Debug.Log("In CashRegister:  randomPlantSO : " + randomPlantSO);
-                dialogueManager.StartNpcDialogue(randomPlantSO);
-            }
+            //Create random plant request
+
+            pr.GenerateRequest(emptyPlant);
+            dialogueManager.StartNpcDialogue(randomPlantSO);
+        }
+        // Check how many times player came 2 cach regis
+        if(pcount < 0 || pcount >= 2)
+        {
+            pcount = 0;
         }
     }
-
+    public void Compare(PlantSO emptyPlant, GameObject player)
+    {
+        if (emptyPlant == player.GetComponent<Plant>().currentPlantType)
+        {
+            cash.currentMoney += plant.currentPlantType.Price;
+        }
+        else
+        {
+            cash.currentMoney -= 10;
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             playerInZone = false;
 
-        if (other.CompareTag("NPC"))
+        if (other.CompareTag("Boris"))
+        {
             npcInZone = false;
+            pcount--;
+        }
     }
-
 }

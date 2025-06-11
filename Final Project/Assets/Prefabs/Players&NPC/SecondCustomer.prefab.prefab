@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 3907513888626611321}
   m_Layer: 3
   m_Name: SecondCustomer.prefab
-  m_TagString: NPC
+  m_TagString: Boris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

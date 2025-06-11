@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlantRequest : MonoBehaviour
@@ -7,7 +6,6 @@ public class PlantRequest : MonoBehaviour
     public int waterRequirement;
     public int difficultyRequirement;
 
-    public int i;
 
     public PlantSO newPlantSO;
 
@@ -26,15 +24,4 @@ public class PlantRequest : MonoBehaviour
         newPlantSO.difficultyLevel = randomPlantSO.difficultyLevel;
         return newPlantSO;
     }
-    //void Awake()
-    //{
-    //   // GenerateRandomRequest();
-    //}
-
-    //public void GenerateRandomRequest()
-    //{
-    //    //waterRequirement = Random.Range(1, 3);
-    //    //difficultyRequirement = Random.Range(1, 3);
-    //    //sunRequirement = (SunRequirement)Random.Range(0, 2);
-    //}
 }

@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7308198310856913237}
   m_Layer: 3
   m_Name: Customer
-  m_TagString: NPC
+  m_TagString: Shosh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -75,6 +75,9 @@ public class PlayerBehavior : MonoBehaviour
             {
                 PlantYouAreHolding = PlantYouAreOn;
                 PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
+                //Fany added
+                playerData.plantPicked = PlantYouAreHolding.GetComponent<PlantSO>();
+                //
             }
             else
             {
