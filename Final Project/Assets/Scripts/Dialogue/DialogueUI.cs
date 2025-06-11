@@ -24,6 +24,10 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] public Sprite[] diffIcons;
     [SerializeField] public Sprite[] waterIcons;
 
+
+    public PlantSO emptyPlant;
+
+
     private void Start()
     {
         cancelButton.onClick.AddListener(EndNpcDialogue);
@@ -61,9 +65,22 @@ public class DialogueUI : MonoBehaviour
         int diffLevel = randomPlantSO.difficultyLevel;
         int waterLevel = randomPlantSO.waterRequirement;
 
-        sunImage = sunIcons[sunLevel];
-        difficultyImage = diffIcons[diffLevel];
-        waterImage = waterIcons[waterLevel];
+        if((sunLevel < 0 && sunLevel >= 3 )|| (diffLevel < 0 && diffLevel >= 3) || (waterLevel < 0 && waterLevel >= 3))
+        {
+            sunLevel = 1;
+            diffLevel = 1;
+            waterLevel = 1;
+        }
+        else
+        {
+            sunImage = sunIcons[sunLevel];
+            difficultyImage = diffIcons[diffLevel];
+            waterImage = waterIcons[waterLevel];
+
+            emptyPlant.difficultyLevel = diffLevel;
+            emptyPlant.sunRequirement = sunLevel;
+            emptyPlant.waterRequirement = waterLevel;
+        }
     }
     
     public void DisplayPlayerDialogue()
@@ -88,7 +105,7 @@ public class DialogueUI : MonoBehaviour
             cancelButton.gameObject.SetActive(true);
             npcDialoguePanel.SetActive(true);
 
-            Debug.LogWarning("PlantRequest: diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+           // Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
         }      
        // portraitImage.sprite = npc.NPC_portrait;

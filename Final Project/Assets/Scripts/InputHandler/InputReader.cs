@@ -19,7 +19,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions
         inputActions.Player.Move.canceled += OnMove;
 
         inputActions.Player.Interact.performed += OnInteract;
-      //  inputActions.Player.OpenBook.performed += OnOpenBook;
+        //inputActions.Player.OpenBook.performed += OnOpenBook;
 
         inputActions.UI.LeftClick.performed += OnLeftClick;
         inputActions.UI.Cancel.performed += OnCancel;
@@ -33,7 +33,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions
         inputActions.Player.Move.canceled -= OnMove;
 
         inputActions.Player.Interact.performed -= OnInteract;
-       // inputActions.Player.OpenBook.performed -= OnOpenBook;
+        //inputActions.Player.OpenBook.performed -= OnOpenBook;
 
         inputActions.UI.LeftClick.performed -= OnLeftClick;
         inputActions.UI.Cancel.performed -= OnCancel;

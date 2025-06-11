@@ -1,3 +1,5 @@
+// Ignore Spelling: Dialogue
+
 using UnityEngine;
 using System;
 
@@ -28,4 +30,5 @@ public class DialogueManager : MonoBehaviour
     {
         EndNpcDialogue?.Invoke();
     }
+
 }
