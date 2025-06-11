@@ -139,7 +139,11 @@ public class SeconsCustomer : MonoBehaviour
             TimerBar.gameObject.SetActive(false);
             NPCEventManager.LeaveLine();
             CurrentState = NPC_State.Exit;
+        }//Fany
+        else { 
+            NPCEventManager.LeaveLine(); 
         }
+        //
     }
 
     public void SetMinMax()
@@ -232,10 +236,17 @@ public class SeconsCustomer : MonoBehaviour
 
     public void RegisterInteraction()
     {
-        if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
+        if (PlantYouPick != null)
         {
-            UiManager.GetComponent<MoneyManager>().addMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price);
-            NextState();
+            if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
+            {
+                UiManager.GetComponent<MoneyManager>().addMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price);
+                NextState();
+            }
+            else
+            {
+                Debug.LogWarning("Plant component or PlantType is missing!");
+            }
         }
     }
 

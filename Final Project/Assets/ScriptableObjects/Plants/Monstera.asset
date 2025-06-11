@@ -17,3 +17,5 @@ MonoBehaviour:
   sunRequirement: 2
   difficultyLevel: 2
   Image: {fileID: 21300000, guid: 0274d7498d695a74b98b3dc762dc7551, type: 3}
+  UI: {fileID: 21300000, guid: 8c17acae39dd57249b87d68998a4f0a7, type: 3}
+  GetTransform: {fileID: 0}

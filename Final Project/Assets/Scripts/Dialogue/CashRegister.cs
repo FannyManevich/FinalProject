@@ -28,7 +28,7 @@ public class CashRegister : MonoBehaviour
     public PlantRequest pr;
     private int pcount = 0;
     public PlantSO[] allPlants;
-    private PlantSO currentRequest;
+    //private PlantSO currentRequest;
     private PlantSO deliveredPlant;
 
     public PlayerBehavior pb;
@@ -77,6 +77,7 @@ public class CashRegister : MonoBehaviour
 
         if (other.CompareTag("Boris"))
             npcInZone = true;
+            npcAtRegister = true;
 
         if (playerInZone && npcInZone)
         {
@@ -109,6 +110,7 @@ public class CashRegister : MonoBehaviour
         //Create random plant request
 
         emptyPlant = GetRandomPlant();
+        Debug.Log(emptyPlant.Image);
 
         dialogueManager.StartNpcDialogue(emptyPlant);
         waitingForPlant = true;
@@ -165,14 +167,14 @@ public class CashRegister : MonoBehaviour
     {
         npcAtRegister = false;
         deliveredPlant = null;
-        currentRequest = null;
+       // currentRequest = null;
         var plantToDestory = pb.PlantYouAreHolding;
         pb.PlantYouAreHolding = null;
 
-        if (plantToDestory != null)
-        {
-            Destroy(plantToDestory);
+        if (pb.PlantYouAreHolding != null && !pb.PlantYouAreHolding.Equals(null))
+        { 
             plantToDestory = null;
+            Destroy(plantToDestory);           
         }
     }
 }
