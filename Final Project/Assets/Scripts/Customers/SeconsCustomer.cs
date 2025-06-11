@@ -14,7 +14,7 @@ public class SeconsCustomer : MonoBehaviour
     [SerializeField] Slider TimerBar;
     private float minX, minY, maxX, maxY;
     public int CurrentWaitTimer = 0;
-    public int WaitTime = 500;
+    public int WaitTime = 2500;
     float step;
 
     Vector2 PlantOffset;
@@ -62,6 +62,8 @@ public class SeconsCustomer : MonoBehaviour
         NPCEventManager.RegisterReleaseEvent += RegisterInteraction;
 
         NPCEventManager.EnterLine();
+        CurrentCustomerNumber = LineManager.CustomerNumber;
+        LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
 
     }
@@ -72,14 +74,14 @@ public class SeconsCustomer : MonoBehaviour
         switch (CurrentState)
         {
             case NPC_State.WalkToLine:
-                MoveToPointYFirst(RegisterPoint + LineOffset);
+                MoveToPointXFirst(RegisterPoint + LineOffset);
                 WaitTime = 5000;
                 break;
             case NPC_State.InLine:
                 TimerBar.gameObject.SetActive(true);
                 if (new Vector2(transform.position.x, transform.position.y) != RegisterPoint + LineOffset)
                 {
-                    MoveToPointYFirst(RegisterPoint + LineOffset);
+                    MoveToPointXFirst(RegisterPoint + LineOffset);
                 }
                 if (CurrentWaitTimer < WaitTime)
                 {
@@ -93,7 +95,7 @@ public class SeconsCustomer : MonoBehaviour
                 }
                 break;
             case NPC_State.Exit:
-                MoveToPointXFirst(StartPoint);
+                MoveToPointYFirst(StartPoint);
                 if (transform.position == new Vector3(StartPoint.x, StartPoint.y, 0))
                 {
                     Destroy(this.gameObject);
