@@ -389,12 +389,13 @@ MonoBehaviour:
   LineOffset: {x: 0, y: 0}
   TimerBar: {fileID: 6583394894738241726}
   CurrentWaitTimer: 0
-  WaitTime: 500
+  WaitTime: 2500
   Plants: []
   CurrentCustomerNumber: 0
   animator: {fileID: 0}
   sr: {fileID: 0}
   CurrentState: 1
+  requestedPlant: {fileID: 0}
 --- !u!61 &3907513888626611321
 BoxCollider2D:
   m_ObjectHideFlags: 0
