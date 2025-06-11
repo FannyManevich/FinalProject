@@ -33,6 +33,8 @@ public class SeconsCustomer : MonoBehaviour
 
     public NPC_State CurrentState;
 
+    public PlantSO requestedPlant;
+
 
     // Start is called before the first frame update
     void Start()
@@ -283,5 +285,12 @@ public class SeconsCustomer : MonoBehaviour
     public void SetRandomWalkToPoint()
     {
         FlowerPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+
+    public bool CheckPlantMatch(PlantSO deliveredPlant)
+    {
+        return deliveredPlant.sunRequirement == requestedPlant.sunRequirement &&
+               deliveredPlant.waterRequirement == requestedPlant.waterRequirement &&
+               deliveredPlant.difficultyLevel == requestedPlant.difficultyLevel;
     }
 }

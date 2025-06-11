@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
+    [SerializeField] GameObject dialogueCanvas;
     [SerializeField] GameObject playerDialoguePanel;
     [SerializeField] GameObject npcDialoguePanel;
     [SerializeField] Button cancelButton;
@@ -44,7 +45,7 @@ public class DialogueUI : MonoBehaviour
     }
 
     private void OnDisable()
-    {        
+    {
         if (dm != null)
         {
             dm.OnPlayerDialogue -= DisplayPlayerDialogue;
@@ -55,7 +56,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void DisplayPlantRequest(PlantSO randomPlantSO)
     {
-        if(randomPlantSO == null)
+        if (randomPlantSO == null)
         {
             Debug.LogWarning("PlantRequest is null.");
             return;
@@ -65,38 +66,38 @@ public class DialogueUI : MonoBehaviour
         int diffLevel = randomPlantSO.difficultyLevel;
         int waterLevel = randomPlantSO.waterRequirement;
 
-        if((sunLevel < 0 && sunLevel >= 3 )|| (diffLevel < 0 && diffLevel >= 3) || (waterLevel < 0 && waterLevel >= 3))
+        if (sunLevel < 0 || sunLevel >= 3 || diffLevel < 0 || diffLevel >= 3 || waterLevel < 0 || waterLevel >= 3)
         {
             sunLevel = 1;
             diffLevel = 1;
             waterLevel = 1;
         }
-        else
-        {
-            sunImage = sunIcons[sunLevel];
-            difficultyImage = diffIcons[diffLevel];
-            waterImage = waterIcons[waterLevel];
+        sunImage = sunIcons[sunLevel];
+        difficultyImage = diffIcons[diffLevel];
+        waterImage = waterIcons[waterLevel];
 
-            emptyPlant.difficultyLevel = diffLevel;
-            emptyPlant.sunRequirement = sunLevel;
-            emptyPlant.waterRequirement = waterLevel;
-        }
+        emptyPlant.difficultyLevel = diffLevel;
+        emptyPlant.sunRequirement = sunLevel;
+        emptyPlant.waterRequirement = waterLevel;
     }
-    
+
     public void DisplayPlayerDialogue()
     {
+        Debug.Log("In DialougeUI: DisplayPlayerDialogue");
+        dialogueCanvas.SetActive(true);
         playerDialoguePanel.SetActive(true);
     }
 
     public void DisplayNpcDialogue(PlantSO randomPlantSO)
     {
+        dialogueCanvas.SetActive(!npcDialoguePanel.activeInHierarchy);
         if (npcDialoguePanel.activeInHierarchy)
         {
             cancelButton.gameObject.SetActive(false);
             npcDialoguePanel.SetActive(false);
             playerInput.Player.Enable();
             playerInput.UI.Disable();
-        }    
+        }
         if (!npcDialoguePanel.activeInHierarchy)
         {
             playerInput.Player.Disable();
@@ -105,11 +106,11 @@ public class DialogueUI : MonoBehaviour
             cancelButton.gameObject.SetActive(true);
             npcDialoguePanel.SetActive(true);
 
-           // Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+            // Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
-        }      
-       // portraitImage.sprite = npc.NPC_portrait;
-       // nameText.text = npc.NPC_name;
+        }
+        // portraitImage.sprite = npc.NPC_portrait;
+        // nameText.text = npc.NPC_name;
     }
 
     public void EndNpcDialogue()
@@ -117,10 +118,12 @@ public class DialogueUI : MonoBehaviour
         Debug.Log("End NPC Dialogue");
         cancelButton.gameObject.SetActive(false);
         npcDialoguePanel.SetActive(false);
+        dialogueCanvas.SetActive(false);
     }
 
     public void EndPlayerDialogue()
     {
+        dialogueCanvas.SetActive(false);
         playerDialoguePanel.SetActive(false);
     }
 }

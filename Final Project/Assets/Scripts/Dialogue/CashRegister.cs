@@ -1,19 +1,22 @@
+using System.Collections;
 using UnityEngine;
 
 public class CashRegister : MonoBehaviour
 {
     private bool playerInZone = false;
     private bool npcInZone = false;
+    private bool npcAtRegister = false;
+    private bool waitingForPlant = false;
 
-    public DialogueManager dialogueManager;
-    public GameStateManager instance;
-    
+    [SerializeField] DialogueManager dialogueManager;
+    [SerializeField] GameStateManager instance;
+
     public PlayerSelector selectedPlayer;
     public PlayerSO activePlayer;
-    public NPC_SO[] npcList;
+    [SerializeField] NPC_SO[] npcList;
     public GameObject newNPC;
 
-    public PlantSO[] plantSO;
+    [SerializeField] PlantSO[] plantSO;
     public PlantSO randomPlantSO;
     private int randomP;
 
@@ -24,9 +27,16 @@ public class CashRegister : MonoBehaviour
     public Plant plant;
     public PlantRequest pr;
     private int pcount = 0;
+    public PlantSO[] allPlants;
+    private PlantSO currentRequest;
+    private PlantSO deliveredPlant;
 
+    public PlayerBehavior pb;
+
+    [SerializeField] float waitForPlayerDialogue = 3;
     void Start()
     {
+        pb = FindObjectOfType<PlayerBehavior>();
         if (dialogueManager == null)
             dialogueManager = FindObjectOfType<DialogueManager>();
 
@@ -53,51 +63,57 @@ public class CashRegister : MonoBehaviour
         {
             Debug.LogError("newNPC is null in ReadNPCData!");
             return;
-        }   
+        }
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInZone = true;
-            pcount++;
+           // pcount++;
+            Debug.Log(pcount);
         }
-            
 
-        if (other.CompareTag("Boris"))       
+        if (other.CompareTag("Boris"))
             npcInZone = true;
 
         if (playerInZone && npcInZone)
         {
             Debug.Log("In CashRegister: player and NPC r in cash register");
- 
+            pcount++;
+            Debug.Log(pcount);
             dialogueManager.StartPlayerDialogue();
+            if (pb.PlantYouAreHolding != null)
+            {
+                DeliverPlant();
+                dialogueManager.EndPlayerDialogue();
+            }
+            else
+                StartCoroutine(WaitForPlayerDialogue());
 
-            dialogueManager.EndPlayerDialogue();
-
-            //Create random plant request
-
-            pr.GenerateRequest(emptyPlant);
-            dialogueManager.StartNpcDialogue(randomPlantSO);
         }
         // Check how many times player came 2 cach regis
-        if(pcount < 0 || pcount >= 2)
+        if (pcount < 0 || pcount >= 2)
         {
             pcount = 0;
         }
     }
-    public void Compare(PlantSO emptyPlant, GameObject player)
+
+    IEnumerator WaitForPlayerDialogue()
     {
-        if (emptyPlant == player.GetComponent<Plant>().currentPlantType)
-        {
-            cash.currentMoney += plant.currentPlantType.Price;
-        }
-        else
-        {
-            cash.currentMoney -= 10;
-        }
+
+        yield return new WaitForSeconds(waitForPlayerDialogue);
+        dialogueManager.EndPlayerDialogue();
+
+        //Create random plant request
+
+        emptyPlant = GetRandomPlant();
+
+        dialogueManager.StartNpcDialogue(emptyPlant);
+        waitingForPlant = true;
     }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -106,7 +122,52 @@ public class CashRegister : MonoBehaviour
         if (other.CompareTag("Boris"))
         {
             npcInZone = false;
-            pcount--;
         }
+    }
+
+    //player puts plant at cash reg
+    public void DeliverPlant()
+    {
+        if (!waitingForPlant || pb.PlantYouAreHolding == null) return;
+      
+        deliveredPlant = pb.PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
+        waitingForPlant = false;
+
+        bool correct = CheckPlantMatch(deliveredPlant, emptyPlant);
+
+        if (correct)
+        {
+            Debug.Log("Correct plant! Tip added.");
+            cash.currentMoney += deliveredPlant.Price;
+        }
+        else
+        {
+            Debug.Log("Wrong plant! Penalty.");
+            cash.currentMoney -= 10;
+        }
+
+        ResetState();
+    }
+
+    private bool CheckPlantMatch(PlantSO a, PlantSO b)
+    {
+        return a.sunRequirement == b.sunRequirement &&
+               a.waterRequirement == b.waterRequirement &&
+               a.difficultyLevel == b.difficultyLevel;
+    }
+
+    private PlantSO GetRandomPlant()
+    {
+        return plantSO[Random.Range(0, allPlants.Length - 1)];
+    }
+
+    private void ResetState()
+    {
+        npcAtRegister = false;
+        deliveredPlant = null;
+        currentRequest = null;
+        var plantToDestory = pb.PlantYouAreHolding;
+        pb.PlantYouAreHolding = null;
+        Destroy(plantToDestory);
     }
 }

@@ -44,7 +44,7 @@ public class NPCSpawnerScript : MonoBehaviour
             OnCustomerSpawnedEvent?.Invoke(c);
             npcIndex++;
             CustomerTypeRNG = Random.Range(0, 10);
-            if (CustomerTypeRNG < 7)
+            if (CustomerTypeRNG > 7)
             {
                 CustomerType = 0;
             }

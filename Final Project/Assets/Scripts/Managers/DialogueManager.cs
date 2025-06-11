@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartPlayerDialogue()
     {
-        Debug.Log("Player is talking.");
+        Debug.Log("In DialogueManager: Player is talking.");
         OnPlayerDialogue?.Invoke();
     }
 

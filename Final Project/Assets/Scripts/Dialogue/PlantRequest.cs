@@ -22,6 +22,9 @@ public class PlantRequest : MonoBehaviour
         newPlantSO.sunRequirement = randomPlantSO.sunRequirement;
         newPlantSO.waterRequirement = randomPlantSO.waterRequirement;
         newPlantSO.difficultyLevel = randomPlantSO.difficultyLevel;
+
+        Debug.Log("Sun:  "  + newPlantSO.sunRequirement + "Water:    " + newPlantSO.waterRequirement + "diff:   " + newPlantSO.difficultyLevel);
+
         return newPlantSO;
     }
 }

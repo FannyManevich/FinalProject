@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System.Linq;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -74,9 +74,10 @@ public class PlayerBehavior : MonoBehaviour
             if (onPlant == true)
             {
                 PlantYouAreHolding = PlantYouAreOn;
+                PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = false;
                 PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
                 //Fany added
-                playerData.plantPicked = PlantYouAreHolding.GetComponent<PlantSO>();
+                playerData.plantPicked = PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
                 //
             }
             else
@@ -91,6 +92,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlantYouAreHolding.transform.position = transform.position;
             PlantYouAreHolding.GetComponent<PlantHolding>().StopFollowHolder();
+            PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = true;
             PlantYouAreHolding = null;
         }
     }

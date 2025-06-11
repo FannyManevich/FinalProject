@@ -55,11 +55,11 @@ TagManager:
   - name: Plants
     uniqueID: 2817504327
     locked: 0
-  - name: Furniture
-    uniqueID: 1530984263
-    locked: 0
   - name: Player&NPC
     uniqueID: 2718262511
+    locked: 0
+  - name: Furniture
+    uniqueID: 1530984263
     locked: 0
   - name: Plant requirements
     uniqueID: 326892143
