@@ -74,8 +74,11 @@ public class PlayerBehavior : MonoBehaviour
             if (onPlant == true)
             {
                 PlantYouAreHolding = PlantYouAreOn;
+                //Fany added
                 PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = false;
+                //
                 PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
+
                 //Fany added
                 playerData.plantPicked = PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
                 //
@@ -92,7 +95,9 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlantYouAreHolding.transform.position = transform.position;
             PlantYouAreHolding.GetComponent<PlantHolding>().StopFollowHolder();
+            //Fany added
             PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = true;
+            //
             PlantYouAreHolding = null;
         }
     }

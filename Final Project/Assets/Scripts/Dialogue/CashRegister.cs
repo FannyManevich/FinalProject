@@ -168,6 +168,11 @@ public class CashRegister : MonoBehaviour
         currentRequest = null;
         var plantToDestory = pb.PlantYouAreHolding;
         pb.PlantYouAreHolding = null;
-        Destroy(plantToDestory);
+
+        if (plantToDestory != null)
+        {
+            Destroy(plantToDestory);
+            plantToDestory = null;
+        }
     }
 }
