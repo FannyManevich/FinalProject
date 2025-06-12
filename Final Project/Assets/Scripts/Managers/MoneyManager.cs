@@ -13,4 +13,10 @@ public class MoneyManager : MonoBehaviour
         currentMoney += Price;
         MoneyText.text = "" + currentMoney;
     }
+
+    public void ResetMoney()
+    {
+        currentMoney = 0;
+        MoneyText.text = "0";
+    }
 }

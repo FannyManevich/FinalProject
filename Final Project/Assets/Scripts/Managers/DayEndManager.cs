@@ -56,6 +56,7 @@ public class DayEndManager : MonoBehaviour
         dayEndButtons.SetActive(false);
         ThisDayMoneyGoal += 100;
         this.GetComponent<TimerController>().ResetTimer();
+        this.GetComponent<MoneyManager>().ResetMoney();
         //ResetDay
         againButton.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(false);
