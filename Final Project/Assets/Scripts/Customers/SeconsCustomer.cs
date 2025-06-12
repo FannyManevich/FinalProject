@@ -34,7 +34,7 @@ public class SeconsCustomer : MonoBehaviour
     public NPC_State CurrentState;
 
     public PlantSO requestedPlant;
-
+    public MoneyManager cash;
 
     // Start is called before the first frame update
     void Start()
@@ -140,8 +140,9 @@ public class SeconsCustomer : MonoBehaviour
             NPCEventManager.LeaveLine();
             CurrentState = NPC_State.Exit;
         }//Fany
-        else { 
-            NPCEventManager.LeaveLine(); 
+        else
+        {
+            NPCEventManager.LeaveLine();
         }
         //
     }
@@ -236,11 +237,14 @@ public class SeconsCustomer : MonoBehaviour
 
     public void RegisterInteraction()
     {
+        int x;
         if (PlantYouPick != null)
         {
             if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
             {
-                UiManager.GetComponent<MoneyManager>().addMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price);
+
+                x = PlantYouPick.GetComponent<Plant>().currentPlantType.Price;
+                cash.addMoney(x);
                 NextState();
             }
             else
