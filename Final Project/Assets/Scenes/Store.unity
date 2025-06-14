@@ -6008,8 +6008,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 145998867}
+  - component: {fileID: 145998868}
   m_Layer: 0
-  m_Name: EndOfShiftManager
+  m_Name: ShiftManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6030,6 +6031,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1715116381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &145998868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145998866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4d744bede110149a0e117854b0069a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endOfShiftPanel: {fileID: 2103072837}
+  quitButton: {fileID: 1375920871}
+  nextDayButton: {fileID: 1838610982}
+  dayNumberText: {fileID: 1251945324}
+  dailySalesGoalText: {fileID: 0}
+  totalRevenueText: {fileID: 0}
+  servedNPCText: {fileID: 1437937205}
+  lostNPCText: {fileID: 1073474151}
+  revenueLostText: {fileID: 1234658280}
+  profitText: {fileID: 0}
+  totalBalanceText: {fileID: 0}
 --- !u!1 &202878719
 GameObject:
   m_ObjectHideFlags: 0

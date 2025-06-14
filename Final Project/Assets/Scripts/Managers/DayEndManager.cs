@@ -8,10 +8,13 @@ public class DayEndManager : MonoBehaviour
 {
     [SerializeField] GameObject dayEndScreen;
     [SerializeField] GameObject dayEndButtons;
+
     [SerializeField] TextMeshProUGUI MoneyMadeText;
     [SerializeField] TextMeshProUGUI WonText;
+
     [SerializeField] Button againButton;
     [SerializeField] Button continueButton;
+
     private int ThisDayMoneyGoal;
     private int CurrentMoney;
 
