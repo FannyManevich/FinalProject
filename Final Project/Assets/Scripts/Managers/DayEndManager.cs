@@ -14,7 +14,7 @@ public class DayEndManager : MonoBehaviour
     [SerializeField] Button continueButton;
     private int ThisDayMoneyGoal;
     private int CurrentMoney;
-    // Start is called before the first frame update
+
     void Start()
     {
         dayEndScreen.SetActive(false);
