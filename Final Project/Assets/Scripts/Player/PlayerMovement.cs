@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public InputChannel inputChannel;
+    [SerializeField] BeaconSO beacon;
 
     // public Transform leftWall;
     // public Transform rightWall;
@@ -25,9 +25,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
-        if (inputChannel != null)
+        if (beacon.inputChannel != null)
         {
-            inputChannel.OnMoveEvent += OnMove;
+            beacon.inputChannel.OnMoveEvent += OnMove;
         }
         else
         {
@@ -90,9 +90,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (inputChannel != null)
+        if (beacon.inputChannel != null)
         {
-            inputChannel.OnMoveEvent -= OnMove;
+            beacon.inputChannel.OnMoveEvent -= OnMove;
         }
     }
 

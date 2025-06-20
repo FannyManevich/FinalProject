@@ -1,14 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShiftManager : MonoBehaviour
 {
-    [Header("Panels & Buttons:")]
-    [SerializeField] GameObject endOfShiftPanel;
-    [SerializeField] Button quitButton;
-    [SerializeField] Button nextDayButton;
-
     [Header("Text:")]
     [SerializeField] TextMeshProUGUI dayNumberText;
     [SerializeField] TextMeshProUGUI dailySalesGoalText;
@@ -28,6 +22,15 @@ public class ShiftManager : MonoBehaviour
     private float revenue = 0;
     private float revenueLost = 0;
 
+    public int Day => day;
+    public float TodaysGoal => todaysGoal;
+    public float TotalBalance => totalBalance;
+    public float Profit => profit;
+    public float Revenue => revenue;
+    public float RevenueLost => revenueLost;
+    public int CustomersServed => customersServed;
+    public int CustomersLost => customersLost;
+
     public void AddRevenue(float amount) => revenue += amount;
     public void AddRevenueLost(float amount) => revenueLost += amount;
     public void AddCustomerServed() => customersServed++;
@@ -35,46 +38,29 @@ public class ShiftManager : MonoBehaviour
 
     public void ShowEndOfShiftPanel()
     {
-        endOfShiftPanel.SetActive(true);
-
         dayNumberText.text = $"Day {day}";
         dailySalesGoalText.text = $"Daily Goal: ${todaysGoal:F0}";
         totalRevenueText.text = $"Revenue: ${revenue:F0}";
         servedNPCText.text = $"Customers Served: {customersServed}";
         lostNPCText.text = $"Customers Lost: {customersLost}";
         revenueLostText.text = $"Revenue Lost: ${revenueLost:F0}";
-        profitText.text = $"Profit: ${profit:F0}";
+        profitText.text = $"Prof" +
+            $"" +
+            $"" +
+            $"" +
+            $"" +
+            $"it: ${profit:F0}";
         totalBalanceText.text = $"Total Balance: ${totalBalance + profit:F0}";
     }
-
-    public void NextDayClicked()
+    public void ResetDayStats()
     {
+        totalBalance += profit;
         day++;
         todaysGoal *= 1.1f;
-        todaysGoal = 0;
-        totalBalance += profit;
-        ResetNextShift();
-
-        endOfShiftPanel.SetActive(false);
-        quitButton.gameObject.SetActive(false);
-        nextDayButton.gameObject.SetActive(false);
-    }
-
-    public void ResetNextShift()
-    {
         profit = 0;
         revenue = 0;
         revenueLost = 0;
         customersServed = 0;
         customersLost = 0;
-        this.GetComponent<TimerController>().ResetTimer();
-    }
-
-    public void OnQuitClicked()
-    {
-        Application.Quit();
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-    }
+    }   
 }

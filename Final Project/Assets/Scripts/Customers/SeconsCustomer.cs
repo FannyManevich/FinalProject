@@ -298,7 +298,6 @@ public class SeconsCustomer : MonoBehaviour
         }
         return false;
     }
-
     public void SetRandomWalkToPoint()
     {
         FlowerPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));

@@ -7,18 +7,21 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     public event Action<GameState> OnGameStateChange; 
-
     public static GameStateManager Instance { get; private set; }
-    public GameStateChannel gameStateChannel;
 
+    [Header("Beacon:")]
+    [SerializeField] BeaconSO beacon;
+
+    [Header("State & Player spawn point:")]
+    [SerializeField] GameState currentState;
+    public GameState CurrentGameState => currentState;
+    [SerializeField] Transform playerSpawnPoint;
+
+    [Header("For other code - don't assign:")]
     public Input playerInput;
     public PlayerSO selectedPlayerSO;
     public GameObject currentPlayer;
 
-    public GameState currentState;
-    public GameState CurrentGameState => currentState;
-
-    public Transform playerSpawnPoint;
     void Start()
     {
         //if (PlayerSelector.selectedPlayer != null)
@@ -65,12 +68,13 @@ public class GameStateManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
             return;
-        }
+        }    
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -100,9 +104,9 @@ public class GameStateManager : MonoBehaviour
     public void SetCurrentState(GameState state)
     {
         currentState = state;
-        if (gameStateChannel != null)
+        if (beacon.gameStateChannel != null)
         {
-            gameStateChannel.StateEntered(state);
+            beacon.gameStateChannel.StateEntered(state);
         }
         else
         {
@@ -165,11 +169,11 @@ public class GameStateManager : MonoBehaviour
     }
     public void ChangeState(GameState newState)
     {
-        if (gameStateChannel != null)
+        if (beacon.gameStateChannel != null)
         {
-            gameStateChannel.StateExited(currentState);
+            beacon.gameStateChannel.StateExited(currentState);
             currentState = newState;
-            gameStateChannel.StateEntered(currentState);
+            beacon.gameStateChannel.StateEntered(currentState);
         }
         else
         {
