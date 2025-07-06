@@ -153,12 +153,12 @@
             "id": "061bf045-101c-4c61-bb34-aa55b337a065",
             "actions": [
                 {
-                    "name": "Left Click",
-                    "type": "PassThrough",
+                    "name": "Click",
+                    "type": "Button",
                     "id": "25246897-ca8f-40e0-a935-2b533e56f6f5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": true
                 },
                 {
@@ -187,6 +187,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Point",
+                    "type": "Value",
+                    "id": "16ceee86-8705-4b96-8f22-dcd55745abb8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -197,7 +206,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Mouse",
-                    "action": "Left Click",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -231,6 +240,17 @@
                     "processors": "",
                     "groups": ";Keyboard",
                     "action": "Help",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8feb8f48-f0bb-4207-9f28-ba493081099b",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mouse",
+                    "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

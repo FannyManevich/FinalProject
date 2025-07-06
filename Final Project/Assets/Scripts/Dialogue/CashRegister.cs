@@ -5,7 +5,7 @@ public class CashRegister : MonoBehaviour
 {
     private bool playerInZone = false;
     private bool npcInZone = false;
-    private bool npcAtRegister = false;
+   // private bool npcAtRegister = false;
     private bool waitingForPlant = false;
 
     [SerializeField] DialogueManager dialogueManager;
@@ -77,7 +77,7 @@ public class CashRegister : MonoBehaviour
 
         if (other.CompareTag("Boris"))
             npcInZone = true;
-            npcAtRegister = true;
+            //npcAtRegister = true;
 
         if (playerInZone && npcInZone)
         {
@@ -165,7 +165,7 @@ public class CashRegister : MonoBehaviour
 
     private void ResetState()
     {
-        npcAtRegister = false;
+       // npcAtRegister = false;
         deliveredPlant = null;
        // currentRequest = null;
         var plantToDestory = pb.PlantYouAreHolding;

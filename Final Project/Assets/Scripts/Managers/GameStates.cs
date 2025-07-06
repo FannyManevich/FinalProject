@@ -15,6 +15,6 @@ namespace Assets.Scripts.Managers
         Playing,
         Book,
         Dialogue,
-        EndGame
+        EndShift
     }
 }

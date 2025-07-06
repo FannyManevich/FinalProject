@@ -25,26 +25,46 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject bookPanel;
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject shiftPanel;
-
+   
     private void OnEnable()
     {
-        GameStateManager.Instance.OnGameStateChange += HandleGameState;
+        GameStateManager.Instance.OnGameStateChange += HandleGameStateChange;
         beacon.inputChannel.OnBookEvent += OpenBook;
         beacon.inputChannel.OnHelpEvent += OpenHelp;
         beacon.inputChannel.OnCancelEvent += CloseAllPanels;
+
+        homeButton.onClick.AddListener(OnHomeClicked);
+        bookButton.onClick.AddListener(OpenBook);
+        helpButton.onClick.AddListener(OpenHelp);
+        homeButton.onClick.AddListener(OnHomeClicked);
+        restartButton.onClick.AddListener(OnRestartShiftClicked);
+        nextDayButton.onClick.AddListener(ResetNextShift);
+        quitButton.onClick.AddListener(OnQuitClicked);
+        closeBookButton.onClick.AddListener(CloseAllPanels);
+        closeHelpButton.onClick.AddListener(CloseAllPanels);
     }
     private void OnDisable()
     {
-        GameStateManager.Instance.OnGameStateChange -= HandleGameState;
+        GameStateManager.Instance.OnGameStateChange -= HandleGameStateChange;
         beacon.inputChannel.OnBookEvent -= OpenBook;
         beacon.inputChannel.OnHelpEvent -= OpenHelp;
         beacon.inputChannel.OnCancelEvent -= CloseAllPanels;
+
+        homeButton.onClick.RemoveListener(OnHomeClicked);
+        bookButton.onClick.RemoveListener(OpenBook);
+        helpButton.onClick.RemoveListener(OpenHelp);
+        homeButton.onClick.RemoveListener(OnHomeClicked);
+        restartButton.onClick.RemoveListener(OnRestartShiftClicked);
+        nextDayButton.onClick.RemoveListener(ResetNextShift);
+        quitButton.onClick.RemoveListener(OnQuitClicked);
+        closeBookButton.onClick.RemoveListener(CloseAllPanels);
+        closeHelpButton.onClick.RemoveListener(CloseAllPanels);
 
     }
 
     public void OpenBook()
     {
-        Debug.Log("OpenBook called");
+        //Debug.Log("OpenBook called");
         bookPanel.SetActive(true);
         closeBookButton.gameObject.SetActive(true);
         GameStateManager.Instance.SetState(GameState.Book);
@@ -52,19 +72,19 @@ public class UIManager : MonoBehaviour
     public void OpenHelp()
     {
         GameStateManager.Instance.ChangeState(GameState.UI);
-        Debug.Log("OpenHelp called");
+        //Debug.Log("OpenHelp called");
         helpPanel.SetActive(true);
         closeHelpButton.gameObject.SetActive(true);
     }
     public void OnHomeClicked()
     {
         GameStateManager.Instance.ChangeState(GameState.UI);
-        Debug.Log("OnHomeClicked called");
-        SceneManager.LoadScene("MainMenu");
+        //Debug.Log("OnHomeClicked called");
+        SceneManager.LoadScene("Main-Menu");
     }
     public void OnRestartShiftClicked()
     {
-        Debug.Log("OnRestartShiftClicked called");
+        //Debug.Log("OnRestartShiftClicked called");
         timerController.ResetTimer();
         shiftManager.ResetDayStats();      
     }
@@ -100,5 +120,9 @@ public class UIManager : MonoBehaviour
         nextDayButton.gameObject.SetActive(false);
 
         this.GetComponent<TimerController>().ResetTimer();
+    }
+    private void HandleGameStateChange(GameState newState)
+    {
+
     }
 }

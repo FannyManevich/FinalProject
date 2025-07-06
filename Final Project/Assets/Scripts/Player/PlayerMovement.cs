@@ -5,11 +5,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] BeaconSO beacon;
 
-    // public Transform leftWall;
-    // public Transform rightWall;
-    // public Transform bottomWall;
-    // public Transform topWall;
-
     public Animator animator;
     public SpriteRenderer sr;
 
@@ -85,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(Vector2 input)
     {
         moveInput = input;
-        Debug.Log("Move input: " + moveInput);
+       // Debug.Log("Move input: " + moveInput);
     }
 
     private void OnDestroy()

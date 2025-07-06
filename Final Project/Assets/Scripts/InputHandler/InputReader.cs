@@ -9,7 +9,9 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
     public event Action EndNpcDialogue;
 
     [SerializeField] BeaconSO beacon;
-    private Input inputActions;    
+    public Input inputActions;
+    public void EnablePlayerInput() => inputActions.Player.Enable();
+    public void EnableUIInput() => inputActions.UI.Enable();
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
         inputActions.UI.Book.performed += OnBook;
         inputActions.UI.Help.performed += OnHelp;
         inputActions.UI.Cancel.performed += OnCancel;
-        inputActions.UI.LeftClick.performed += OnLeftClick;
+        inputActions.UI.Click.performed += OnClick;
 
         inputActions.Enable();
     }
@@ -35,7 +37,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
         inputActions.UI.Book.performed -= OnBook;
         inputActions.UI.Help.performed -= OnHelp;       
         inputActions.UI.Cancel.performed -= OnCancel;
-        inputActions.UI.LeftClick.performed -= OnLeftClick;
+        inputActions.UI.Click.performed -= OnClick;
 
         inputActions.Disable();
     }
@@ -44,7 +46,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
         Vector2 direction = context.ReadValue<Vector2>();
         beacon.inputChannel.HandleMove(context);
 
-        Debug.Log("InputReader: Movement " + direction);
+        //Debug.Log("InputReader: Movement " + direction);
     }
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -54,28 +56,35 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
     public void OnBook(InputAction.CallbackContext context)
     {
         beacon.inputChannel.RaiseBook();
-        Debug.Log("InputReader: Interact pressed (B)");
+        Debug.Log("InputReader: Book pressed (B)");
     }
     public void OnHelp(InputAction.CallbackContext context)
     {
         beacon.inputChannel.RaiseHelp();
+        Debug.Log("InputReader: Help pressed (H)");
     }
-    public void OnLeftClick(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            beacon.inputChannel.RaiseLeftClick();
-            Debug.Log("Left click detected!");
-        }
-    }
+ 
     public void OnCancel(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             EndNpcDialogue?.Invoke();
             beacon.inputChannel.RaiseCancel();
-            Debug.Log("cancel detected!");
+            Debug.Log("InputReader: Cancel detected!");
         }
     }
 
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            beacon.inputChannel.RaiseLeftClick();
+            // Debug.Log("Left click detected!");
+        }
+    }
+
+    public void OnPoint(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }

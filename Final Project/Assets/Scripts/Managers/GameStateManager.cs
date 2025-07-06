@@ -3,7 +3,6 @@ using System;
 using Assets.Scripts.Managers;
 using UnityEngine.SceneManagement;
 
-
 public class GameStateManager : MonoBehaviour
 {
     public event Action<GameState> OnGameStateChange; 
@@ -18,12 +17,17 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] Transform playerSpawnPoint;
 
     [Header("For other code - don't assign:")]
-    public Input playerInput;
+    [SerializeField] Input playerInput;
     public PlayerSO selectedPlayerSO;
     public GameObject currentPlayer;
 
     void Start()
     {
+        playerInput = FindObjectOfType<InputReader>()?.inputActions;
+
+        if (playerInput == null)
+            Debug.LogError("GameStateManager: InputReader or its inputActions is null.");
+
         //if (PlayerSelector.selectedPlayer != null)
         //{
         //    currentPlayer = Instantiate(PlayerSelector.selectedPlayer, playerSpawnPoint.position, Quaternion.identity);
@@ -55,7 +59,7 @@ public class GameStateManager : MonoBehaviour
             if (spawn != null)
             {
                 playerSpawnPoint = spawn.transform;
-                Debug.Log("Found PlayerSpawn point automatically.");
+               // Debug.Log("Found PlayerSpawn point automatically.");
             }
             else
             {
@@ -74,8 +78,17 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }    
+        }
 
+        InputReader inputReader = FindObjectOfType<InputReader>();
+        if (inputReader != null)
+        {
+            playerInput = inputReader.inputActions;
+        }
+        else
+        {
+            Debug.LogError("GameStateManager: No InputReader found in scene!");
+        }
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -140,13 +153,13 @@ public class GameStateManager : MonoBehaviour
                 break;
 
             case GameState.Book:
-                SwitchToPlayerInput();
+                SwitchToUIInput();
                 Debug.Log("Switched to Player action map.");
                 break;
             case GameState.Dialogue:
                 SwitchToUIInput();
                 break;
-            case GameState.EndGame:
+            case GameState.EndShift:
                 SwitchToUIInput();
                 break;
 
@@ -158,14 +171,18 @@ public class GameStateManager : MonoBehaviour
 
     void SwitchToUIInput()
     {
-        playerInput.UI.Enable();
         playerInput.Player.Disable();
+
+        if (!playerInput.UI.enabled)
+            playerInput.UI.Enable();
     }
 
     void SwitchToPlayerInput()
     {
-        playerInput.UI.Disable();
         playerInput.Player.Enable();
+
+        if (!playerInput.UI.enabled)
+            playerInput.UI.Enable();
     }
     public void ChangeState(GameState newState)
     {
@@ -197,19 +214,19 @@ public class GameStateManager : MonoBehaviour
       // if(scene.name == "Scenechanges")
         {
             //Debug.Log("Store scene loaded! Spawning player...");
-            Debug.Log("Scenechanges scene loaded! Spawning player...");
+            //Debug.Log("Scenechanges scene loaded! Spawning player...");
             FindPlayerSpawnPoint();
 
             GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
 
             if (existingPlayer != null)
             {
-                    Debug.Log("Player already exists in scene.");
+                   // Debug.Log("Player already exists in scene.");
                     currentPlayer = existingPlayer;
             }
             else if (PlayerSelector.selectedPlayer != null)
             {
-                    Debug.Log("Spawning new player based on selection");
+                    //Debug.Log("Spawning new player based on selection");
                     SpawnPlayer();
             }
             else

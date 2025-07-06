@@ -6,17 +6,23 @@ using TMPro;
 
 public class DialogueUI : MonoBehaviour
 {
+    [Header("Canvas & Panels:")]
     [SerializeField] GameObject dialogueCanvas;
     [SerializeField] GameObject playerDialoguePanel;
     [SerializeField] GameObject npcDialoguePanel;
+
+    [Header("Buttons:")]    
     [SerializeField] Button cancelButton;
 
+    [Header("Managers:")]
     private DialogueManager dm;
     public Input playerInput;
 
+    [Header("NPC ID:")]
     public Image portraitImage;
     public TextMeshProUGUI nameText;
 
+    [Header("Plant Request Icons:")]
     public Sprite sunImage;
     public Sprite difficultyImage;
     public Sprite waterImage;
@@ -25,9 +31,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] public Sprite[] diffIcons;
     [SerializeField] public Sprite[] waterIcons;
 
-
     public PlantSO emptyPlant;
-
 
     private void Start()
     {

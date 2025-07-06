@@ -30,5 +30,4 @@ public class DialogueManager : MonoBehaviour
     {
         EndNpcDialogue?.Invoke();
     }
-
 }

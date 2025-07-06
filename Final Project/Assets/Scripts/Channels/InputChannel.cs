@@ -15,7 +15,7 @@ public class InputChannel : ScriptableObject
 
     public void HandleMove(InputAction.CallbackContext context)
     {
-        Debug.Log($"OnMove {context.phase} Value {context.ReadValue<Vector2>()} {context.control.device}");
+        //Debug.Log($"OnMove {context.phase} Value {context.ReadValue<Vector2>()} {context.control.device}");
         OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 
