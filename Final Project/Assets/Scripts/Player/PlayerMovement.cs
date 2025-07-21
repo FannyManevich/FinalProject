@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -67,14 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
-
         rb.velocity = moveSpeed * moveInput;
-
-       // Vector2 clampedPos = transform.position;
-       // clampedPos.x = Mathf.Clamp(clampedPos.x, leftWall.position.x, rightWall.position.x);
-       // clampedPos.y = Mathf.Clamp(clampedPos.y, bottomWall.position.y, topWall.position.y);
-       // transform.position = clampedPos;
     }
 
     public void OnMove(Vector2 input)

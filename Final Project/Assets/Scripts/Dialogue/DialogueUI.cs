@@ -58,33 +58,34 @@ public class DialogueUI : MonoBehaviour
             dm.EndNpcDialogue -= EndNpcDialogue;
         }
     }
-    public void DisplayPlantRequest(PlantSO requestedPlant)
+
+    public void DisplayPlantRequest(PlantSO randomPlantSO)
+   // public void DisplayPlantRequest(PlantSO requestedPlant)
     {
-        //if (randomPlantSO == null)
-        if(requestedPlant == null)
+        if (randomPlantSO == null)
+       // if(requestedPlant == null)
         {
             Debug.LogWarning("PlantRequest is null.");
             return;
         }
 
-        //int sunLevel = randomPlantSO.sunRequirement;
-        int sunIndex = (int)requestedPlant.sunRequirement;
-
-        //int diffLevel = randomPlantSO.difficultyLevel;
-        //int waterLevel = randomPlantSO.waterRequirement;
+        int sunIndex = (int)randomPlantSO.sunRequirement;
+        //int sunIndex = (int)requestedPlant.sunRequirement;
 
         if (sunImage != null && sunIndex >= 0 && sunIndex < sunIcons.Length)
         {
             sunImage.sprite = sunIcons[sunIndex];
         }
 
-        int difficultyIndex = requestedPlant.difficultyLevel;
+        int difficultyIndex = randomPlantSO.difficultyLevel;
+        //int difficultyIndex = requestedPlant.difficultyLevel;
         if (difficultyImage != null && difficultyIndex >= 0 && difficultyIndex < diffIcons.Length)
         {
             difficultyImage.sprite = diffIcons[difficultyIndex];
         }
 
-        int waterIndex = requestedPlant.waterRequirement;
+        int waterIndex = randomPlantSO.waterRequirement;
+        //int waterIndex = requestedPlant.waterRequirement;
         if (waterIcons != null && waterIndex >= 0 && waterIndex < waterIcons.Length)
         {
             waterImage.sprite = waterIcons[waterIndex];
