@@ -272,7 +272,7 @@ public class CustomerBehavior : MonoBehaviour
     {
         if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
         {
-            UiManager.GetComponent<MoneyManager>().addMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price); 
+            UiManager.GetComponent<MoneyManager>().AddMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price); 
             NextState();
         }
     }

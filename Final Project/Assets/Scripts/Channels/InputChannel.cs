@@ -12,13 +12,11 @@ public class InputChannel : ScriptableObject
     public event Action OnHelpEvent;
     public event Action OnCancelEvent;
     public event Action OnLeftClickEvent;
-
     public void HandleMove(InputAction.CallbackContext context)
     {
         //Debug.Log($"OnMove {context.phase} Value {context.ReadValue<Vector2>()} {context.control.device}");
         OnMoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
-
     public void RaiseInteract()
     {
         Debug.Log("InputChannel : OnInteractEvent invoked.");
@@ -30,7 +28,6 @@ public class InputChannel : ScriptableObject
         Debug.Log("InputChannel : OnBookEvent invoked.");
         OnBookEvent?.Invoke();
     }
-
     public void RaiseHelp()
     {
         Debug.Log("InputChannel : OnHelpEvent invoked.");

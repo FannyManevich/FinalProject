@@ -205,29 +205,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1711440549}
-  instance: {fileID: 0}
-  selectedPlayer: {fileID: 0}
+  instance: {fileID: 776392411}
+  requestUI: {fileID: 0}
+  cash: {fileID: 2104457917}
   activePlayer: {fileID: 0}
-  npcList:
-  - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
-  - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
-  - {fileID: 11400000, guid: 171c06f9b42f50d4997a07ae950a7208, type: 2}
-  - {fileID: 11400000, guid: b8e6cba29df286c4c9d85f180d983179, type: 2}
-  newNPC: {fileID: 0}
-  plantSO:
+  pb: {fileID: 0}
+  allPlants:
   - {fileID: 11400000, guid: f4f61ccb2906afc459d2f5786e0903ee, type: 2}
   - {fileID: 11400000, guid: 402d819f05459864f9758c4e3b5053ec, type: 2}
   - {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
   - {fileID: 11400000, guid: 3a864a38f158ce943a5524267d6ffa71, type: 2}
-  randomPlantSO: {fileID: 0}
-  dialogueUI: {fileID: 0}
-  emptyPlant: {fileID: 0}
   playerPickedPlant: {fileID: 0}
-  cash: {fileID: 2104457917}
-  plant: {fileID: 0}
-  pr: {fileID: 0}
-  allPlants: []
-  pb: {fileID: 0}
   waitForPlayerDialogue: 3
 --- !u!212 &12669879
 SpriteRenderer:
@@ -359,7 +347,7 @@ RectTransform:
   m_Father: {fileID: 2090213282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 2.4000092, y: 0}
   m_SizeDelta: {x: 15.999924, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8566,7 +8554,7 @@ GameObject:
   - component: {fileID: 536813157}
   - component: {fileID: 536813158}
   m_Layer: 7
-  m_Name: Image
+  m_Name: BookImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9146,7 +9134,7 @@ GameObject:
   - component: {fileID: 730824953}
   - component: {fileID: 730824952}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: HelpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10106,7 +10094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &821722858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15423,9 +15411,9 @@ MonoBehaviour:
   cancelButton: {fileID: 463741712}
   portraitImage: {fileID: 953723264}
   nameText: {fileID: 1890462216}
-  sunImage: {fileID: 21300000, guid: 51404a416aade8246a93edaaa7f95d10, type: 3}
-  difficultyImage: {fileID: 21300000, guid: 3d051ccea24165f4eb8a1538f2418cb9, type: 3}
-  waterImage: {fileID: 21300000, guid: 195a87fb193224e42996e61c266df423, type: 3}
+  sunImage: {fileID: 342565774}
+  difficultyImage: {fileID: 428707291}
+  waterImage: {fileID: 560647589}
   sunIcons:
   - {fileID: 21300000, guid: 51404a416aade8246a93edaaa7f95d10, type: 3}
   - {fileID: 21300000, guid: 3610e77e1ee30784ea850120c546bf93, type: 3}
@@ -17593,7 +17581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 3bfbff80e68b19340866597d500082d0, type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 2064497804}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []

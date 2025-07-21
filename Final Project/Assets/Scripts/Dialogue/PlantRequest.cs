@@ -6,7 +6,6 @@ public class PlantRequest : MonoBehaviour
     public int waterRequirement;
     public int difficultyRequirement;
 
-
     public PlantSO newPlantSO;
 
     private void Awake()

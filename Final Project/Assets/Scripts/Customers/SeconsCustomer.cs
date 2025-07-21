@@ -1,6 +1,4 @@
 using Assets.Scripts.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,9 +63,7 @@ public class SeconsCustomer : MonoBehaviour
         CurrentCustomerNumber = LineManager.CustomerNumber;
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
-
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -146,7 +142,6 @@ public class SeconsCustomer : MonoBehaviour
         }
         //
     }
-
     public void SetMinMax()
     {
         minX = -10;
@@ -154,7 +149,6 @@ public class SeconsCustomer : MonoBehaviour
         maxX = 10;
         maxY = 5;
     }
-
     public void MoveToPointXFirst(Vector2 PointToWalkTo)
     {
         if (transform.position.x != PointToWalkTo.x)
@@ -234,7 +228,6 @@ public class SeconsCustomer : MonoBehaviour
             NextState();
         }
     }
-
     public void RegisterInteraction()
     {
         int x;
@@ -244,7 +237,7 @@ public class SeconsCustomer : MonoBehaviour
             {
 
                 x = PlantYouPick.GetComponent<Plant>().currentPlantType.Price;
-                cash.addMoney(x);
+                cash.AddMoney(x);
                 NextState();
             }
             else
@@ -253,7 +246,6 @@ public class SeconsCustomer : MonoBehaviour
             }
         }
     }
-
     public void ProgInLine()
     {
         if (CurrentCustomerNumber > 1)
@@ -262,7 +254,6 @@ public class SeconsCustomer : MonoBehaviour
         }
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
     }
-
     public void SetRandomPlantToWalkTo()
     {
         if (Plants.Length == 0)
@@ -286,7 +277,6 @@ public class SeconsCustomer : MonoBehaviour
             CurrentState = NPC_State.Exit;
         }
     }
-
     public bool CheckPlants(GameObject[] Plants)
     {
         foreach (GameObject Plant in Plants)
@@ -301,12 +291,5 @@ public class SeconsCustomer : MonoBehaviour
     public void SetRandomWalkToPoint()
     {
         FlowerPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-    }
-
-    public bool CheckPlantMatch(PlantSO deliveredPlant)
-    {
-        return deliveredPlant.sunRequirement == requestedPlant.sunRequirement &&
-               deliveredPlant.waterRequirement == requestedPlant.waterRequirement &&
-               deliveredPlant.difficultyLevel == requestedPlant.difficultyLevel;
     }
 }
