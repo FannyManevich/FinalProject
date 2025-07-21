@@ -70,6 +70,7 @@ public class DialogueUI : MonoBehaviour
         }
 
         int sunIndex = (int)randomPlantSO.sunRequirement;
+        Debug.LogWarning(" sun: " + sunIndex);
         //int sunIndex = (int)requestedPlant.sunRequirement;
 
         if (sunImage != null && sunIndex >= 0 && sunIndex < sunIcons.Length)
@@ -125,7 +126,7 @@ public class DialogueUI : MonoBehaviour
             cancelButton.gameObject.SetActive(true);
             npcDialoguePanel.SetActive(true);
 
-            // Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+            Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
         }
         // portraitImage.sprite = npc.NPC_portrait;

@@ -29,7 +29,7 @@ public class DayEndManager : MonoBehaviour
 
     public void EndDay()
     {
-        CurrentMoney = this.GetComponent<MoneyManager>().currentMoney;
+       // CurrentMoney = this.GetComponent<MoneyManager>().currentMoney;
         dayEndPanel.SetActive(true);
         dayEndButtons.SetActive(true);
         MoneyMadeText.text="Money Made: "+ CurrentMoney + "/"+ ThisDayMoneyGoal;
