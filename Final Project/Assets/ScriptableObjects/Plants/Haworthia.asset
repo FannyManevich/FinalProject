@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Price: 15
   waterRequirement: 1
-  sunRequirement: 3
+  sunRequirement: 2
   difficultyLevel: 1
   Image: {fileID: 21300000, guid: 5e2d8e42f84708340a749de4b2eb98ad, type: 3}
   UI: {fileID: 21300000, guid: 2bf14bc458254974eb2f0f09475326d2, type: 3}

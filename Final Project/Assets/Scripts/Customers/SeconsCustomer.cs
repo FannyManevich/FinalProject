@@ -44,6 +44,11 @@ public class SeconsCustomer : MonoBehaviour
 
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        cash = FindObjectOfType<MoneyManager>();
+        if (cash == null)
+        {
+            Debug.LogError("Could not find an active MoneyManager in the scene ");
+        }
 
         step = 4.0f * Time.deltaTime;
         TimerBar.gameObject.SetActive(false);
@@ -230,7 +235,11 @@ public class SeconsCustomer : MonoBehaviour
     }
     public void RegisterInteraction()
     {
-        int x;
+        if (CurrentState != NPC_State.InLine || CurrentCustomerNumber != 1)
+        {
+            return;
+        }
+            int x;
         if (PlantYouPick != null)
         {
             if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
@@ -243,6 +252,7 @@ public class SeconsCustomer : MonoBehaviour
             else
             {
                 Debug.LogWarning("Plant component or PlantType is missing!");
+                return;
             }
         }
     }

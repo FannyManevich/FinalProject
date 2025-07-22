@@ -19,28 +19,28 @@ public class InputChannel : ScriptableObject
     }
     public void RaiseInteract()
     {
-        Debug.Log("InputChannel : OnInteractEvent invoked.");
+        //Debug.Log("InputChannel : OnInteractEvent invoked.");
         OnInteractEvent?.Invoke();
     }
 
     public void RaiseBook()
     {
-        Debug.Log("InputChannel : OnBookEvent invoked.");
+        //Debug.Log("InputChannel : OnBookEvent invoked.");
         OnBookEvent?.Invoke();
     }
     public void RaiseHelp()
     {
-        Debug.Log("InputChannel : OnHelpEvent invoked.");
+        //Debug.Log("InputChannel : OnHelpEvent invoked.");
         OnHelpEvent?.Invoke();
     }
     public void RaiseCancel()
     {
-        Debug.Log("InputChannel : OnCancelEvent invoked.");
+        //Debug.Log("InputChannel : OnCancelEvent invoked.");
         OnCancelEvent?.Invoke();
     }
     public void RaiseLeftClick()
     {
-        Debug.Log("InputChannel : OnLeftClickEvent invoked.");
+        //Debug.Log("InputChannel : OnLeftClickEvent invoked.");
         OnLeftClickEvent?.Invoke();
     }
 }

@@ -45,11 +45,17 @@ public class CashRegister : MonoBehaviour
     }
     private void OnEnable()
     {
-        NPCSpawnerScript.OnCustomerSpawnedEvent += ReadNPCData;
+        if (dialogueManager != null)
+        {
+            NPCSpawnerScript.OnCustomerSpawnedEvent += ReadNPCData;           
+        }
     }
     private void OnDisable()
     {
-        NPCSpawnerScript.OnCustomerSpawnedEvent -= ReadNPCData;
+        if (dialogueManager != null)
+        {
+            NPCSpawnerScript.OnCustomerSpawnedEvent -= ReadNPCData;
+        }
     }
     private void ReadNPCData(GameObject newNPC)
     {
@@ -108,12 +114,13 @@ public class CashRegister : MonoBehaviour
 
         //ShowRequestIcon();
     }
-    IEnumerator GenerateNewRequestRoutine()
+    private IEnumerator GenerateNewRequestRoutine()
     {
         yield return new WaitForSeconds(waitForPlayerDialogue);
         dialogueManager.EndPlayerDialogue();
 
         currentRequest = GetRandomPlant();
+        Debug.Log("CashRegister: Random plant request: " + currentRequest);
         if (currentRequest != null)
         {
             dialogueManager.StartNpcDialogue(currentRequest);
@@ -125,7 +132,6 @@ public class CashRegister : MonoBehaviour
             Debug.LogError("Failed to get a random plant. Check allPlants array in the Inspector");
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -164,6 +170,7 @@ public class CashRegister : MonoBehaviour
     {
         if (allPlants == null || allPlants.Length == 0)
         {
+            Debug.LogWarning("In CashRegister: allPlants array is empty or null.");
             return null;
         }
         int randomIndex = Random.Range(0, allPlants.Length);

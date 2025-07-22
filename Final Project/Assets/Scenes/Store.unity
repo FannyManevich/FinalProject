@@ -347,7 +347,7 @@ RectTransform:
   m_Father: {fileID: 2090213282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 2.4000092, y: 0}
   m_SizeDelta: {x: 15.999924, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10214,7 +10214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &821722858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15724,6 +15724,7 @@ MonoBehaviour:
   playerDialoguePanel: {fileID: 2042818381}
   npcDialoguePanel: {fileID: 1541930117}
   cancelButton: {fileID: 463741712}
+  dm: {fileID: 1711440549}
   portraitImage: {fileID: 953723264}
   nameText: {fileID: 1890462216}
   sunImage: {fileID: 342565774}

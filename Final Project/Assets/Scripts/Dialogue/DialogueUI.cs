@@ -1,4 +1,4 @@
-// Ignore Spelling: Dialogue npc
+// Ignore Spelling: Dialogue npc diff
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +15,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] Button cancelButton;
 
     [Header("Managers:")]
-    private DialogueManager dm;
+    [SerializeField] public DialogueManager dm;
     public Input playerInput;
 
     [Header("NPC ID:")]
@@ -40,7 +40,7 @@ public class DialogueUI : MonoBehaviour
 
     private void OnEnable()
     {
-        dm = FindObjectOfType<DialogueManager>();
+        //dm = FindObjectOfType<DialogueManager>();
         dm.OnPlayerDialogue += DisplayPlayerDialogue;
         dm.OnNpcDialogue += DisplayNpcDialogue;
         dm.EndPdialogue += EndPlayerDialogue;
@@ -76,6 +76,11 @@ public class DialogueUI : MonoBehaviour
         if (sunImage != null && sunIndex >= 0 && sunIndex < sunIcons.Length)
         {
             sunImage.sprite = sunIcons[sunIndex];
+            Debug.Log($"Setting sun icon: {sunIcons[sunIndex].name}");
+        }
+        else
+        {
+            Debug.LogError($"Invalid sunIndex: {sunIndex} or sunIcons array is not set up correctly.");
         }
 
         int difficultyIndex = randomPlantSO.difficultyLevel;
@@ -83,6 +88,11 @@ public class DialogueUI : MonoBehaviour
         if (difficultyImage != null && difficultyIndex >= 0 && difficultyIndex < diffIcons.Length)
         {
             difficultyImage.sprite = diffIcons[difficultyIndex];
+            Debug.Log($"Setting difficulty icon: {diffIcons[difficultyIndex].name}");
+        }
+        else
+        {
+            Debug.LogError($"Invalid difficultyIndex: {difficultyIndex} or diffIcons array is not set up correctly.");
         }
 
         int waterIndex = randomPlantSO.waterRequirement;
@@ -90,6 +100,11 @@ public class DialogueUI : MonoBehaviour
         if (waterIcons != null && waterIndex >= 0 && waterIndex < waterIcons.Length)
         {
             waterImage.sprite = waterIcons[waterIndex];
+            Debug.Log($"Setting water icon: {waterIcons[waterIndex].name}");
+        }
+        else
+        {
+            Debug.LogError($"Invalid waterIndex: {waterIndex} or waterIcons array is not set up correctly.");
         }
     }
 
@@ -126,7 +141,7 @@ public class DialogueUI : MonoBehaviour
             cancelButton.gameObject.SetActive(true);
             npcDialoguePanel.SetActive(true);
 
-            Debug.LogWarning("PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+            Debug.LogWarning("In DialogueUI: PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
         }
         // portraitImage.sprite = npc.NPC_portrait;
