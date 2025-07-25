@@ -206,20 +206,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1711440549}
   instance: {fileID: 776392411}
-  selectedPlayer: {fileID: 0}
+  requestUI: {fileID: 0}
+  cash: {fileID: 0}
   activePlayer: {fileID: 0}
-  npcList:
-  - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
-  - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
-  - {fileID: 11400000, guid: 171c06f9b42f50d4997a07ae950a7208, type: 2}
-  - {fileID: 11400000, guid: b8e6cba29df286c4c9d85f180d983179, type: 2}
-  newNPC: {fileID: 0}
-  plantSO:
-  - {fileID: 11400000, guid: f4f61ccb2906afc459d2f5786e0903ee, type: 2}
-  - {fileID: 11400000, guid: 402d819f05459864f9758c4e3b5053ec, type: 2}
-  - {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
-  - {fileID: 11400000, guid: 3a864a38f158ce943a5524267d6ffa71, type: 2}
-  randomPlantSO: {fileID: 0}
+  pb: {fileID: 0}
+  allPlants: []
+  playerPickedPlant: {fileID: 0}
+  waitForPlayerDialogue: 3
 --- !u!212 &12669879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -259,7 +252,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0d03e8ee414d5314b8ce59cd2eca2016, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7426,7 +7419,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4af91000399aaea45a62511fc5ec2c5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7781,11 +7774,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc1c400f883be4a8d640b38ef5897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStateChannel: {fileID: 11400000, guid: 4588bebec74cb8e4d83796da6ed4e9e0, type: 2}
-  selectedPlayerSO: {fileID: 0}
-  currentPlayer: {fileID: 0}
+  beacon: {fileID: 0}
   currentState: 2
   playerSpawnPoint: {fileID: 1983748427}
+  selectedPlayerSO: {fileID: 0}
+  currentPlayer: {fileID: 0}
 --- !u!1 &801456329
 GameObject:
   m_ObjectHideFlags: 0
@@ -8034,7 +8027,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 37d8083ddc3eef3428b83f1a64b766ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9721,7 +9714,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 92424be0b092c114da55a02bfbdec124, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10099,7 +10092,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bcba2ecf95f31424a91ac45e32bb0523, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10344,7 +10337,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1530984263
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 21ccbcc04c4cf7a48b212665248f533a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10791,9 +10784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80cfc361733ab448b5f242cbc886d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueCanvas: {fileID: 0}
   playerDialoguePanel: {fileID: 2042818381}
   npcDialoguePanel: {fileID: 1541930117}
   cancelButton: {fileID: 463741712}
+  dm: {fileID: 0}
   portraitImage: {fileID: 953723264}
   nameText: {fileID: 1890462216}
   sunImage: {fileID: 21300000, guid: 51404a416aade8246a93edaaa7f95d10, type: 3}
@@ -10811,6 +10806,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bd29444126eef65459c50cfc181d8e2d, type: 3}
   - {fileID: 21300000, guid: 195a87fb193224e42996e61c266df423, type: 3}
   - {fileID: 21300000, guid: eb7b690a473670f47be498c704bcf4cd, type: 3}
+  emptyPlant: {fileID: 0}
 --- !u!1 &1715116380
 GameObject:
   m_ObjectHideFlags: 0
@@ -12077,7 +12073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552858c7282b4cf4082cd9592f84bbe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputChannel: {fileID: 11400000, guid: 4a1efbee397abe346a3d78fa08d70b89, type: 2}
+  beacon: {fileID: 0}
 --- !u!1 &2093095692
 GameObject:
   m_ObjectHideFlags: 0
@@ -12168,7 +12164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyText: {fileID: 1254074243}
-  currentMoney: 0
 --- !u!114 &2104457918
 MonoBehaviour:
   m_ObjectHideFlags: 0
