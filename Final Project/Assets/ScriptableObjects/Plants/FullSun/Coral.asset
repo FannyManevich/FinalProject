@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
+  m_Name: Coral
+  m_EditorClassIdentifier: 
+  Price: 15
+  waterRequirement: 1
+  sunRequirement: 0
+  difficultyLevel: 1
+  Image: {fileID: 21300000, guid: f2032e8ed0ab71c44b0cf0d26387ee8d, type: 3}
+  UI: {fileID: 0}
+  GetTransform: {fileID: 0}

@@ -51,7 +51,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
     public void OnInteract(InputAction.CallbackContext context)
     {
         beacon.inputChannel.RaiseInteract();
-        Debug.Log("InputReader: Interact pressed (E)");
+        //Debug.Log("InputReader: Interact pressed (E)");
     }
     public void OnBook(InputAction.CallbackContext context)
     {

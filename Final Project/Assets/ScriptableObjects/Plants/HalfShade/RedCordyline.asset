@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
-  m_Name: Haworthia
+  m_Name: RedCordyline
   m_EditorClassIdentifier: 
-  Price: 15
-  waterRequirement: 1
-  sunRequirement: 2
+  Price: 100
+  waterRequirement: 2
+  sunRequirement: 1
   difficultyLevel: 1
-  Image: {fileID: 21300000, guid: 5e2d8e42f84708340a749de4b2eb98ad, type: 3}
-  UI: {fileID: 21300000, guid: 2bf14bc458254974eb2f0f09475326d2, type: 3}
+  Image: {fileID: 21300000, guid: 6339110c4b1aa17488211020aff85935, type: 3}
+  UI: {fileID: 0}
   GetTransform: {fileID: 0}

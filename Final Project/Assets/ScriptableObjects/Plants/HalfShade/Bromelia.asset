@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
-  m_Name: Kalanchoe
+  m_Name: Bromelia
   m_EditorClassIdentifier: 
-  Price: 30
+  Price: 70
   waterRequirement: 1
-  sunRequirement: 2
-  difficultyLevel: 1
-  Image: {fileID: 21300000, guid: d3ab1dd7f2d363d49a0b5dfb40e2aebb, type: 3}
-  UI: {fileID: 21300000, guid: bbd37261e1e21ce44aad3672be2e9eb8, type: 3}
+  sunRequirement: 1
+  difficultyLevel: 2
+  Image: {fileID: 21300000, guid: 79ea141b6f52dff4f9b8c779938220bb, type: 3}
+  UI: {fileID: 0}
   GetTransform: {fileID: 0}

@@ -6,7 +6,6 @@ public class CashRegister : MonoBehaviour
     [Header("Component References")]
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameStateManager instance;
-    [SerializeField] private RequestUI requestUI;
     [SerializeField] private MoneyManager cash;
 
     [Header("Player & NPC")]
@@ -31,12 +30,6 @@ public class CashRegister : MonoBehaviour
         if (pb == null) pb = FindObjectOfType<PlayerBehavior>();
         if (dialogueManager == null) dialogueManager = FindObjectOfType<DialogueManager>();
         if (instance == null) instance = FindObjectOfType<GameStateManager>();
-        if (requestUI == null) requestUI = FindObjectOfType<RequestUI>(true);
-
-        if (requestUI != null)
-        {
-            requestUI.gameObject.SetActive(false);
-        }
 
         if (instance != null)
         {
@@ -44,18 +37,12 @@ public class CashRegister : MonoBehaviour
         }
     }
     private void OnEnable()
-    {
-        if (dialogueManager != null)
-        {
-            NPCSpawnerScript.OnCustomerSpawnedEvent += ReadNPCData;           
-        }
+    { 
+        NPCSpawnerScript.OnCustomerSpawnedEvent += ReadNPCData;           
     }
     private void OnDisable()
-    {
-        if (dialogueManager != null)
-        {
-            NPCSpawnerScript.OnCustomerSpawnedEvent -= ReadNPCData;
-        }
+    {                                                                     
+        NPCSpawnerScript.OnCustomerSpawnedEvent -= ReadNPCData;       
     }
     private void ReadNPCData(GameObject newNPC)
     {
@@ -75,8 +62,8 @@ public class CashRegister : MonoBehaviour
         if (other.CompareTag("Boris"))
         {
             npcInZone = true;
-        }            
-        if (playerInZone && npcInZone && !playerDialogueShown)
+        }
+        if (playerInZone && npcInZone && !playerDialogueShown && currentRequest == null)
         {
             Debug.Log("In CashRegister: player and NPC r in cash register");
             playerDialogueShown = true;
@@ -98,6 +85,18 @@ public class CashRegister : MonoBehaviour
             //}
         }
     }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            playerInZone = false;
+
+        if (other.CompareTag("Boris"))
+        {
+            Debug.Log("NPC has left the register zone. Resetting state.");
+            npcInZone = false;
+            ResetState();
+        }
+    }
     IEnumerator WaitForPlayerDialogue()
     {
 
@@ -116,45 +115,40 @@ public class CashRegister : MonoBehaviour
     }
     private IEnumerator GenerateNewRequestRoutine()
     {
+        if (waitingForPlant)
+        {
+            yield break;
+        }
+
         yield return new WaitForSeconds(waitForPlayerDialogue);
         dialogueManager.EndPlayerDialogue();
 
         currentRequest = GetRandomPlant();
-        Debug.Log("CashRegister: Random plant request: " + currentRequest);
+        Debug.Log("In CashRegister: Random plant request: " + currentRequest.name);
         if (currentRequest != null)
         {
             dialogueManager.StartNpcDialogue(currentRequest);
             waitingForPlant = true;
-            ShowRequestIcon();
         }
         else
         {
-            Debug.LogError("Failed to get a random plant. Check allPlants array in the Inspector");
+            Debug.LogError("CashRegister: Failed to get a random plant. Check allPlants array in the Inspector");
         }
     }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            playerInZone = false;
-
-        if (other.CompareTag("Boris"))
-        {
-            npcInZone = false;
-        }
-    }
+    
     //player puts plant at cash reg
     public void DeliverPlant()
     {
         if (!waitingForPlant || pb.PlantYouAreHolding == null) return;
       
         deliveredPlant = pb.PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
-        waitingForPlant = false;
+        //waitingForPlant = false;
 
         bool correct = PlantMatching.CheckPlantMatch(deliveredPlant, currentRequest);
 
         if (correct)
         {
-            Debug.Log("Correct plant! Tip added.");
+            Debug.Log("In CashRegister: Correct plant! Tip added.");
             cash.AddMoney(deliveredPlant.Price);
             cash.AddTip(5);
         }
@@ -163,9 +157,18 @@ public class CashRegister : MonoBehaviour
             Debug.Log("Wrong plant! -10$");
             cash.SubtractMoney(10);
         }
+
+        Destroy(pb.PlantYouAreHolding);
+        pb.PlantYouAreHolding = null;
+
         ResetState();
     }
-
+    public void CompleteTransaction()
+    {
+        //Debug.Log("In CashRegister: Transaction complete. Ready for new request.");
+        ResetState();
+        //waitingForPlant = false;
+    }
     private PlantSO GetRandomPlant()
     {
         if (allPlants == null || allPlants.Length == 0)
@@ -176,34 +179,23 @@ public class CashRegister : MonoBehaviour
         int randomIndex = Random.Range(0, allPlants.Length);
         return allPlants[randomIndex];
     }
-    void ShowRequestIcon()
-    {
-        if (requestUI != null && currentRequest != null)
-        {
-            requestUI.gameObject.SetActive(true);
-            requestUI.SetRequest(currentRequest);
-        }
-    }
     private void ResetState()
     {
-        if (requestUI != null)
-        {
-            requestUI.gameObject.SetActive(false);
-        }
-        //deliveredPlant = null;
+        //Debug.Log("--- RESETTING CASH REGISTER STATE ---");
         //var plantToDestory = pb.PlantYouAreHolding;
         //pb.PlantYouAreHolding = null;
 
-        GameObject plantToDestroy = pb.PlantYouAreHolding;
-        if (plantToDestroy != null)
-        {
-            plantToDestroy = null;
-            Destroy(plantToDestroy);           
-        }
+        //GameObject plantToDestroy = pb.PlantYouAreHolding;
+        //if (plantToDestroy != null)
+        //{
+        //    plantToDestroy = null;
+        //    Destroy(plantToDestroy);           
+        //}
 
-        pb.PlantYouAreHolding = null;
+        //pb.PlantYouAreHolding = null;
         deliveredPlant = null;
         currentRequest = null;
         waitingForPlant = false;
+        playerDialogueShown = false;
     }
 }

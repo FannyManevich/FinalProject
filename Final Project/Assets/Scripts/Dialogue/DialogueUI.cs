@@ -60,54 +60,49 @@ public class DialogueUI : MonoBehaviour
     }
 
     public void DisplayPlantRequest(PlantSO randomPlantSO)
-   // public void DisplayPlantRequest(PlantSO requestedPlant)
     {
         if (randomPlantSO == null)
        // if(requestedPlant == null)
         {
-            Debug.LogWarning("PlantRequest is null.");
+            Debug.LogWarning("In DialougeUI: PlantRequest is null.");
             return;
         }
 
         int sunIndex = (int)randomPlantSO.sunRequirement;
-        Debug.LogWarning(" sun: " + sunIndex);
-        //int sunIndex = (int)requestedPlant.sunRequirement;
+        Debug.Log("In DialougeUI:  sun: " + sunIndex);
 
         if (sunImage != null && sunIndex >= 0 && sunIndex < sunIcons.Length)
         {
             sunImage.sprite = sunIcons[sunIndex];
-            Debug.Log($"Setting sun icon: {sunIcons[sunIndex].name}");
+            Debug.Log($"In DialougeUI: Setting sun icon: {sunIcons[sunIndex].name}");
         }
         else
         {
-            Debug.LogError($"Invalid sunIndex: {sunIndex} or sunIcons array is not set up correctly.");
+            Debug.LogError($"In DialougeUI: Invalid sunIndex: {sunIndex} or sunIcons array is not set up correctly.");
         }
 
         int difficultyIndex = randomPlantSO.difficultyLevel;
-        //int difficultyIndex = requestedPlant.difficultyLevel;
         if (difficultyImage != null && difficultyIndex >= 0 && difficultyIndex < diffIcons.Length)
         {
             difficultyImage.sprite = diffIcons[difficultyIndex];
-            Debug.Log($"Setting difficulty icon: {diffIcons[difficultyIndex].name}");
+            Debug.Log($"In DialougeUI: Setting difficulty icon: {diffIcons[difficultyIndex].name}");
         }
         else
         {
-            Debug.LogError($"Invalid difficultyIndex: {difficultyIndex} or diffIcons array is not set up correctly.");
+            Debug.LogError($"In DialougeUI: Invalid difficultyIndex: {difficultyIndex} or diffIcons array is not set up correctly.");
         }
 
         int waterIndex = randomPlantSO.waterRequirement;
-        //int waterIndex = requestedPlant.waterRequirement;
         if (waterIcons != null && waterIndex >= 0 && waterIndex < waterIcons.Length)
         {
             waterImage.sprite = waterIcons[waterIndex];
-            Debug.Log($"Setting water icon: {waterIcons[waterIndex].name}");
+            Debug.Log($"In DialougeUI: Setting water icon: {waterIcons[waterIndex].name}");
         }
         else
         {
-            Debug.LogError($"Invalid waterIndex: {waterIndex} or waterIcons array is not set up correctly.");
+            Debug.LogError($"In DialougeUI: Invalid waterIndex: {waterIndex} or waterIcons array is not set up correctly.");
         }
     }
-
     //sunImage = sunIcons[sunLevel];
     //difficultyImage = diffIcons[diffLevel];
     //waterImage = waterIcons[waterLevel];
@@ -118,11 +113,10 @@ public class DialogueUI : MonoBehaviour
     //}
     public void DisplayPlayerDialogue()
     {
-        Debug.Log("In DialougeUI: DisplayPlayerDialogue");
+       // Debug.Log("In DialougeUI: DisplayPlayerDialogue");
         dialogueCanvas.SetActive(true);
         playerDialoguePanel.SetActive(true);
     }
-
     public void DisplayNpcDialogue(PlantSO randomPlantSO)
     {
         dialogueCanvas.SetActive(!npcDialoguePanel.activeInHierarchy);
@@ -141,7 +135,7 @@ public class DialogueUI : MonoBehaviour
             cancelButton.gameObject.SetActive(true);
             npcDialoguePanel.SetActive(true);
 
-            Debug.LogWarning("In DialogueUI: PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff: "+ randomPlantSO.difficultyLevel + "water: " + randomPlantSO.waterRequirement);
+            //Debug.Log("In DialogueUI: PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff:  "+ randomPlantSO.difficultyLevel + " water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
         }
         // portraitImage.sprite = npc.NPC_portrait;
@@ -149,7 +143,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void EndNpcDialogue()
     {
-        Debug.Log("End NPC Dialogue");
+        //Debug.Log("End NPC Dialogue");
         cancelButton.gameObject.SetActive(false);
         npcDialoguePanel.SetActive(false);
         dialogueCanvas.SetActive(false);

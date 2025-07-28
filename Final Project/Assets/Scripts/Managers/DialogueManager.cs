@@ -1,4 +1,4 @@
-// Ignore Spelling: Dialogue
+// Ignore Spelling: Dialogue Npc Endnpc Pdialogue
 
 using UnityEngine;
 using System;
@@ -12,20 +12,18 @@ public class DialogueManager : MonoBehaviour
 
     public void StartPlayerDialogue()
     {
-        Debug.Log("In DialogueManager: Player is talking.");
+        //Debug.Log("In DialogueManager: Player is talking.");
         OnPlayerDialogue?.Invoke();
     }
-
     public void EndPlayerDialogue()
     {
         EndPdialogue?.Invoke();
     }
     public void StartNpcDialogue(PlantSO plantRequest)
     {       
-        Debug.Log("In DialogueManager: Starting NPC dialogue.  PlantSO: " + plantRequest);
+        //Debug.Log("In DialogueManager: Starting NPC dialogue.  PlantSO: " + plantRequest);
         OnNpcDialogue?.Invoke(plantRequest);
     }   
-
     public void EndnpcDialogue()
     {
         EndNpcDialogue?.Invoke();

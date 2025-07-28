@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
-  m_Name: Coral
+  m_Name: SansevieriaDarkGreen
   m_EditorClassIdentifier: 
-  Price: 15
-  waterRequirement: 1
+  Price: 65
+  waterRequirement: 0
   sunRequirement: 2
-  difficultyLevel: 1
-  Image: {fileID: 21300000, guid: f2032e8ed0ab71c44b0cf0d26387ee8d, type: 3}
+  difficultyLevel: 0
+  Image: {fileID: 21300000, guid: e43b2ff968b511742a38be4325e57637, type: 3}
   UI: {fileID: 0}
   GetTransform: {fileID: 0}

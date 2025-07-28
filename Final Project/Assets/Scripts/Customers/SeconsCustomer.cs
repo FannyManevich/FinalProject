@@ -31,8 +31,12 @@ public class SeconsCustomer : MonoBehaviour
 
     public NPC_State CurrentState;
 
+    //Fany
     public PlantSO requestedPlant;
     public MoneyManager cash;
+    public int impatiencePenalty = 10;
+    private CashRegister cashRegister;
+    //
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +49,13 @@ public class SeconsCustomer : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         cash = FindObjectOfType<MoneyManager>();
+        //Fany
+        cashRegister = FindObjectOfType<CashRegister>();
+        //
+
         if (cash == null)
         {
-            Debug.LogError("Could not find an active MoneyManager in the scene ");
+            Debug.LogError("In SeconsCustomer: Could not find an active MoneyManager in the scene ");
         }
 
         step = 4.0f * Time.deltaTime;
@@ -92,6 +100,11 @@ public class SeconsCustomer : MonoBehaviour
                 else
                 {
                     CurrentWaitTimer = 0;
+                    //Fany
+                    Debug.Log("in SeconsCustomer: Customer left impatiently! Applying penalty.");
+                    if (cash != null) cash.SubtractMoney(impatiencePenalty);
+                    if (cashRegister != null) cashRegister.CompleteTransaction();
+                    //
                     NextState();
                 }
                 break;
@@ -126,7 +139,7 @@ public class SeconsCustomer : MonoBehaviour
     public void OnDestroy()
     {
         NPCEventManager.LineLeaveEvent -= ProgInLine;
-        NPCEventManager.RegisterReleaseEvent -= RegisterInteraction;
+      //  NPCEventManager.RegisterReleaseEvent -= RegisterInteraction;
     }
 
     public void NextState()
@@ -136,11 +149,20 @@ public class SeconsCustomer : MonoBehaviour
             CurrentState = NPC_State.InLine;
         }
         else if (CurrentState == NPC_State.InLine)
-        {
+        {//Fany
+            //if (cashRegister != null)
+            //{
+            //    cashRegister.CompleteTransaction();
+            //}
+            //if (cash != null)
+            //{
+            //    Debug.Log("Customer left impatiently! Applying penalty.");
+            //    cash.SubtractMoney(impatiencePenalty);
+            //}
             TimerBar.gameObject.SetActive(false);
             NPCEventManager.LeaveLine();
             CurrentState = NPC_State.Exit;
-        }//Fany
+        }
         else
         {
             NPCEventManager.LeaveLine();
@@ -239,14 +261,23 @@ public class SeconsCustomer : MonoBehaviour
         {
             return;
         }
-            int x;
+           int x;
         if (PlantYouPick != null)
         {
             if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
             {
-
-                x = PlantYouPick.GetComponent<Plant>().currentPlantType.Price;
-                cash.AddMoney(x);
+                //Fany
+                //if((PlantMatching.CheckPlantMatch(PlantYouPick, requestedPlant))
+                //{
+                    x = PlantYouPick.GetComponent<Plant>().currentPlantType.Price;
+                    cash.AddMoney(x);
+                    Destroy(PlantYouPick);
+               // }
+                if (cashRegister != null)
+                {
+                    cashRegister.CompleteTransaction();
+                }
+                //
                 NextState();
             }
             else
