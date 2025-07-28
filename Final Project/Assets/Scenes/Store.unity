@@ -8981,9 +8981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5cff40a2ee95948a6c287915000c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plants: []
-  PlantParent: {fileID: 381442567}
-  PlantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
 --- !u!1001 &405194321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15331,6 +15328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomerPrefab:
   - {fileID: 3246296473204041928, guid: b8980c5ff293e8748a6456b6335bbe9d, type: 3}
+  - {fileID: 3246296473204041928, guid: 95343275715554348878c24386741a57, type: 3}
   - {fileID: 3246296473204041928, guid: ab697bcc1648e064cac06a66c4082d68, type: 3}
   CustomerType: 0
   CustomerTypeRNG: 0
@@ -24658,8 +24656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba73a996dfdfe1345a0c689d83b3ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentActive: 0
-  uiBookElement: {fileID: 1287650362}
 --- !u!114 &2104457919
 MonoBehaviour:
   m_ObjectHideFlags: 0
