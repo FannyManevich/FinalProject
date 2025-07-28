@@ -1,0 +1,620 @@
+fileFormatVersion: 2
+guid: 32e8e9f95b46711428ed7376a84e36c6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de75cfbfc4531f4ebb64703d58218be
+      internalID: 1924021204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f899e9c6ea1d88b47bc9acb60b666d91
+      internalID: 381285398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 326275b40490c7844bf01a3e38e1ec51
+      internalID: -1751267680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ce36827ec5ea041a6c997e37bfa9f9
+      internalID: 1126645372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786e9849e28734b48b54ec4266ae4fdb
+      internalID: 1889886931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5321c22e754117a47a91569445de68c7
+      internalID: -2115900895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d207b1df12d554c980c5d7c22a1d43
+      internalID: -211822807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99bfc5bf9696e248bf00c0a96856b51
+      internalID: 586132343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc54b6b747e75c547869aa53e8497c29
+      internalID: -890001390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 743
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4081d1ad1c5af547935b96e322fa606
+      internalID: -1335674063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6de244a4b4ac94bbe2a27fdb31dfdf
+      internalID: -401054286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc22a42642eb374589db6d4b9fbe855
+      internalID: -991968389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a137feb04dbf29b41b85e67ce9068809
+      internalID: 1126826861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28111373da1a136448547fe6a5b3752b
+      internalID: 1259145561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5cc2c9b112b794a87a474a4f9d76b5
+      internalID: -72713010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96addabdb3b95943840275385026504
+      internalID: 1682592020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c78deff9d17d244fa1a90f4a2b5121b
+      internalID: 320513028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9da47fe25856f54ab194ab92b073c4f
+      internalID: 673041187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f732dd6a9b856d43997134138354847
+      internalID: 1448039512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 393
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73fdd9a68629bac4db39c8bc1dbfddec
+      internalID: -346228381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f63d26c248776642ac88188cc0e0cfc
+      internalID: -1444254660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 43
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374ecc56382a2fb449c39ed7752c5289
+      internalID: -1478287801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Back_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 43
+        width: 200
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f55c6f1cd690f7438bfdfb65ccf214c
+      internalID: -1176995296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Phill_Back_Sheet_0: 1924021204
+      Phill_Back_Sheet_1: 381285398
+      Phill_Back_Sheet_10: -401054286
+      Phill_Back_Sheet_11: -991968389
+      Phill_Back_Sheet_12: 1126826861
+      Phill_Back_Sheet_13: 1259145561
+      Phill_Back_Sheet_14: -72713010
+      Phill_Back_Sheet_15: 1682592020
+      Phill_Back_Sheet_16: 320513028
+      Phill_Back_Sheet_17: 673041187
+      Phill_Back_Sheet_18: 1448039512
+      Phill_Back_Sheet_19: -346228381
+      Phill_Back_Sheet_2: -1751267680
+      Phill_Back_Sheet_20: -1444254660
+      Phill_Back_Sheet_21: -1478287801
+      Phill_Back_Sheet_22: -1176995296
+      Phill_Back_Sheet_3: 1126645372
+      Phill_Back_Sheet_4: 1889886931
+      Phill_Back_Sheet_5: -2115900895
+      Phill_Back_Sheet_6: -211822807
+      Phill_Back_Sheet_7: 586132343
+      Phill_Back_Sheet_8: -890001390
+      Phill_Back_Sheet_9: -1335674063
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

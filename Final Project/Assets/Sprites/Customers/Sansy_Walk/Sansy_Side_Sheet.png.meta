@@ -1,0 +1,994 @@
+fileFormatVersion: 2
+guid: dae7a3a3a81e3b6468687e063ca76969
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cde3324283334d4fb2933d60f820627
+      internalID: 1838024852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ddc412562889b545b27073578c7246e
+      internalID: 1820329131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ecd673ff38ce4459ba578401900b15
+      internalID: 73323925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b0f39ab7a2a0540be81c26ceb282d6
+      internalID: -2100404633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a857afe52c27e459b90812129209ee
+      internalID: -336704203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08621b9b07264d74c86a0e72562e2938
+      internalID: -142449175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c28bfc44603e8a649a28ed252e5a8c5a
+      internalID: -178280707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61acc5c204d2474fab5d6a9d956b753
+      internalID: 1591429170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1483
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a50c9479a3bf4409fea71b86639903
+      internalID: 444255927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abb7f8caceb0fe489bd32b5f64f87db
+      internalID: -1790595548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77d48a634d7acc408279a62c54f0678
+      internalID: -784923983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe79cb687097244aa9ae1f474e1c4d5
+      internalID: 233434255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37845e7b9a4e02e419a25fb7d57e91a8
+      internalID: -301883690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1986c1d5fdbfa14f84f114e13eacb67
+      internalID: 1235988806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ffc1e7a3fba6964abc3c5e34499edde
+      internalID: 232257303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a979bca5d3f80254fad7e449a326a3d4
+      internalID: 331970982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda0193c625221241ab1ed4270493205
+      internalID: 1982399552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1123
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ad7fb156b23eb46970d47d6c44e956
+      internalID: 1074097401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74cc6c468d5ecf14db93a7740dc4be07
+      internalID: 1868699330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8323f3f0de87214f9c24082192a2d07
+      internalID: -1008403860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302fbb1536ae95b48a433a95f51534ea
+      internalID: -592836365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5be5e6173c00441906f4d4127b0c1c
+      internalID: 1215859203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db25210414e1ea46a2cf3232980bd3a
+      internalID: 1870952553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfcd36f8dd6d9741afdbf13235a9315
+      internalID: 1027518643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b46410250bd67a4997536b604834a7a
+      internalID: -1242013344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e63168c675528449abad9e4eecd784
+      internalID: -618877459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 763
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4fb243d59622749ba19c4dafc575a9
+      internalID: -230735862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82c486227fb59d47a29f94fc66c3651
+      internalID: 808075444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86baf2e2c3c3c5e4989d5815db1d918d
+      internalID: 1649374900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d349c59f6d8bea04085a487af1aa2a4c
+      internalID: 1420276664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5b7556c0d2c254db23f390ba150793
+      internalID: -1901904082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c6026727d5b854baa0825960fae221
+      internalID: -349350120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549ada1410016524a982251655925ac9
+      internalID: -1197723769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 388fcae6513128545be463632349cfd0
+      internalID: 269446273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05c644b865bc2b94a8a4d620cb4b8baf
+      internalID: -1986785400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 403
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221054c61de632a4bbb2afbda21290f6
+      internalID: -841422738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 43
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9402b6f96cc99aa4397dd12aacdbb001
+      internalID: 705256126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 43
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125e8343f9310ff429a8d56d68fb008a
+      internalID: 1720152894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 43
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942c672e0b44eed4d89551242721ce77
+      internalID: 1885402670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sansy_Side_Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 43
+        width: 220
+        height: 360
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d668a4abb57de7046a977b2c5a63f3c6
+      internalID: 2121511353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Sansy_Side_Sheet_0: 1838024852
+      Sansy_Side_Sheet_1: 1820329131
+      Sansy_Side_Sheet_10: -784923983
+      Sansy_Side_Sheet_11: 233434255
+      Sansy_Side_Sheet_12: -301883690
+      Sansy_Side_Sheet_13: 1235988806
+      Sansy_Side_Sheet_14: 232257303
+      Sansy_Side_Sheet_15: 331970982
+      Sansy_Side_Sheet_16: 1982399552
+      Sansy_Side_Sheet_17: 1074097401
+      Sansy_Side_Sheet_18: 1868699330
+      Sansy_Side_Sheet_19: -1008403860
+      Sansy_Side_Sheet_2: 73323925
+      Sansy_Side_Sheet_20: -592836365
+      Sansy_Side_Sheet_21: 1215859203
+      Sansy_Side_Sheet_22: 1870952553
+      Sansy_Side_Sheet_23: 1027518643
+      Sansy_Side_Sheet_24: -1242013344
+      Sansy_Side_Sheet_25: -618877459
+      Sansy_Side_Sheet_26: -230735862
+      Sansy_Side_Sheet_27: 808075444
+      Sansy_Side_Sheet_28: 1649374900
+      Sansy_Side_Sheet_29: 1420276664
+      Sansy_Side_Sheet_3: -2100404633
+      Sansy_Side_Sheet_30: -1901904082
+      Sansy_Side_Sheet_31: -349350120
+      Sansy_Side_Sheet_32: -1197723769
+      Sansy_Side_Sheet_33: 269446273
+      Sansy_Side_Sheet_34: -1986785400
+      Sansy_Side_Sheet_35: -841422738
+      Sansy_Side_Sheet_36: 705256126
+      Sansy_Side_Sheet_37: 1720152894
+      Sansy_Side_Sheet_38: 1885402670
+      Sansy_Side_Sheet_39: 2121511353
+      Sansy_Side_Sheet_4: -336704203
+      Sansy_Side_Sheet_5: -142449175
+      Sansy_Side_Sheet_6: -178280707
+      Sansy_Side_Sheet_7: 1591429170
+      Sansy_Side_Sheet_8: 444255927
+      Sansy_Side_Sheet_9: -1790595548
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
