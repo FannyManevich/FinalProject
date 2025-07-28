@@ -1,0 +1,620 @@
+fileFormatVersion: 2
+guid: c682158e5d351b44e9112d3438719aa9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396fd8e7c710201438b9f5b4a2206cf3
+      internalID: 178212022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_1
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e7b6be8021d264599942bdf920cf29
+      internalID: 2009956871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_2
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52492330849393a4b9bc3b9c15e99ccc
+      internalID: 1364358119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c89decdbcaea94b8c478114dec2d40
+      internalID: -452304850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_4
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2e7ea1b9a17b884daf61c2cccfa16fa
+      internalID: -1589843594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_5
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f67f577264650b48832a41872d85c38
+      internalID: 2086976212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_6
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 535527c3c004a44499819666eae5cfbc
+      internalID: -1558181970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_7
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd9161056a77ba499cfe4b4111bd570
+      internalID: -1907880748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_8
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 764
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860bfff351160d5448ffe003c91f3371
+      internalID: 1284712837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48afefba39c3fd469c0889e3fc0c3b1
+      internalID: 2093892808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_10
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25ee5cd811dedb48b39d76e7854336f
+      internalID: 1760603750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_11
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cde4cb99e15c84d409599692d6aa5571
+      internalID: 561310783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_12
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e7b65fdca7ada45a38f37e85956725
+      internalID: 1143774661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_13
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe642a25b170c349a821aab3215c10b
+      internalID: 1179904916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_14
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d92dc38640f2249b48eee058046139
+      internalID: 623787892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_15
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62a5c17008d0544981cde9c21b478dd
+      internalID: 2142696292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_16
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b9dce59fe52cc4f815f694f5385b27
+      internalID: 264202494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_17
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 414
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af1383356a61ad3418dce1ed164da687
+      internalID: 1657121312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba82532c4f3083f468eb9f1488237a12
+      internalID: 158367565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_19
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 64
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae946e9223c8c6f4b84b567ba42c7854
+      internalID: -1776250731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_20
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 64
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1714a02daba593d4a9b840ef3c6525e8
+      internalID: -1497327218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_21
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 64
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d473761364463b45bcd7cdef06cb116
+      internalID: -1173673457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phill_Side_Sheet2_22
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 64
+        width: 210
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c9b27353e7f45246887ad087ab0588e
+      internalID: 1811508370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Phill_Side_Sheet2_0: 178212022
+      Phill_Side_Sheet2_1: 2009956871
+      Phill_Side_Sheet2_10: 1760603750
+      Phill_Side_Sheet2_11: 561310783
+      Phill_Side_Sheet2_12: 1143774661
+      Phill_Side_Sheet2_13: 1179904916
+      Phill_Side_Sheet2_14: 623787892
+      Phill_Side_Sheet2_15: 2142696292
+      Phill_Side_Sheet2_16: 264202494
+      Phill_Side_Sheet2_17: 1657121312
+      Phill_Side_Sheet2_18: 158367565
+      Phill_Side_Sheet2_19: -1776250731
+      Phill_Side_Sheet2_2: 1364358119
+      Phill_Side_Sheet2_20: -1497327218
+      Phill_Side_Sheet2_21: -1173673457
+      Phill_Side_Sheet2_22: 1811508370
+      Phill_Side_Sheet2_3: -452304850
+      Phill_Side_Sheet2_4: -1589843594
+      Phill_Side_Sheet2_5: 2086976212
+      Phill_Side_Sheet2_6: -1558181970
+      Phill_Side_Sheet2_7: -1907880748
+      Phill_Side_Sheet2_8: 1284712837
+      Phill_Side_Sheet2_9: 2093892808
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

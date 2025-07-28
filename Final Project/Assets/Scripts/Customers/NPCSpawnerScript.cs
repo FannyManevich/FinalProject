@@ -44,13 +44,17 @@ public class NPCSpawnerScript : MonoBehaviour
             OnCustomerSpawnedEvent?.Invoke(c);
             npcIndex++;
             CustomerTypeRNG = Random.Range(0, 10);
-            if (CustomerTypeRNG > 7)
+            if (CustomerTypeRNG < 4)
             {
                 CustomerType = 0;
             }
-            else
+            else if(CustomerTypeRNG < 8)
             {
                 CustomerType = 1;
+            }
+            else
+            {
+                CustomerType = 2;
             }
                 spawnTimer = UnityEngine.Random.Range(minSpawnTime, maxSpawnTime);
             timer = 0;
