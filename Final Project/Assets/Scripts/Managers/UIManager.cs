@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    private int PageNumber=1;
+
     [Header("Managers:")]
     [SerializeField] BeaconSO beacon;     
     [SerializeField] private ShiftManager shiftManager;
@@ -25,7 +27,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject bookPanel;
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject shiftPanel;
-   
+
+    [Header("Pages:")]
+    [SerializeField] Sprite[] SpritesSideA;
+    [SerializeField] Sprite[] SpritesSideB;
+    [SerializeField] GameObject SideA;
+    [SerializeField] GameObject SideB;
+
     private void OnEnable()
     {
         GameStateManager.Instance.OnGameStateChange += HandleGameStateChange;
@@ -124,5 +132,25 @@ public class UIManager : MonoBehaviour
     private void HandleGameStateChange(GameState newState)
     {
 
+    }
+
+    public void NextPage()
+    {
+        if (PageNumber < SpritesSideA.Length-1)
+        {
+            PageNumber++;
+            SideA.GetComponent<Image>().sprite = SpritesSideA[PageNumber];
+            SideB.GetComponent<Image>().sprite = SpritesSideB[PageNumber];
+        }
+    }
+
+    public void PrevPage()
+    {
+        if (PageNumber > 0)
+        {
+            PageNumber--;
+            SideA.GetComponent<Image>().sprite = SpritesSideA[PageNumber];
+            SideB.GetComponent<Image>().sprite = SpritesSideB[PageNumber];
+        }
     }
 }
