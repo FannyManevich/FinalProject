@@ -75,7 +75,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 PlantYouAreHolding = PlantYouAreOn;
                 //Fany added
-                PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = false;
+                //PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = false;
                 //
                 PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
 
@@ -96,7 +96,7 @@ public class PlayerBehavior : MonoBehaviour
             PlantYouAreHolding.transform.position = transform.position;
             PlantYouAreHolding.GetComponent<PlantHolding>().StopFollowHolder();
             //Fany added
-            PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = true;
+            //PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = true;
             //
             PlantYouAreHolding = null;
         }

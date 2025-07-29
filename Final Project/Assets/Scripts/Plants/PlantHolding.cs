@@ -13,7 +13,12 @@ public class PlantHolding : MonoBehaviour
     {
         if (follow == true)
         {
+            this.GetComponent<BoxCollider2D>().enabled = false;
             transform.position = holder.transform.position;
+        }
+        else
+        {
+            this.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 
