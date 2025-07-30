@@ -18,7 +18,7 @@ public class CustomerMovement : MonoBehaviour
     [SerializeField] [Range(0, 1)] private float stoppingSpeedFactor = 0.9f;
 
     [Header("Settings:")]
-    [SerializeField] private float moveSpeed = 4.0f;
+   // [SerializeField] private float moveSpeed = 4.0f;
     
     [Header("Animation:")]
     [SerializeField] public CustomerAnimator npcAnimator;
