@@ -1,8 +1,16 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShiftManager : MonoBehaviour
 {
+    [Header("Managers:")]
+    [SerializeField] private MoneyManager moneyManager;
+
+    [Header("Win/Loss Logic:")]
+    [SerializeField] private TextMeshProUGUI winLossStatusText;
+    [SerializeField] private Button nextDayButton;
+
     [Header("Text:")]
     [SerializeField] TextMeshProUGUI dayNumberText;
     [SerializeField] TextMeshProUGUI dailySalesGoalText;
@@ -14,7 +22,7 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalBalanceText;
 
     private int day = 1;
-    private float todaysGoal = 100;
+    private float todaysGoal = 1000;
     private float totalBalance = 0;
     private float profit = 0;
     private int customersServed = 0;
@@ -38,19 +46,32 @@ public class ShiftManager : MonoBehaviour
 
     public void ShowEndOfShiftPanel()
     {
-        dayNumberText.text = $"Day {day}";
+        profit = moneyManager.CurrentMoney;
+
+        //dayNumberText.text = $"Day {day}";
+
         dailySalesGoalText.text = $"Daily Goal: ${todaysGoal:F0}";
-        totalRevenueText.text = $"Revenue: ${revenue:F0}";
-        servedNPCText.text = $"Customers Served: {customersServed}";
-        lostNPCText.text = $"Customers Lost: {customersLost}";
-        revenueLostText.text = $"Revenue Lost: ${revenueLost:F0}";
-        profitText.text = $"Prof" +
-            $"" +
-            $"" +
-            $"" +
-            $"" +
-            $"it: ${profit:F0}";
+
+        //totalRevenueText.text = $"Revenue: ${moneyManager.CurrentMoney:F0}";
+        //servedNPCText.text = $"Customers Served: {customersServed}";
+        //lostNPCText.text = $"Customers Lost: {customersLost}";
+        //revenueLostText.text = $"Revenue Lost: ${revenueLost:F0}";
+        profitText.text = $"Profit: ${profit:F0}";
         totalBalanceText.text = $"Total Balance: ${totalBalance + profit:F0}";
+
+        if (profit >= todaysGoal)
+        {
+            winLossStatusText.text = "You reached the daily goal!";
+            winLossStatusText.color = Color.green;
+            nextDayButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            winLossStatusText.text = "You didn't reach the daily goal.";
+            winLossStatusText.color = Color.red;
+            nextDayButton.gameObject.SetActive(false);
+        }
+        if (moneyManager != null) moneyManager.ResetMoney();
     }
     public void ResetDayStats()
     {

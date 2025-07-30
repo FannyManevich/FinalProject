@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    private int PageNumber=1;
+    private int PageNumber = 1;
 
     [Header("Managers:")]
     [SerializeField] BeaconSO beacon;     
@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject bookPanel;
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject shiftPanel;
+    [SerializeField] GameObject endShiftPanel;
+    [SerializeField] GameObject endShiftContent;
+    [SerializeField] GameObject endShiftButtons;
 
     [Header("Pages:")]
     [SerializeField] Sprite[] SpritesSideA;
@@ -46,7 +49,7 @@ public class UIManager : MonoBehaviour
         helpButton.onClick.AddListener(OpenHelp);
         homeButton.onClick.AddListener(OnHomeClicked);
         restartButton.onClick.AddListener(OnRestartShiftClicked);
-        nextDayButton.onClick.AddListener(ResetNextShift);
+        nextDayButton.onClick.AddListener(StartNextDay);
         quitButton.onClick.AddListener(OnQuitClicked);
         closeBookButton.onClick.AddListener(CloseAllPanels);
         closeHelpButton.onClick.AddListener(CloseAllPanels);
@@ -63,7 +66,7 @@ public class UIManager : MonoBehaviour
         helpButton.onClick.RemoveListener(OpenHelp);
         homeButton.onClick.RemoveListener(OnHomeClicked);
         restartButton.onClick.RemoveListener(OnRestartShiftClicked);
-        nextDayButton.onClick.RemoveListener(ResetNextShift);
+        nextDayButton.onClick.RemoveListener(StartNextDay);
         quitButton.onClick.RemoveListener(OnQuitClicked);
         closeBookButton.onClick.RemoveListener(CloseAllPanels);
         closeHelpButton.onClick.RemoveListener(CloseAllPanels);
@@ -120,9 +123,12 @@ public class UIManager : MonoBehaviour
     }    
     public void ResetNextShift()
     {
-        shiftManager.ResetDayStats();
+        //shiftManager.ResetDayStats();
 
         shiftPanel.SetActive(false);
+        endShiftPanel.SetActive(false);
+        endShiftContent.SetActive(false);
+        endShiftButtons.SetActive(false);
 
         quitButton.gameObject.SetActive(false);
         nextDayButton.gameObject.SetActive(false);
@@ -133,7 +139,50 @@ public class UIManager : MonoBehaviour
     {
 
     }
+    public void StartNextDay()
+    {
+        Debug.Log("UIManager: Starting next day.");
+        if (shiftManager != null)
+        {
+            shiftManager.ResetDayStats();
+        }
+        if (timerController != null)
+        {
+            timerController.ResetTimer();
+        }
+        if (shiftPanel != null)
+        {
+            shiftPanel.SetActive(false);
+            endShiftPanel.SetActive(false);
+            endShiftContent.SetActive(false);
+            endShiftButtons.SetActive(false);
 
+            quitButton.gameObject.SetActive(false);
+            nextDayButton.gameObject.SetActive(false);
+        }
+
+        gameStateManager.SetState(GameState.Playing);
+    }
+
+    public void TriggerEndOfDay()
+    {
+        Debug.Log("UIManager: End of day triggered. Opening shift panel.");
+
+        GameStateManager.Instance.SetState(GameState.EndShift);
+
+        if (shiftPanel != null)
+        {
+            shiftPanel.SetActive(true);
+            endShiftPanel.SetActive(true);
+            endShiftContent.SetActive(true);
+            endShiftButtons.SetActive(true);
+           // shiftPanel.transform.localScale = Vector3.one;
+        }
+        if (shiftManager != null)
+        {
+            shiftManager.ShowEndOfShiftPanel();
+        }
+    }
     public void NextPage()
     {
         if (PageNumber < SpritesSideA.Length-1)

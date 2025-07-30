@@ -38,7 +38,6 @@ public class SeconsCustomer : MonoBehaviour
     private CashRegister cashRegister;
     //
 
-    // Start is called before the first frame update
     void Start()
     {
         if (UiManager == null)
@@ -77,7 +76,6 @@ public class SeconsCustomer : MonoBehaviour
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
     }
-    // Update is called once per frame
     void Update()
     {
         switch (CurrentState)

@@ -222,12 +222,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168936960}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8580191, y: 0.29363126, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 491918041}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &168936962
 MonoBehaviour:
@@ -926,7 +926,6 @@ Transform:
   m_Children:
   - {fileID: 404738518}
   - {fileID: 1859416199}
-  - {fileID: 168936961}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -1520,15 +1519,15 @@ RectTransform:
   m_GameObject: {fileID: 1057844538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.10625, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1440146843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.45, y: -0.05}
-  m_SizeDelta: {x: 31.3778, y: 21.6698}
+  m_AnchoredPosition: {x: -1.6, y: -0.131}
+  m_SizeDelta: {x: 20.3254, y: 20.3479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057844540
 MonoBehaviour:
@@ -1606,7 +1605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 54c5843252b5f1d4395575e4fef76eb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52ed88a05204eb14387ddcf528c447ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3148,13 +3147,14 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -223.00012, y: 364}
+  m_AnchoredPosition: {x: -223.00018, y: 364}
   m_SizeDelta: {x: -966, y: -500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 168936961}
   - {fileID: 491918041}
   - {fileID: 2018375832}
   - {fileID: 519420032}
