@@ -428,7 +428,7 @@ MonoBehaviour:
   stoppingDistance: 0.2
   stoppingSpeedFactor: 0.9
   moveSpeed: 2
-  npcAnimator: {fileID: 0}
+  npcAnimator: {fileID: 6562148424880675315}
   sr: {fileID: 7885024189506975412}
 --- !u!114 &7310739742989303013
 MonoBehaviour:
