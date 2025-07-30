@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
-  animator: {fileID: 0}
+  animator: {fileID: 3861428005593640616}
   sr: {fileID: 5159289302578261548}
   moveSpeed: 5
 --- !u!1 &3480954104359111407
