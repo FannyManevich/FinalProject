@@ -2,6 +2,7 @@ namespace Assets.Scripts.Managers
 {
     public enum NPC_State
     {
+        EnterScene,
         WalkToFlower,
         WalkToLine,
         Wait,

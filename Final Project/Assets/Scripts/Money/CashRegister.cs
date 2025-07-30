@@ -7,6 +7,7 @@ public class CashRegister : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameStateManager instance;
     [SerializeField] private MoneyManager cash;
+    [SerializeField] private ShiftManager shiftManager;
 
     [Header("Player & NPC")]
     public PlayerSO activePlayer;
@@ -27,6 +28,7 @@ public class CashRegister : MonoBehaviour
 
     void Start()
     {
+        if(shiftManager == null) shiftManager = FindObjectOfType<ShiftManager>();
         if (pb == null) pb = FindObjectOfType<PlayerBehavior>();
         if (dialogueManager == null) dialogueManager = FindObjectOfType<DialogueManager>();
         if (instance == null) instance = FindObjectOfType<GameStateManager>();
@@ -147,15 +149,17 @@ public class CashRegister : MonoBehaviour
         bool correct = PlantMatching.CheckPlantMatch(deliveredPlant, currentRequest);
 
         if (correct)
-        {
+        {         
             Debug.Log("In CashRegister: Correct plant! Tip added.");
             cash.AddMoney(deliveredPlant.Price);
             cash.AddTip(5);
+            NPCEventManager.SaleSuccess(deliveredPlant.Price);
         }
         else
         {
             Debug.Log("Wrong plant! -10$");
             cash.SubtractMoney(10);
+            NPCEventManager.MismatchedSale();
         }
 
         Destroy(pb.PlantYouAreHolding);

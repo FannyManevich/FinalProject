@@ -67,7 +67,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (onRegister == true)
         {
-            NPCEventManager.RegisterRealese();
+            NPCEventManager.RegisterRelease();
         }
         else if (PlantYouAreHolding == null)
         {
