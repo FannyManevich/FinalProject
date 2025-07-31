@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    private int PageNumber = 1;
+    private int PageNumber = 0;
 
     [Header("Managers:")]
     [SerializeField] BeaconSO beacon;     
