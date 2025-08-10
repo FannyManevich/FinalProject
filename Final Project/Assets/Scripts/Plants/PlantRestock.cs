@@ -1,48 +1,52 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlantRestock : MonoBehaviour
 {
-    bool restocked;
-    public GameObject[] Plants;
-    GameObject PlantHoldPos;
-    GameObject Player;
+    [Header("Configuration")]
+    [SerializeField] private string plantTag = "Plant";
 
-    [SerializeField] GameObject PlantParent;
-    [SerializeField] GameObject PlantPrefab;
+    private List<Plant> plants = new List<Plant>();
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        PlantHoldPos = GameObject.Find("PlayerPlantHoldPos");
-        Plants = GameObject.FindGameObjectsWithTag("Plant");
+        RestockPlants();
     }
 
-    public void restock()
+    private void RestockPlants()
     {
-        if (Player == null)
+        plants.Clear();
+        GameObject[] plantObjects = GameObject.FindGameObjectsWithTag(plantTag);
+
+        foreach (GameObject plantGO in plantObjects)
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
-            PlantHoldPos = GameObject.Find("PlayerPlantHoldPos");
-        }
-        restocked = false;
-        foreach (GameObject Plant in Plants)
-        {
-            if (Plant.activeSelf == false)
+            if (plantGO.TryGetComponent<Plant>(out Plant plantComponent))
             {
-                Plant.SetActive(true);
-                Player.GetComponent<PlayerBehavior>().PlantYouAreHolding = Plant;
-                Player.GetComponent<PlayerBehavior>().PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
-                restocked = true;
-                break;
+                plants.Add(plantComponent);
+                plantGO.SetActive(false);
             }
         }
-        if (!restocked)
+    }
+
+    public GameObject RequestPlant()
+    {
+        PlantSO plantDataToAssign = InventoryManager.Instance.GetRandomPlant();
+        if (plantDataToAssign == null)
         {
-            //create new plant
-            Player.GetComponent<PlayerBehavior>().PlantYouAreHolding = Instantiate(PlantPrefab, PlantHoldPos.transform.position, Quaternion.identity);
-            Player.GetComponent<PlayerBehavior>().PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
+            Debug.LogWarning("In PlantRestock: InventoryManager has no plants in stock.");
+            return null;
         }
+
+        foreach (Plant plant in plants)
+        {
+            if (!plant.gameObject.activeSelf)
+            {
+                plant.Initialize(plantDataToAssign);
+                plant.gameObject.SetActive(true);
+                return plant.gameObject;
+            }
+        }
+        Debug.LogWarning("In PlantRestock: No plants available to restock.");
+        return null;
     }
 }

@@ -1,8 +1,6 @@
 using Assets.Scripts.Managers;
-
 using UnityEngine;
 using UnityEngine.UI;
-
 public class CustomerBehavior : MonoBehaviour
 {
     Vector2 FlowerPoint;
@@ -58,15 +56,13 @@ public class CustomerBehavior : MonoBehaviour
 
         //line
         LineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPC_LineManagement>();
-        NPCEventManager.LineLeaveEvent += ProgInLine;
-        NPCEventManager.RegisterReleaseEvent += RegisterInteraction;
-
+        NPCLineManager.LineLeaveEvent += ProgInLine;
+        NPCLineManager.RegisterReleaseEvent += RegisterInteraction;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         switch (CurrentState)
         {
             case NPC_State.WalkToFlower:
@@ -128,9 +124,7 @@ public class CustomerBehavior : MonoBehaviour
                 }
                 break;
         }
-
     }
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Plant")
@@ -147,13 +141,11 @@ public class CustomerBehavior : MonoBehaviour
             onPlant = false;
         }
     }
-
     public void OnDestroy()
     {
-        NPCEventManager.LineLeaveEvent -= ProgInLine;
-        NPCEventManager.RegisterReleaseEvent -= RegisterInteraction;
+        NPCLineManager.LineLeaveEvent -= ProgInLine;
+        NPCLineManager.RegisterReleaseEvent -= RegisterInteraction;
     }
-
     public void NextState()
     {
         if (CurrentState == NPC_State.WalkToFlower)
@@ -168,18 +160,17 @@ public class CustomerBehavior : MonoBehaviour
         {
             PlantYouPick.SetActive(false);
             TimerBar.gameObject.SetActive(false);
-            NPCEventManager.EnterLine();
+            NPCLineManager.EnterLine();
             CurrentCustomerNumber = LineManager.CustomerNumber;
             LineOffset = new Vector2(0- CurrentCustomerNumber, 0);
             CurrentState = NPC_State.WalkToLine;
         }else if (CurrentState == NPC_State.InLine)
         {
             TimerBar.gameObject.SetActive(false);
-            NPCEventManager.LeaveLine();
+            NPCLineManager.LeaveLine();
             CurrentState = NPC_State.Exit;
         }
     }
-
     public void SetMinMax()
     {
         minX = -10;
@@ -187,7 +178,6 @@ public class CustomerBehavior : MonoBehaviour
         maxX = 10;
         maxY = 5;
     }
-
     public void MoveToPointXFirst(Vector2 PointToWalkTo)
     {
         if (transform.position.x != PointToWalkTo.x)
@@ -227,7 +217,6 @@ public class CustomerBehavior : MonoBehaviour
             NextState();
         }
     }
-
     public void MoveToPointYFirst(Vector2 PointToWalkTo)
     {
         if (transform.position.y != PointToWalkTo.y)
@@ -267,7 +256,6 @@ public class CustomerBehavior : MonoBehaviour
             NextState();
         }
     }
-
     public void RegisterInteraction()
     {
         if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
@@ -276,7 +264,6 @@ public class CustomerBehavior : MonoBehaviour
             NextState();
         }
     }
-
     public void ProgInLine()
     {
         if (CurrentCustomerNumber > 1)
@@ -285,7 +272,6 @@ public class CustomerBehavior : MonoBehaviour
         }
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
     }
-
     public void SetRandomPlantToWalkTo()
     {
         if (Plants.Length == 0)
@@ -309,7 +295,6 @@ public class CustomerBehavior : MonoBehaviour
             CurrentState = NPC_State.Exit;
         }
     }
-
     public bool CheckPlants(GameObject[] Plants)
     {
         foreach (GameObject Plant in Plants)
@@ -321,7 +306,6 @@ public class CustomerBehavior : MonoBehaviour
         }
         return false;
     }
-
     public void SetRandomWalkToPoint()
     {
         FlowerPoint = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));

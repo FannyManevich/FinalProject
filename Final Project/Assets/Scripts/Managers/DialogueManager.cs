@@ -1,15 +1,12 @@
 // Ignore Spelling: Dialogue Npc Endnpc Pdialogue
-
 using UnityEngine;
 using System;
-
 public class DialogueManager : MonoBehaviour
 {
     public event Action OnPlayerDialogue;
     public event Action<PlantSO> OnNpcDialogue;
     public event Action EndPdialogue;
     public event Action EndNpcDialogue;
-
     public void StartPlayerDialogue()
     {
         //Debug.Log("In DialogueManager: Player is talking.");

@@ -1,17 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Managers;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
-{
-    private int PageNumber = 0;
-
+{   
     [Header("Managers:")]
-    [SerializeField] BeaconSO beacon;     
+    [SerializeField] private BeaconSO beacon;     
     [SerializeField] private ShiftManager shiftManager;
     [SerializeField] private TimerController timerController;
-    [SerializeField] private GameStateManager gameStateManager;
 
     [Header("Buttons:")]
     [SerializeField] Button bookButton;
@@ -36,72 +32,92 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite[] SpritesSideB;
     [SerializeField] GameObject SideA;
     [SerializeField] GameObject SideB;
-
+    private int PageNumber = 0;
     private void OnEnable()
     {
-        GameStateManager.Instance.OnGameStateChange += HandleGameStateChange;
-        beacon.inputChannel.OnBookEvent += OpenBook;
-        beacon.inputChannel.OnHelpEvent += OpenHelp;
-        beacon.inputChannel.OnCancelEvent += CloseAllPanels;
-
+        if (beacon?.gameStateChannel != null)
+        {
+            beacon.gameStateChannel.StateEnter += HandleGameStateChange;
+        }
+        if(beacon?.inputChannel != null)
+        {
+            beacon.inputChannel.OnBookEvent += OpenBook; 
+            beacon.inputChannel.OnHelpEvent += OpenHelp;
+            beacon.inputChannel.OnCancelEvent += CloseAllPanels;
+        }
         homeButton.onClick.AddListener(OnHomeClicked);
         bookButton.onClick.AddListener(OpenBook);
         helpButton.onClick.AddListener(OpenHelp);
-        homeButton.onClick.AddListener(OnHomeClicked);
         restartButton.onClick.AddListener(OnRestartShiftClicked);
-        nextDayButton.onClick.AddListener(StartNextDay);
+        nextDayButton.onClick.AddListener(OnRestartShiftClicked);
         quitButton.onClick.AddListener(OnQuitClicked);
         closeBookButton.onClick.AddListener(CloseAllPanels);
         closeHelpButton.onClick.AddListener(CloseAllPanels);
     }
     private void OnDisable()
     {
-        GameStateManager.Instance.OnGameStateChange -= HandleGameStateChange;
-        beacon.inputChannel.OnBookEvent -= OpenBook;
-        beacon.inputChannel.OnHelpEvent -= OpenHelp;
-        beacon.inputChannel.OnCancelEvent -= CloseAllPanels;
-
+        if (beacon?.gameStateChannel != null)
+        {
+            beacon.gameStateChannel.StateEnter -= HandleGameStateChange;
+        }
+        if (beacon?.inputChannel != null)
+        {
+            beacon.inputChannel.OnBookEvent -= OpenBook;
+            beacon.inputChannel.OnHelpEvent -= OpenHelp;
+            beacon.inputChannel.OnCancelEvent -= CloseAllPanels;
+        }
         homeButton.onClick.RemoveListener(OnHomeClicked);
         bookButton.onClick.RemoveListener(OpenBook);
         helpButton.onClick.RemoveListener(OpenHelp);
-        homeButton.onClick.RemoveListener(OnHomeClicked);
         restartButton.onClick.RemoveListener(OnRestartShiftClicked);
-        nextDayButton.onClick.RemoveListener(StartNextDay);
+        nextDayButton.onClick.RemoveListener(OnRestartShiftClicked);
         quitButton.onClick.RemoveListener(OnQuitClicked);
         closeBookButton.onClick.RemoveListener(CloseAllPanels);
         closeHelpButton.onClick.RemoveListener(CloseAllPanels);
-
     }
-
+    private void HandleGameStateChange(GameState newState)
+    {
+        CloseAllPanels();
+        switch (newState)
+        {
+            case GameState.Playing:
+                CloseAllPanels();
+                break;
+            case GameState.Book:
+                bookPanel.SetActive(true);
+                closeBookButton.gameObject.SetActive(true);
+                break;
+            case GameState.Help:
+                helpPanel.SetActive(true);
+                closeHelpButton.gameObject.SetActive(true);
+                break;
+            case GameState.EndShift:
+                endShiftPanel.SetActive(true);
+                shiftManager?.ShowEndOfShiftPanel();
+                break;
+        }
+    }
     public void OpenBook()
     {
         //Debug.Log("OpenBook called");
-        bookPanel.SetActive(true);
-        closeBookButton.gameObject.SetActive(true);
-        GameStateManager.Instance.SetState(GameState.Book);
+        GameStateManager.Instance.ChangeGameState(GameState.Book);
     }
     public void OpenHelp()
-    {
-        GameStateManager.Instance.ChangeState(GameState.UI);
+    { 
         //Debug.Log("OpenHelp called");
-        helpPanel.SetActive(true);
-        closeHelpButton.gameObject.SetActive(true);
+        GameStateManager.Instance.ChangeGameState(GameState.Help);      
     }
     public void OnHomeClicked()
     {
-        GameStateManager.Instance.ChangeState(GameState.UI);
         //Debug.Log("OnHomeClicked called");
-        SceneManager.LoadScene("Main-Menu");
+        GameStateManager.Instance.ChangeGameState(GameState.MainMenu);        
     }
     public void OnRestartShiftClicked()
     {
         //Debug.Log("OnRestartShiftClicked called");
-        timerController.ResetTimer();
-        shiftManager.ResetDayStats();      
-    }
-    public void OpenShiftPanel()
-    {
-        shiftPanel.SetActive(true);
+        timerController?.ResetTimer();
+        shiftManager?.ResetDayStats();
+        GameStateManager.Instance.ChangeGameState(GameState.Playing);
     }
     public void CloseAllPanels()
     {
@@ -110,9 +126,7 @@ public class UIManager : MonoBehaviour
         helpPanel.SetActive(false);        
         closeBookButton.gameObject.SetActive(false);
         closeHelpButton.gameObject.SetActive(false);
-        bookPanel.SetActive(false);
-        helpPanel.SetActive(false);
-        GameStateManager.Instance.SetState(GameState.Playing);
+        GameStateManager.Instance.ChangeGameState(GameState.Playing);
     }
     public void OnQuitClicked()
     {
@@ -121,62 +135,16 @@ public class UIManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }    
-    public void ResetNextShift()
-    {
-        //shiftManager.ResetDayStats();
-
-        shiftPanel.SetActive(false);
-        endShiftPanel.SetActive(false);
-        endShiftContent.SetActive(false);
-        endShiftButtons.SetActive(false);
-
-        quitButton.gameObject.SetActive(false);
-        nextDayButton.gameObject.SetActive(false);
-
-        this.GetComponent<TimerController>().ResetTimer();
-    }
-    private void HandleGameStateChange(GameState newState)
-    {
-
-    }
-    public void StartNextDay()
-    {
-        Debug.Log("UIManager: Starting next day.");
-        if (shiftManager != null)
-        {
-            shiftManager.ResetDayStats();
-        }
-        if (timerController != null)
-        {
-            timerController.ResetTimer();
-        }
-        if (shiftPanel != null)
-        {
-            shiftPanel.SetActive(false);
-            endShiftPanel.SetActive(false);
-            endShiftContent.SetActive(false);
-            endShiftButtons.SetActive(false);
-
-            quitButton.gameObject.SetActive(false);
-            nextDayButton.gameObject.SetActive(false);
-        }
-
-        gameStateManager.SetState(GameState.Playing);
-    }
-
     public void TriggerEndOfDay()
     {
-        Debug.Log("UIManager: End of day triggered. Opening shift panel.");
-
-        GameStateManager.Instance.SetState(GameState.EndShift);
-
+        Debug.Log("In UIManager: End of day triggered. Opening shift panel.");
+        GameStateManager.Instance.ChangeGameState(GameState.EndShift);
         if (shiftPanel != null)
         {
             shiftPanel.SetActive(true);
             endShiftPanel.SetActive(true);
             endShiftContent.SetActive(true);
             endShiftButtons.SetActive(true);
-           // shiftPanel.transform.localScale = Vector3.one;
         }
         if (shiftManager != null)
         {
@@ -192,7 +160,6 @@ public class UIManager : MonoBehaviour
             SideB.GetComponent<Image>().sprite = SpritesSideB[PageNumber];
         }
     }
-
     public void PrevPage()
     {
         if (PageNumber > 0)

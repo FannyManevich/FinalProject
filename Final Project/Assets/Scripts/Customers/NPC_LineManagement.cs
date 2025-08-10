@@ -7,8 +7,8 @@ public class NPC_LineManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NPCEventManager.LineEnterEvent += CustomerEnterLine;
-        NPCEventManager.LineLeaveEvent += CustomerLeaveLine;
+        NPCLineManager.LineEnterEvent += CustomerEnterLine;
+        NPCLineManager.LineLeaveEvent += CustomerLeaveLine;
     }
 
     // Update is called once per frame

@@ -22,7 +22,6 @@ public class InputChannel : ScriptableObject
         //Debug.Log("InputChannel : OnInteractEvent invoked.");
         OnInteractEvent?.Invoke();
     }
-
     public void RaiseBook()
     {
         //Debug.Log("InputChannel : OnBookEvent invoked.");

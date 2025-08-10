@@ -12,6 +12,7 @@ TagManager:
   - PlayerSpawn
   - Boris
   - Shosh
+  - Sansi
   layers:
   - Default
   - TransparentFX

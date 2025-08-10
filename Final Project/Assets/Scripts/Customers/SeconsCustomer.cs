@@ -31,12 +31,10 @@ public class SeconsCustomer : MonoBehaviour
 
     public NPC_State CurrentState;
 
-    //Fany
     public PlantSO requestedPlant;
     public MoneyManager cash;
     public int impatiencePenalty = 10;
     private CashRegister cashRegister;
-    //
 
     void Start()
     {
@@ -68,10 +66,10 @@ public class SeconsCustomer : MonoBehaviour
 
         //line
         LineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPC_LineManagement>();
-        NPCEventManager.LineLeaveEvent += ProgInLine;
-        NPCEventManager.RegisterReleaseEvent += RegisterInteraction;
+        NPCLineManager.LineLeaveEvent += ProgInLine;
+        NPCLineManager.RegisterReleaseEvent += RegisterInteraction;
 
-        NPCEventManager.EnterLine();
+        NPCLineManager.EnterLine();
         CurrentCustomerNumber = LineManager.CustomerNumber;
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
@@ -99,9 +97,9 @@ public class SeconsCustomer : MonoBehaviour
                 {
                     CurrentWaitTimer = 0;
                     //Fany
-                    Debug.Log("in SeconsCustomer: Customer left impatiently! Applying penalty.");
-                    if (cash != null) cash.SubtractMoney(impatiencePenalty);
-                    if (cashRegister != null) cashRegister.CompleteTransaction();
+                  //  Debug.Log("in SeconsCustomer: Customer left impatiently! Applying penalty.");
+                   // if (cash != null) cash.SubtractMoney(impatiencePenalty);
+                  //  if (cashRegister != null) cashRegister.CompleteTransaction();
                     //
                     NextState();
                 }
@@ -136,7 +134,7 @@ public class SeconsCustomer : MonoBehaviour
 
     public void OnDestroy()
     {
-        NPCEventManager.LineLeaveEvent -= ProgInLine;
+        NPCLineManager.LineLeaveEvent -= ProgInLine;
       //  NPCEventManager.RegisterReleaseEvent -= RegisterInteraction;
     }
 
@@ -158,12 +156,12 @@ public class SeconsCustomer : MonoBehaviour
             //    cash.SubtractMoney(impatiencePenalty);
             //}
             TimerBar.gameObject.SetActive(false);
-            NPCEventManager.LeaveLine();
+            NPCLineManager.LeaveLine();
             CurrentState = NPC_State.Exit;
         }
         else
         {
-            NPCEventManager.LeaveLine();
+            NPCLineManager.LeaveLine();
         }
         //
     }
@@ -271,10 +269,10 @@ public class SeconsCustomer : MonoBehaviour
                     cash.AddMoney(x);
                     Destroy(PlantYouPick);
                // }
-                if (cashRegister != null)
-                {
-                    cashRegister.CompleteTransaction();
-                }
+                //if (cashRegister != null)
+                //{
+                //    cashRegister.CompleteTransaction();
+                //}
                 //
                 NextState();
             }

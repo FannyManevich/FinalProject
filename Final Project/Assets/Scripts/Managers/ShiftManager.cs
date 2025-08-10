@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShiftManager : MonoBehaviour
 {
+    public static event Action<int> OnTransactionCompleted;
+
     [Header("Managers:")]
     [SerializeField] private MoneyManager moneyManager;
 
@@ -83,5 +86,9 @@ public class ShiftManager : MonoBehaviour
         revenueLost = 0;
         customersServed = 0;
         customersLost = 0;
-    }   
+    }
+    public static void TriggerTransaction(int amount)
+    {
+        OnTransactionCompleted?.Invoke(amount);
+    }
 }

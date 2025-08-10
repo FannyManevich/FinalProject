@@ -1,11 +1,10 @@
 using UnityEngine;
 using TMPro;
-
 public class MoneyManager : MonoBehaviour
 {
+    [Header("Money text:")]
     [SerializeField] private TextMeshProUGUI MoneyText;
     public int CurrentMoney { get; private set; } = 0;
-
     public void AddMoney(int Price)
     {
         CurrentMoney += Price;

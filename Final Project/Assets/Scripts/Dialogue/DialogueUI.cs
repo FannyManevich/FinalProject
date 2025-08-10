@@ -1,5 +1,4 @@
 // Ignore Spelling: Dialogue npc diff
-
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -32,7 +31,6 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] public Sprite[] waterIcons;
 
     public PlantSO emptyPlant;
-
     private void Start()
     {
         cancelButton.onClick.AddListener(EndNpcDialogue);
@@ -58,7 +56,6 @@ public class DialogueUI : MonoBehaviour
             dm.EndNpcDialogue -= EndNpcDialogue;
         }
     }
-
     public void DisplayPlantRequest(PlantSO randomPlantSO)
     {
         if (randomPlantSO == null)

@@ -1,5 +1,4 @@
 // Ignore Spelling: Dialogue Npc
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
@@ -19,8 +18,8 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
 
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
-        inputActions.Player.Interact.performed += OnInteract;        
-             
+        inputActions.Player.Interact.performed += OnInteract;
+
         inputActions.UI.Book.performed += OnBook;
         inputActions.UI.Help.performed += OnHelp;
         inputActions.UI.Cancel.performed += OnCancel;
@@ -35,7 +34,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
         inputActions.Player.Interact.performed -= OnInteract;
 
         inputActions.UI.Book.performed -= OnBook;
-        inputActions.UI.Help.performed -= OnHelp;       
+        inputActions.UI.Help.performed -= OnHelp;
         inputActions.UI.Cancel.performed -= OnCancel;
         inputActions.UI.Click.performed -= OnClick;
 
@@ -63,7 +62,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
         beacon.inputChannel.RaiseHelp();
         Debug.Log("InputReader: Help pressed (H)");
     }
- 
+
     public void OnCancel(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -82,7 +81,6 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
             // Debug.Log("Left click detected!");
         }
     }
-
     public void OnPoint(InputAction.CallbackContext context)
     {
         throw new NotImplementedException();

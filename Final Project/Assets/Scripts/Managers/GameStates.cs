@@ -1,5 +1,21 @@
+// Ignore Spelling: NPC
+
 namespace Assets.Scripts.Managers
 {
+    public enum RegisterState
+    {
+        Free,
+        WaitingForPlayer,
+        WaitingForPlant,
+        Processing
+    }
+    public enum PlayerState
+    {
+        Moving,
+        HoldPlant,
+        InRestock,
+        InRegister
+    }
     public enum NPC_State
     {
         WalkToFlower,
@@ -11,8 +27,8 @@ namespace Assets.Scripts.Managers
     public enum GameState
     {
         MainMenu,
-        UI,
         Playing,
+        Help,
         Book,
         Dialogue,
         EndShift

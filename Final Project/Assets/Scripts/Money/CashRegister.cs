@@ -1,201 +1,157 @@
 using System.Collections;
 using UnityEngine;
+using Assets.Scripts.Managers;
+using System;
 
 public class CashRegister : MonoBehaviour
 {
-    [Header("Component References")]
+    public static CashRegister Instance { get; private set; }
+    public static event Action<PlantSO> OnPlantRequestGenerated;
+    public static event Action OnInteractionEnded;
+
+    [Header("Component References:")]
     [SerializeField] private DialogueManager dialogueManager;
-    [SerializeField] private GameStateManager instance;
     [SerializeField] private MoneyManager cash;
+    [SerializeField] private ShiftManager shiftManager;
+    [SerializeField] private PlayerBehavior playerBehavior;
 
-    [Header("Player & NPC")]
-    public PlayerSO activePlayer;
-    public PlayerBehavior pb;
- 
-    [Header("Plant & Request Data")]
-    [SerializeField] private PlantSO[] allPlants;
-    public PlantSO playerPickedPlant;
+    [Header("State:")]
+    [SerializeField] private RegisterState currentState = RegisterState.Free;
 
-    [SerializeField] private float waitForPlayerDialogue = 3f;
+    [Header("Player & NPC:")]
 
+    [Header("Settings:")]
+    [SerializeField] private string playerTag = "Player";
+    [SerializeField] private float dialogueDelay = 2.0f;
+
+    private PlantSO currentPlantRequest;
     private bool playerInZone = false;
-    private bool npcInZone = false;
-    private bool playerDialogueShown = false;
-    private bool waitingForPlant = false;
-    private PlantSO currentRequest = null;
-    private PlantSO deliveredPlant = null;
-
-    void Start()
+    void Awake()
     {
-        if (pb == null) pb = FindObjectOfType<PlayerBehavior>();
-        if (dialogueManager == null) dialogueManager = FindObjectOfType<DialogueManager>();
-        if (instance == null) instance = FindObjectOfType<GameStateManager>();
-
-        if (instance != null)
+        if (Instance != null && Instance != this)
         {
-            activePlayer = instance.selectedPlayerSO;
+            Destroy(gameObject);
         }
+        else
+        {
+            Instance = this;
+        }  
+    }
+    private void Update()
+    {
+        if (playerBehavior == null)
+        {
+           // Debug.LogError("In CashRegister: cant find PlayerBehavior in the scene.");
+            playerBehavior = FindObjectOfType<PlayerBehavior>();
+        }
+    }
+    private void Start()
+    {
+        SetState(RegisterState.Free);
     }
     private void OnEnable()
-    { 
-        NPCSpawnerScript.OnCustomerSpawnedEvent += ReadNPCData;           
+    {
+        NPCLineManager.LineEnterEvent += HandleNpcArrival;
+      //  NPCSpawner.OnCustomerSpawnedEvent += ReadNPCData;           
     }
     private void OnDisable()
-    {                                                                     
-        NPCSpawnerScript.OnCustomerSpawnedEvent -= ReadNPCData;       
-    }
-    private void ReadNPCData(GameObject newNPC)
     {
-        if (newNPC == null)
-        {
-            Debug.LogError("newNPC is null in ReadNPCData!");
-            return;
-        }
+        NPCLineManager.LineEnterEvent -= HandleNpcArrival;
+       // NPCSpawner.OnCustomerSpawnedEvent -= ReadNPCData;       
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInZone = true;           
-        }
-
-        if (other.CompareTag("Boris"))
-        {
-            npcInZone = true;
-        }
-        if (playerInZone && npcInZone && !playerDialogueShown && currentRequest == null)
-        {
-            Debug.Log("In CashRegister: player and NPC r in cash register");
-            playerDialogueShown = true;
-
-            dialogueManager.StartPlayerDialogue();
-
-            if (pb.PlantYouAreHolding != null && waitingForPlant)
-            {
-                DeliverPlant();
-                //dialogueManager.EndPlayerDialogue();
-            }
-            else if (pb.PlantYouAreHolding == null && !waitingForPlant && currentRequest == null)
-            {
-                dialogueManager.StartPlayerDialogue();
-                StartCoroutine(GenerateNewRequestRoutine());
-            }
-            //else {
-            //    StartCoroutine(WaitForPlayerDialogue()); 
-            //}
+            playerInZone = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             playerInZone = false;
-
-        if (other.CompareTag("Boris"))
-        {
-            Debug.Log("NPC has left the register zone. Resetting state.");
-            npcInZone = false;
-            ResetState();
-        }
     }
-    IEnumerator WaitForPlayerDialogue()
+    private IEnumerator GenerateRequestRoutine()
     {
-
-        yield return new WaitForSeconds(waitForPlayerDialogue);
+        SetState(RegisterState.Processing);
+        dialogueManager.StartPlayerDialogue();
+        yield return new WaitForSeconds(dialogueDelay);
         dialogueManager.EndPlayerDialogue();
 
-        ////Create random plant request
+        currentPlantRequest = InventoryManager.Instance.GetRandomPlant();
+        Debug.Log("In CashRegister: Random plant request: " + currentPlantRequest.name);
 
-        //currentRequest = GetRandomPlant();
-        //emptyPlant = currentRequest;
-
-        //dialogueManager.StartNpcDialogue(emptyPlant);
-        //waitingForPlant = true;
-
-        //ShowRequestIcon();
-    }
-    private IEnumerator GenerateNewRequestRoutine()
-    {
-        if (waitingForPlant)
+        if (currentPlantRequest != null)
         {
-            yield break;
-        }
-
-        yield return new WaitForSeconds(waitForPlayerDialogue);
-        dialogueManager.EndPlayerDialogue();
-
-        currentRequest = GetRandomPlant();
-        Debug.Log("In CashRegister: Random plant request: " + currentRequest.name);
-        if (currentRequest != null)
-        {
-            dialogueManager.StartNpcDialogue(currentRequest);
-            waitingForPlant = true;
+            dialogueManager.StartNpcDialogue(currentPlantRequest);
+            OnPlantRequestGenerated?.Invoke(currentPlantRequest);
+            SetState(RegisterState.WaitingForPlant);
+            Debug.Log($"In CashRegister: new request generated: {currentPlantRequest.name}");
         }
         else
         {
-            Debug.LogError("CashRegister: Failed to get a random plant. Check allPlants array in the Inspector");
+            Debug.LogError("In CashRegister: failed to get a random plant. Check allPlants array in the Inspector");
+            ResetCashRegister();
         }
     }
-    
-    //player puts plant at cash reg
-    public void DeliverPlant()
+    private void HandleNpcArrival()
     {
-        if (!waitingForPlant || pb.PlantYouAreHolding == null) return;
-      
-        deliveredPlant = pb.PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
-        //waitingForPlant = false;
+        if (currentState == RegisterState.Free)
+        {
+            Debug.Log("NPC has arrived. Waiting for Player.");
+            SetState(RegisterState.WaitingForPlayer);           
+        }
+    }
+    public void PlayerInteraction()
+    {
+        if (!playerInZone) return;
 
-        bool correct = PlantMatching.CheckPlantMatch(deliveredPlant, currentRequest);
+        switch (currentState)
+        {
+            case RegisterState.WaitingForPlayer:
+                StartCoroutine(GenerateRequestRoutine());
+                break;
+            case RegisterState.WaitingForPlant:
+                CheckDeliveredPlant();
+                break;
+        }
+    }
+    public void CheckDeliveredPlant()
+    {
+        PlantSO deliveredPlant = playerBehavior.HeldPlantData;
 
-        if (correct)
+        if (deliveredPlant == null)
+        {
+            Debug.Log("Player has no plant.");
+            return;
+        }
+
+        if (deliveredPlant == currentPlantRequest)
         {
             Debug.Log("In CashRegister: Correct plant! Tip added.");
             cash.AddMoney(deliveredPlant.Price);
             cash.AddTip(5);
+            shiftManager.AddCustomerServed();
+            shiftManager.AddRevenue(deliveredPlant.Price);
         }
         else
         {
             Debug.Log("Wrong plant! -10$");
             cash.SubtractMoney(10);
-        }
-
-        Destroy(pb.PlantYouAreHolding);
-        pb.PlantYouAreHolding = null;
-
-        ResetState();
+        }      
+        ResetCashRegister();
     }
-    public void CompleteTransaction()
+    private void ResetCashRegister()
     {
-        //Debug.Log("In CashRegister: Transaction complete. Ready for new request.");
-        ResetState();
-        //waitingForPlant = false;
+        dialogueManager.EndnpcDialogue(); 
+        currentPlantRequest = null;
+        OnInteractionEnded?.Invoke();
+        SetState(RegisterState.Free);
+        Debug.Log("In CashRegister: Cash Register Reset.");
     }
-    private PlantSO GetRandomPlant()
+    private void SetState(RegisterState newState)
     {
-        if (allPlants == null || allPlants.Length == 0)
-        {
-            Debug.LogWarning("In CashRegister: allPlants array is empty or null.");
-            return null;
-        }
-        int randomIndex = Random.Range(0, allPlants.Length);
-        return allPlants[randomIndex];
-    }
-    private void ResetState()
-    {
-        //Debug.Log("--- RESETTING CASH REGISTER STATE ---");
-        //var plantToDestory = pb.PlantYouAreHolding;
-        //pb.PlantYouAreHolding = null;
-
-        //GameObject plantToDestroy = pb.PlantYouAreHolding;
-        //if (plantToDestroy != null)
-        //{
-        //    plantToDestroy = null;
-        //    Destroy(plantToDestroy);           
-        //}
-
-        //pb.PlantYouAreHolding = null;
-        deliveredPlant = null;
-        currentRequest = null;
-        waitingForPlant = false;
-        playerDialogueShown = false;
+        if (currentState == newState) return;
+        currentState = newState;
     }
 }

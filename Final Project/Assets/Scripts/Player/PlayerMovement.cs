@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] BeaconSO beacon;
+    [Header("Beacon:")]
+    [SerializeField] private BeaconSO beacon;
 
-    public Animator animator;
-    public SpriteRenderer sr;
+    [Header("Sprite & animator:")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sr;
 
-    public float moveSpeed = 5f;
-
+    [Header("Sprite & animator:")]
+    [SerializeField] private float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;
-
 
     void Start()
     {
@@ -82,5 +83,4 @@ public class PlayerMovement : MonoBehaviour
             beacon.inputChannel.OnMoveEvent -= OnMove;
         }
     }
-
 }

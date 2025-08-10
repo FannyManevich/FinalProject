@@ -1,104 +1,145 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Assets.Scripts.Managers;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public PlayerSO playerData;
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
+    [Header("Player Data & speed:")]
+    [SerializeField] private PlayerSO playerData;
+    [SerializeField] private float moveSpeed = 5f;
 
-    [SerializeField] GameObject PlantHoldPos;
+    [Header("Input channel:")]
     [SerializeField] InputChannel inputChannel;
 
-    public bool onRegister;
-    public bool onPlant;
-    public bool onRestock;
-    public GameObject RestockStation;
-    public GameObject PlantYouAreOn;
-    public GameObject PlantYouAreHolding;
+    [Header("Plant holding position:")]
+    [SerializeField] private GameObject PlantHoldPos;
 
-    void Start()
+    [Header("Tags:")]
+    [SerializeField] private string cashRegisterTag = "Register";
+    [SerializeField] private string restockTag = "Restock";
+    [SerializeField] private string plantTag = "Plant";
+
+    [Header("Restock station:")]
+    [SerializeField] private PlantRestock restockStation;
+
+    public PlayerState CurrentState { get; private set; }
+    public PlantSO HeldPlantData => playerData != null ? playerData.plantPicked : null;
+
+    private GameObject PlantYouAreOn;
+    private GameObject HoldingPlant;
+    private void Awake()
     {
-        inputChannel.OnInteractEvent += Interact;
-        rb = GetComponent<Rigidbody2D>();
-        onRegister = false;
-        onPlant = false;
+        if (playerData != null)
+        {
+            playerData.plantPicked = null;
+        }
+        ChangeState(PlayerState.Moving);
+    }
+    private void OnEnable()
+    {
+        if (inputChannel != null) inputChannel.OnInteractEvent += Interact;
+    }
+    private void OnDisable()
+    {
+        if (inputChannel != null) inputChannel.OnInteractEvent -= Interact;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void Update()
     {
-        if (collider.gameObject.name == "CashRegister")
+        HandleRestock();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(plantTag))
         {
-            onRegister = true;
+            PlantYouAreOn = other.gameObject;
         }
-        else if (collider.gameObject.tag == "Restock")
+        else if (other.CompareTag(cashRegisterTag))
         {
-            onRestock = true;
-            RestockStation = collider.gameObject;
-        }
-        else if (collider.gameObject.tag == "Plant")
-        {
-            onPlant = true;
-            PlantYouAreOn = collider.gameObject;
+            ChangeState(PlayerState.InRegister);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collider.gameObject.name == "CashRegister")
+        if (other.gameObject == PlantYouAreOn)
         {
-            onRegister = false;
-        }
-        else if (collider.gameObject.tag == "Restock")
-        {
-            onRestock = false;
-            RestockStation = null;
-        }
-        else if (collider.gameObject.tag == "Plant")
-        {
-            onPlant = false;
             PlantYouAreOn = null;
         }
+        else if (other.CompareTag(cashRegisterTag))
+        {
+            if (CurrentState == PlayerState.InRegister)
+            {
+                ChangeState(PlayerState.Moving);
+            }
+        }
     }
-
     public void Interact()
     {
-        if (onRegister == true)
+        switch (CurrentState)
         {
-            NPCEventManager.RegisterRealese();
-        }
-        else if (PlantYouAreHolding == null)
-        {
-            if (onPlant == true)
-            {
-                PlantYouAreHolding = PlantYouAreOn;
-                //Fany added
-                //PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = false;
-                //
-                PlantYouAreHolding.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
-
-                //Fany added
-                playerData.plantPicked = PlantYouAreHolding.GetComponent<Plant>().currentPlantType;
-                //
-            }
-            else
-            {
-                if (onRestock)
+            case PlayerState.Moving:
+                TryPickUpPlant();
+                break;
+            case PlayerState.HoldPlant:
+                DropPlant();
+                break;
+            case PlayerState.InRegister:
+                CashRegister.Instance.PlayerInteraction();
+                break;
+            case PlayerState.InRestock:
+                if (restockStation != null)
                 {
-                    RestockStation.GetComponent<PlantRestock>().restock();
+                    restockStation.RequestPlant();
                 }
-            }
+                break;
         }
-        else
+    }
+    private void ChangeState(PlayerState newState)
+    {
+        if (CurrentState == newState) return;
+
+        CurrentState = newState;
+    }
+    private void TryPickUpPlant()
+    {
+        if (PlantYouAreOn != null)
         {
-            PlantYouAreHolding.transform.position = transform.position;
-            PlantYouAreHolding.GetComponent<PlantHolding>().StopFollowHolder();
-            //Fany added
-            //PlantYouAreHolding.GetComponents<BoxCollider2D>().FirstOrDefault(x => !x.isTrigger).enabled = true;
-            //
-            PlantYouAreHolding = null;
+            HoldingPlant = PlantYouAreOn;
+            HoldingPlant.GetComponent<PlantHolding>().FollowHolder(PlantHoldPos);
+
+            var plantComponent = HoldingPlant.GetComponent<Plant>();
+            if (playerData != null && plantComponent != null)
+            {
+                playerData.plantPicked = plantComponent.currentPlantType;
+            }
+            ChangeState(PlayerState.HoldPlant);
+        }
+    }
+    private void DropPlant()
+    {
+        if (HoldingPlant != null)
+        {
+            HoldingPlant.GetComponent<PlantHolding>().StopFollowHolder();
+            HoldingPlant = null;
+
+            if (playerData != null)
+            {
+                playerData.plantPicked = null;
+            }
+            ChangeState(PlayerState.Moving);
+        }
+    }
+    private void HandleRestock()
+    {
+        if (restockStation == null || CurrentState == PlayerState.HoldPlant || CurrentState == PlayerState.InRegister)
+        {
+            return;
+        }
+        if (CurrentState == PlayerState.InRestock)
+        {
+            ChangeState(PlayerState.Moving);
         }
     }
 }
