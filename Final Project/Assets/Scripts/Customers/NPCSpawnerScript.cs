@@ -36,7 +36,7 @@ public class NPCSpawnerScript : MonoBehaviour
                 npcIndex = 0;
             }
 
-            GameObject c = Instantiate(CustomerPrefab[CustomerType], transform.position, Quaternion.identity);
+            GameObject c = Instantiate(CustomerPrefab[CustomerType], new Vector3(14,-6,0), Quaternion.identity);
             if (CustomerPrefab != null)
             {
                 c.GetComponent<SpriteRenderer>().sprite = npcList[npcIndex].NPC_portrait;

@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 7308198310856913237}
   - component: {fileID: -7889776427896770483}
   - component: {fileID: 3907513888626611321}
+  - component: {fileID: -8984427375547504396}
   m_Layer: 3
   m_Name: SecondCustomer.prefab
   m_TagString: Boris
@@ -396,6 +397,8 @@ MonoBehaviour:
   sr: {fileID: 0}
   CurrentState: 1
   requestedPlant: {fileID: 0}
+  cash: {fileID: 0}
+  impatiencePenalty: 10
 --- !u!61 &3907513888626611321
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -441,6 +444,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6668081, y: 2.2934496}
   m_EdgeRadius: 0
+--- !u!195 &-8984427375547504396
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246296473204041928}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.45
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 8.26
+  m_BaseOffset: 4.13
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &3446920658394853491
 GameObject:
   m_ObjectHideFlags: 0
