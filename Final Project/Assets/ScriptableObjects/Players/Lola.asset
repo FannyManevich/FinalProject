@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 928d6f6d87971f94a9db1611f79ae89f, type: 3}
-  m_Name: Shira
+  m_Name: Lola
   m_EditorClassIdentifier: 
-  playerName: Shira
+  playerName: Lola
   playerPortrait: {fileID: 21300000, guid: 06e273faba3d41b4287cbc76e672413f, type: 3}
-  sentences:
-  - Hi! m\y name is shira
+  plantPicked: {fileID: 0}

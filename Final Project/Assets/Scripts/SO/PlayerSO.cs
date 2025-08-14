@@ -7,8 +7,5 @@ public class PlayerSO : ScriptableObject
     public string playerName;
     public Sprite playerPortrait;
     public PlantSO plantPicked;
-
-    [TextArea(3, 10)]
-    public string[] sentences;
 }
 
