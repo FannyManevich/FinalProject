@@ -243,14 +243,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 475f5aa10abcc8e429da87fa91703d6e, type: 2}
   moveSpeed: 5
-  PlantHoldPos: {fileID: 3480954104359111407}
   inputChannel: {fileID: 11400000, guid: 4a1efbee397abe346a3d78fa08d70b89, type: 2}
-  onRegister: 0
-  onPlant: 0
-  onRestock: 0
-  RestockStation: {fileID: 0}
-  PlantYouAreOn: {fileID: 0}
-  PlantYouAreHolding: {fileID: 0}
+  PlantHoldPos: {fileID: 3480954104359111407}
+  cashRegisterTag: Register
+  restockTag: Restock
+  plantTag: Plant
+  restockStation: {fileID: 0}
 --- !u!114 &8315155219231710213
 MonoBehaviour:
   m_ObjectHideFlags: 0
