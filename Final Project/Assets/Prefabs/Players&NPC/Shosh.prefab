@@ -314,8 +314,8 @@ MonoBehaviour:
   WaitTime: 500
   Plants: []
   CurrentCustomerNumber: 0
-  animator: {fileID: 0}
-  sr: {fileID: 0}
+  animator: {fileID: 7308198310856913237}
+  sr: {fileID: 7885024189506975412}
   CurrentState: 0
 --- !u!50 &3945025627511453370
 Rigidbody2D:

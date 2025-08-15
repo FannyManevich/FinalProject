@@ -393,10 +393,10 @@ MonoBehaviour:
   WaitTime: 2500
   Plants: []
   CurrentCustomerNumber: 0
-  animator: {fileID: 0}
-  sr: {fileID: 0}
+  animator: {fileID: 7308198310856913237}
+  sr: {fileID: 7885024189506975412}
   CurrentState: 1
-  requestedPlant: {fileID: 0}
+  requestedPlant: {fileID: 11400000, guid: 76595dc5c5630944b9a2cf5b1b4a8cfd, type: 2}
   cash: {fileID: 0}
   impatiencePenalty: 10
 --- !u!61 &3907513888626611321
