@@ -61,14 +61,14 @@ public class CashRegister : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
         {
             playerInZone = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(playerTag))
             playerInZone = false;
     }
     private IEnumerator GenerateRequestRoutine()

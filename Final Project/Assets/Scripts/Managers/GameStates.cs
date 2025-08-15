@@ -28,8 +28,7 @@ namespace Assets.Scripts.Managers
     {
         MainMenu,
         Playing,
-        Help,
-        Book,
+        Panels,
         Dialogue,
         EndShift
     }

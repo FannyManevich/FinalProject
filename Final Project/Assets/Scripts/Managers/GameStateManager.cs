@@ -9,7 +9,10 @@ public class GameStateManager : MonoBehaviour
     
     [Header("Beacon:")]
     [SerializeField] private BeaconSO beacon;
-  
+
+    [Header("Managers:")]
+    [SerializeField] private UIManager uIManager;
+
     public event Action<GameState> OnGameStateChange;
 
     [Header("Settings:")]
@@ -76,20 +79,26 @@ public class GameStateManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Playing:
+                Time.timeScale = 1f;
                 SwitchToPlayerInput();
                 Debug.Log("Switched to Player action map.");
                 break;
             case GameState.MainMenu:
-                Debug.Log("Switched to UI action map.");                
+                Time.timeScale = 1f;
+                Debug.Log("Switched to UI action map.");
+                TransitionToScene("Main-Menu");
                 break;
-            case GameState.Help:
-             //   SwitchToUIInput();
+            case GameState.Panels:
+                Time.timeScale = 0f;
+                SwitchToUIInput();
                 Debug.Log("Switched to UI action map.");
                 break;
             case GameState.Dialogue:
-               // SwitchToUIInput();
+                Time.timeScale = 0f;
+                // SwitchToUIInput();
                 break;
             case GameState.EndShift:
+                Time.timeScale = 0f;
                 SwitchToUIInput();
                 break;
             default:
@@ -132,7 +141,7 @@ public class GameStateManager : MonoBehaviour
     public void TransitionToScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        Debug.Log("In GameStateManager:  Transitioning to: " + sceneName);
+        //Debug.Log("In GameStateManager:  Transitioning to: " + sceneName);
     } 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -150,7 +159,7 @@ public class GameStateManager : MonoBehaviour
         if (spawnObject != null)
         {
             playerSpawnPoint = spawnObject.transform;
-            Debug.Log("In GameStateManager: Found PlayerSpawn point via tag.");
+           // Debug.Log("In GameStateManager: Found PlayerSpawn point via tag.");
         }
         else
         {

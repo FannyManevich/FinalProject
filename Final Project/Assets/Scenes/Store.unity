@@ -30285,6 +30285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
+  uIManager: {fileID: 0}
   storeSceneName: Store
   startingState: 0
   playerSpawnPoint: {fileID: 1983748427}
@@ -31759,7 +31760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ce51183e17d444abd4a326f816c34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerNumber: 0
+  CustomerNumber: 2
 --- !u!4 &915724648
 Transform:
   m_ObjectHideFlags: 0
@@ -31787,12 +31788,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2e872d26fe3ac49addc7726fbb4098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerPrefabs: []
+  customerPrefabs:
+  - {fileID: 3246296473204041928, guid: 95343275715554348878c24386741a57, type: 3}
+  - {fileID: 3246296473204041928, guid: b8980c5ff293e8748a6456b6335bbe9d, type: 3}
+  - {fileID: 3246296473204041928, guid: ab697bcc1648e064cac06a66c4082d68, type: 3}
   npcList:
   - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
   - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
   - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
-  minSpawnTime: 1400
+  minSpawnTime: 1000
   maxSpawnTime: 3400
 --- !u!1 &953723262
 GameObject:

@@ -28,6 +28,8 @@ public class PlayerBehavior : MonoBehaviour
 
     private GameObject PlantYouAreOn;
     private GameObject HoldingPlant;
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
     private void Awake()
     {
         if (playerData != null)
@@ -36,7 +38,11 @@ public class PlayerBehavior : MonoBehaviour
         }
         ChangeState(PlayerState.Moving);
     }
-    private void OnEnable()
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+    }
+        private void OnEnable()
     {
         if (inputChannel != null) inputChannel.OnInteractEvent += Interact;
     }
@@ -45,10 +51,6 @@ public class PlayerBehavior : MonoBehaviour
         if (inputChannel != null) inputChannel.OnInteractEvent -= Interact;
     }
 
-    private void Update()
-    {
-        HandleRestock();
-    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(plantTag))
@@ -58,6 +60,10 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag(cashRegisterTag))
         {
             ChangeState(PlayerState.InRegister);
+        }
+        else if (other.CompareTag(restockTag))
+        {
+            ChangeState(PlayerState.InRestock);
         }
     }
 
@@ -70,6 +76,13 @@ public class PlayerBehavior : MonoBehaviour
         else if (other.CompareTag(cashRegisterTag))
         {
             if (CurrentState == PlayerState.InRegister)
+            {
+                ChangeState(PlayerState.Moving);
+            }
+        }
+        else if (other.CompareTag(restockTag))
+        {
+            if (CurrentState == PlayerState.InRestock)
             {
                 ChangeState(PlayerState.Moving);
             }
@@ -128,17 +141,6 @@ public class PlayerBehavior : MonoBehaviour
             {
                 playerData.plantPicked = null;
             }
-            ChangeState(PlayerState.Moving);
-        }
-    }
-    private void HandleRestock()
-    {
-        if (restockStation == null || CurrentState == PlayerState.HoldPlant || CurrentState == PlayerState.InRegister)
-        {
-            return;
-        }
-        if (CurrentState == PlayerState.InRestock)
-        {
             ChangeState(PlayerState.Moving);
         }
     }

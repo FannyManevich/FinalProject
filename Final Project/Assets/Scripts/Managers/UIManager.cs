@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Managers;
+using System;
 
 public class UIManager : MonoBehaviour
 {   
@@ -34,11 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject SideB;
     private int PageNumber = 0;
     private void OnEnable()
-    {
-        if (beacon?.gameStateChannel != null)
-        {
-            beacon.gameStateChannel.StateEnter += HandleGameStateChange;
-        }
+    {      
         if(beacon?.inputChannel != null)
         {
             beacon.inputChannel.OnBookEvent += OpenBook; 
@@ -54,12 +51,9 @@ public class UIManager : MonoBehaviour
         closeBookButton.onClick.AddListener(CloseAllPanels);
         closeHelpButton.onClick.AddListener(CloseAllPanels);
     }
+
     private void OnDisable()
     {
-        if (beacon?.gameStateChannel != null)
-        {
-            beacon.gameStateChannel.StateEnter -= HandleGameStateChange;
-        }
         if (beacon?.inputChannel != null)
         {
             beacon.inputChannel.OnBookEvent -= OpenBook;
@@ -75,37 +69,19 @@ public class UIManager : MonoBehaviour
         closeBookButton.onClick.RemoveListener(CloseAllPanels);
         closeHelpButton.onClick.RemoveListener(CloseAllPanels);
     }
-    private void HandleGameStateChange(GameState newState)
-    {
-        CloseAllPanels();
-        switch (newState)
-        {
-            case GameState.Playing:
-                CloseAllPanels();
-                break;
-            case GameState.Book:
-                bookPanel.SetActive(true);
-                closeBookButton.gameObject.SetActive(true);
-                break;
-            case GameState.Help:
-                helpPanel.SetActive(true);
-                closeHelpButton.gameObject.SetActive(true);
-                break;
-            case GameState.EndShift:
-                endShiftPanel.SetActive(true);
-                shiftManager?.ShowEndOfShiftPanel();
-                break;
-        }
-    }
     public void OpenBook()
     {
         //Debug.Log("OpenBook called");
-        GameStateManager.Instance.ChangeGameState(GameState.Book);
+        bookPanel.SetActive(true);
+        closeBookButton.gameObject.SetActive(true);
+        GameStateManager.Instance.ChangeGameState(GameState.Panels);
     }
     public void OpenHelp()
-    { 
+    {
         //Debug.Log("OpenHelp called");
-        GameStateManager.Instance.ChangeGameState(GameState.Help);      
+        helpPanel.SetActive(true);
+        closeHelpButton.gameObject.SetActive(true);
+        GameStateManager.Instance.ChangeGameState(GameState.Panels);
     }
     public void OnHomeClicked()
     {
@@ -138,7 +114,7 @@ public class UIManager : MonoBehaviour
     public void TriggerEndOfDay()
     {
         Debug.Log("In UIManager: End of day triggered. Opening shift panel.");
-        GameStateManager.Instance.ChangeGameState(GameState.EndShift);
+        
         if (shiftPanel != null)
         {
             shiftPanel.SetActive(true);
@@ -148,8 +124,9 @@ public class UIManager : MonoBehaviour
         }
         if (shiftManager != null)
         {
-            shiftManager.ShowEndOfShiftPanel();
+            shiftManager?.ShowEndOfShiftPanel();
         }
+        GameStateManager.Instance.ChangeGameState(GameState.EndShift);
     }
     public void NextPage()
     {
