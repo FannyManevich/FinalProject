@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68b7ff243e18c4a45871da00b9816c1e, type: 3}
-  m_Name: Yael
+  m_Name: Sansy
   m_EditorClassIdentifier: 
   NPC_Id: 3
-  NPC_name: Yael
+  NPC_name: Sansy
   NPC_portrait: {fileID: 21300000, guid: b5bd9aca9ba6c134281e715794a376e4, type: 3}
-  NPC_Animation: {fileID: 0}
+  NPC_Animation: {fileID: 9100000, guid: 970260013e12afb4d91344df2798bfe7, type: 2}
   plantRequest: {fileID: 11400000, guid: 43388a2370c4a824bb0bbdcc23c051df, type: 2}

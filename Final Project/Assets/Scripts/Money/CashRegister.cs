@@ -13,7 +13,7 @@ public class CashRegister : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private MoneyManager cash;
     [SerializeField] private ShiftManager shiftManager;
-    [SerializeField] private PlayerBehavior playerBehavior;
+    private PlayerBehavior playerBehavior;
 
     [Header("State:")]
     [SerializeField] private RegisterState currentState = RegisterState.Free;
@@ -98,7 +98,7 @@ public class CashRegister : MonoBehaviour
     {
         if (currentState == RegisterState.Free)
         {
-            Debug.Log("NPC has arrived. Waiting for Player.");
+            Debug.Log("In CashRegister:  NPC has arrived. Waiting for Player.");
             SetState(RegisterState.WaitingForPlayer);           
         }
     }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6938691022606276292}
   - component: {fileID: 7690911126807476024}
   - component: {fileID: 1968103490065459605}
-  - component: {fileID: 7330797334376091345}
   m_Layer: 0
   m_Name: PlantObj
   m_TagString: Plant
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1477462969
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26c0048fef10dcf418b3c44425bfc086, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3991c0e265476f54a949685271205d32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,18 +119,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01068449, y: -0.32765937}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.6333333, y: 1.6066667}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.7677164, y: 0.43293428}
   m_EdgeRadius: 0
 --- !u!61 &7690911126807476024
 BoxCollider2D:
@@ -169,7 +168,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.6333333, y: 1.6066667}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -196,18 +195,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
   - {fileID: 11400000, guid: 3a864a38f158ce943a5524267d6ffa71, type: 2}
   - {fileID: 11400000, guid: 3a864a38f158ce943a5524267d6ffa71, type: 2}
-  currentPlantType: {fileID: 0}
---- !u!114 &7330797334376091345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979060039617683111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2919cc182da3d5140b651b6a89d96a06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  follow: 0
-  holder: {fileID: 0}
+  - {fileID: 11400000, guid: 36f11378b12dda245aaa081b7e561d9f, type: 2}
+  - {fileID: 11400000, guid: 76595dc5c5630944b9a2cf5b1b4a8cfd, type: 2}
+  - {fileID: 11400000, guid: c477500bff073974eb4e0a71905dc153, type: 2}
+  - {fileID: 11400000, guid: 939f8f100a2fd2343b3a652ff1555001, type: 2}
+  - {fileID: 11400000, guid: a7d2d471aa2475f499a84613dec954db, type: 2}
+  - {fileID: 11400000, guid: 402d819f05459864f9758c4e3b5053ec, type: 2}
+  - {fileID: 11400000, guid: 43388a2370c4a824bb0bbdcc23c051df, type: 2}
+  - {fileID: 11400000, guid: ce7b5b39e68acf342a4039e2349bf004, type: 2}
+  - {fileID: 11400000, guid: 3a864a38f158ce943a5524267d6ffa71, type: 2}
+  - {fileID: 11400000, guid: fdc67e1c82438574eb38baa299ca7058, type: 2}
+  - {fileID: 11400000, guid: 42b874a61b50d0e419ead9cbb3472777, type: 2}
+  - {fileID: 11400000, guid: 77db3bbdf8ab2aa49bbfd30f6e7a76af, type: 2}
+  - {fileID: 11400000, guid: 07ec515959dceee4f9e69dfb4405f7cd, type: 2}
+  - {fileID: 11400000, guid: 925f8d73a3165ce40b799ff94d8656ad, type: 2}
+  - {fileID: 11400000, guid: 660ad5e9d8c3ed64eac1c1967514d40d, type: 2}
+  - {fileID: 11400000, guid: ab75a7db90188c24d8716f799cafdf14, type: 2}
+  - {fileID: 11400000, guid: afe5a918f0fc2ca4286c175b055ade61, type: 2}

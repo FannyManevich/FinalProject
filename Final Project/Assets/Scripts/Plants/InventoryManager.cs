@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
-    public List<PlantSO> plantsInStock { get; private set; }
+    public List<PlantSO> PlantsInStock { get; private set; }
 
     [Header("Plant Databases")]
     [SerializeField] private List<PlantSO> allPossiblePlants;
@@ -23,24 +23,43 @@ public class InventoryManager : MonoBehaviour
     {
         UpdatePlantsInStock();
     }
-
     public void UpdatePlantsInStock()
     {
-        plantsInStock = new List<PlantSO>(allPossiblePlants);
-        Debug.Log($"Inventory Initialized. {plantsInStock.Count} plant types are in stock.");
+        PlantsInStock = new List<PlantSO>(allPossiblePlants);
+       // Debug.Log($"In InventoryManager: Inventory Initialized. {plantsInStock.Count} plant types are in stock.");
     }
     public List<PlantSO> GetAvailablePlants()
     {
-        return plantsInStock;
+        return PlantsInStock;
     }
     public PlantSO GetRandomPlant()
     {
-        if (plantsInStock == null || plantsInStock.Count == 0)
+        if (PlantsInStock == null || PlantsInStock.Count == 0)
         {
-            Debug.LogWarning("In CashRegister: allPlants array is empty or null.");
+            Debug.LogWarning("In InventoryManager: allPlants array is empty or null.");
             return null;
         }
-        int randomIndex = Random.Range(0, plantsInStock.Count);
-        return plantsInStock[randomIndex];
+        int randomIndex = Random.Range(0, PlantsInStock.Count);
+        return PlantsInStock[randomIndex];
+    }
+
+    public void Restock(PlayerBehavior player)
+    {
+        if (player.HeldPlantData != null)
+        {
+            Debug.Log("In PlantRestock: player is already holding a plant.");
+            return;
+        }
+
+        PlantSO randomPlant = GetRandomPlant();
+
+        if (randomPlant == null)
+        {
+            Debug.LogWarning("In PlantRestock: inventory manager  out of stock.");
+            return;
+        }
+
+        Debug.Log("In PlantRestock: giving " + randomPlant.name + " to the player.");
+        player.TakeFromStock(randomPlant);
     }
 }    
