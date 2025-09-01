@@ -45,13 +45,16 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlantYouAreOn = other.gameObject;
         }
-        else if (other.CompareTag(cashRegisterTag))
+        else if(CurrentState != PlayerState.HoldPlant)
         {
-            ChangeState(PlayerState.InRegister);
-        }
-        else if (other.CompareTag(restockTag))
-        {
-            ChangeState(PlayerState.InRestock);
+            if (other.CompareTag(cashRegisterTag))
+            {
+                ChangeState(PlayerState.InRegister);
+            }
+            else if (other.CompareTag(restockTag))
+            {
+                ChangeState(PlayerState.InRestock);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -136,12 +139,11 @@ public class PlayerBehavior : MonoBehaviour
             Debug.Log("Your already holding a plant.");
             return;
         }
-        PlantSO plantFromStock = InventoryManager.Instance.GetRandomPlant();
 
-        if (plantFromStock != null)
+        if (plantData != null)
         {
             HoldingPlant = Instantiate(plantPrefab, PlantHoldPos.transform.position, Quaternion.identity);
-            HoldingPlant.GetComponent<Plant>().Initialize(plantFromStock);
+            HoldingPlant.GetComponent<Plant>().Initialize(plantData);
 
             HoldingPlant.transform.SetParent(PlantHoldPos.transform);
             HoldingPlant.transform.localPosition = Vector3.zero;
