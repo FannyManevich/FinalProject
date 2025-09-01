@@ -6385,7 +6385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 2104457919}
   timerSlider: {fileID: 44235431}
-  MinutesPerDay: 5
+  MinutesPerDay: 1
   stopTimer: 0
 --- !u!1001 &153007929
 PrefabInstance:
