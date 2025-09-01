@@ -45,16 +45,13 @@ public class PlayerBehavior : MonoBehaviour
         {
             PlantYouAreOn = other.gameObject;
         }
-        else if(CurrentState != PlayerState.HoldPlant)
+        else if (other.CompareTag(cashRegisterTag))
         {
-            if (other.CompareTag(cashRegisterTag))
-            {
-                ChangeState(PlayerState.InRegister);
-            }
-            else if (other.CompareTag(restockTag))
-            {
-                ChangeState(PlayerState.InRestock);
-            }
+            ChangeState(PlayerState.InRegister);
+        }
+        else if (other.CompareTag(restockTag))
+        {
+            ChangeState(PlayerState.InRestock);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -67,14 +64,28 @@ public class PlayerBehavior : MonoBehaviour
         {
             if (CurrentState == PlayerState.InRegister)
             {
-                ChangeState(PlayerState.Moving);
+                if (HoldingPlant != null)
+                {
+                    ChangeState(PlayerState.HoldPlant);
+                }
+                else
+                {
+                    ChangeState(PlayerState.Moving);
+                }
             }
         }
         else if (other.CompareTag(restockTag))
         {
             if (CurrentState == PlayerState.InRestock)
             {
-                ChangeState(PlayerState.Moving);
+                if (HoldingPlant != null)
+                {
+                    ChangeState(PlayerState.HoldPlant);
+                }
+                else
+                {
+                    ChangeState(PlayerState.Moving);
+                }
             }
         }
     }
