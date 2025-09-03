@@ -13,6 +13,7 @@ TagManager:
   - Boris
   - Shosh
   - Sansi
+  - UIManager
   layers:
   - Default
   - TransparentFX

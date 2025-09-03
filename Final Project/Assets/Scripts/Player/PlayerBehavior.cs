@@ -19,7 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private string plantTag = "Plant";
 
     public PlayerState CurrentState { get; private set; }
-    public PlantSO HeldPlantData => playerData != null ? playerData.plantPicked : null;
+    public PlantSO HeldPlantData;
     private GameObject PlantYouAreOn;
     private GameObject HoldingPlant;
 
@@ -121,7 +121,7 @@ public class PlayerBehavior : MonoBehaviour
         if (PlantYouAreOn != null && HoldingPlant == null)
         {
             HoldingPlant = PlantYouAreOn;
-
+            HeldPlantData = PlantYouAreOn.GetComponent<Plant>().currentPlantType;
             HoldingPlant.transform.SetParent(PlantHoldPos.transform);
             HoldingPlant.transform.localPosition = Vector3.zero;
             HoldingPlant.GetComponent<Collider2D>().enabled = false;

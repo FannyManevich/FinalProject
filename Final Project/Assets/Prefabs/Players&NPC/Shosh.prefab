@@ -400,15 +400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e86f38f6656b2943882c12c844f94b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineOffset: {x: 0, y: 0}
   TimerBar: {fileID: 6583394894738241726}
-  CurrentWaitTimer: 0
-  WaitTime: 500
-  Plants: []
-  CurrentCustomerNumber: 0
-  animator: {fileID: 0}
-  sr: {fileID: 0}
+  WaitTimePlant: 500
+  WaitTimeLine: 5000
   CurrentState: 0
+  Speed: 4
 --- !u!95 &7308198310856913237
 Animator:
   serializedVersion: 5
