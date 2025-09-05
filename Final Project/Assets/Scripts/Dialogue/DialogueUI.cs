@@ -14,7 +14,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] Button cancelButton;
 
     [Header("Managers:")]
-    [SerializeField] public DialogueManager dm;
+    [SerializeField] DialogueEvents dm;
     public Input playerInput;
 
     [Header("NPC ID:")]

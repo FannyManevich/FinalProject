@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
     }
     public void CloseAllPanels()
     {
-        Debug.Log("CloseAllPanels called");
+        //Debug.Log("CloseAllPanels called");
         bookPanel.SetActive(false);
         helpPanel.SetActive(false);        
         closeBookButton.gameObject.SetActive(false);

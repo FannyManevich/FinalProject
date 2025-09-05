@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 1809101029573124430}
   - component: {fileID: 4289462640998385692}
   - component: {fileID: 5498641544342822324}
-  - component: {fileID: -358993571317783173}
   - component: {fileID: 7703291111829071527}
+  - component: {fileID: -358993571317783173}
   m_Layer: 3
   m_Name: Female_Player
   m_TagString: Player
@@ -250,25 +250,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-358993571317783173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7397505846733420045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9599c92a33b4f4e4a9355213030aaa34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 1dea0d8939249874980cbf18cf52dbb7, type: 2}
-  beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
-  PlantHoldPos: {fileID: 5519395114897838377}
-  plantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
-  cashRegisterTag: Register
-  restockTag: Restock
-  plantTag: Plant
 --- !u!114 &7703291111829071527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +266,23 @@ MonoBehaviour:
   animator: {fileID: 5498641544342822324}
   sr: {fileID: 3798555732164395985}
   moveSpeed: 5
+--- !u!114 &-358993571317783173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397505846733420045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599c92a33b4f4e4a9355213030aaa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 1dea0d8939249874980cbf18cf52dbb7, type: 2}
+  beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
+  plantHoldPos: {fileID: 5519395114897838377}
+  plantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
+  cashRegisterTag: Register
+  restockTag: Restock
+  plantTag: Plant
+  heldPlantData: {fileID: 0}

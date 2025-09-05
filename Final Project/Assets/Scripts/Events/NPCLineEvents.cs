@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-public class NPCLineManager : MonoBehaviour
+public class NPCLineEvents : MonoBehaviour
 {
     public static event Action LineEnterEvent;
     public static event Action LineLeaveEvent;

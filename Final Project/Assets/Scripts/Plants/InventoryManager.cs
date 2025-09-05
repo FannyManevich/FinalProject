@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour
 
     public void Restock(PlayerBehavior player)
     {
-        if (player.HeldPlantData != null)
+        if (player.heldPlantData != null)
         {
             Debug.Log("In PlantRestock: player is already holding a plant.");
             return;

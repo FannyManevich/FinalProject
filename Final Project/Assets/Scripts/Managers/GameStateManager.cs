@@ -11,7 +11,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private BeaconSO beacon;
 
     [Header("Managers:")]
-    [SerializeField] private UIManager uIManager;
+    [SerializeField] private UIManager uiManager;
 
     public event Action<GameState> OnGameStateChange;
 
@@ -19,8 +19,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] private string storeSceneName = "Store";
     [SerializeField] private GameState startingState = GameState.MainMenu;
     [SerializeField] private Transform playerSpawnPoint;
-   // [Header("Plant Database:")]
-   // [SerializeField] private InventoryManager inventoryManager; 
+
     public GameState CurrentGameState { get; private set; }
     public PlayerSO SelectedPlayerSO { get; private set; }
     public GameObject CurrentPlayerGO { get; private set; }
@@ -52,11 +51,6 @@ public class GameStateManager : MonoBehaviour
     }
     void Start()
     {
-        //playerInput = FindObjectOfType<InputReader>()?.inputActions;
-        //if (playerInput == null)
-        //    Debug.LogError("GameStateManager: InputReader or its inputActions is null.");
-
-        //inventoryManager.UpdatePlantsInStock();
         ChangeGameState(startingState);          
     }
     private void OnEnable()
@@ -81,17 +75,17 @@ public class GameStateManager : MonoBehaviour
             case GameState.Playing:
                 Time.timeScale = 1f;
                 SwitchToPlayerInput();
-                Debug.Log("Switched to Player action map.");
+                //Debug.Log("Switched to Player action map.");
                 break;
             case GameState.MainMenu:
-                Time.timeScale = 1f;
-                Debug.Log("Switched to UI action map.");
+                Time.timeScale = 0f;
+                //Debug.Log("Switched to UI action map.");
                 TransitionToScene("Main-Menu");
                 break;
             case GameState.Panels:
                 Time.timeScale = 0f;
                 SwitchToUIInput();
-                Debug.Log("Switched to UI action map.");
+                //Debug.Log("Switched to UI action map.");
                 break;
             case GameState.Dialogue:
                 Time.timeScale = 0f;
@@ -171,7 +165,6 @@ public class GameStateManager : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
             Debug.Log("In GameStateManager:  Player object already exists in the scene.");
-           // CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
             return;
         }
 
@@ -181,13 +174,5 @@ public class GameStateManager : MonoBehaviour
             SelectedPlayerSO = PlayerSelector.selectedPlayerSO;
             //Debug.Log("In GameStateManager: Spawned player: " + SelectedPlayerSO.name);
         }
-        //else if (playerSpawnPoint == null)
-        //{
-        //    Debug.LogError("In GameStateManager: Cant spawn player, spawn point is missing.");
-        //}
-        //else
-        //{
-        //    Debug.LogError("Cannot spawn player, player wasn't selected in PlayerSelector.");
-        //}          
     } 
 }

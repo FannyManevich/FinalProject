@@ -10,7 +10,7 @@ public class CashRegister : MonoBehaviour
     public static event Action OnInteractionEnded;
 
     [Header("Component References:")]
-    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private DialogueEvents dialogueManager;
     [SerializeField] private MoneyManager cash;
     [SerializeField] private ShiftManager shiftManager;
     private PlayerBehavior playerBehavior;
@@ -18,11 +18,11 @@ public class CashRegister : MonoBehaviour
     [Header("State:")]
     [SerializeField] private RegisterState currentState = RegisterState.Free;
 
-    [Header("Player & NPC:")]
-
     [Header("Settings:")]
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private float dialogueDelay = 2.0f;
+    [SerializeField] int tip = 10;
+    [SerializeField] int penalty = 20;
 
     private PlantSO currentPlantRequest;
     private bool playerInZone = false;
@@ -51,12 +51,12 @@ public class CashRegister : MonoBehaviour
     }
     private void OnEnable()
     {
-        NPCLineManager.LineEnterEvent += HandleNpcArrival;
+        NPCLineEvents.LineEnterEvent += HandleNpcArrival;
       //  NPCSpawner.OnCustomerSpawnedEvent += ReadNPCData;           
     }
     private void OnDisable()
     {
-        NPCLineManager.LineEnterEvent -= HandleNpcArrival;
+        NPCLineEvents.LineEnterEvent -= HandleNpcArrival;
        // NPCSpawner.OnCustomerSpawnedEvent -= ReadNPCData;       
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +75,9 @@ public class CashRegister : MonoBehaviour
     {
         SetState(RegisterState.Processing);
         dialogueManager.StartPlayerDialogue();
+
         yield return new WaitForSeconds(dialogueDelay);
+
         dialogueManager.EndPlayerDialogue();
 
         currentPlantRequest = InventoryManager.Instance.GetRandomPlant();
@@ -118,7 +120,7 @@ public class CashRegister : MonoBehaviour
     }
     public void CheckDeliveredPlant()
     {
-        PlantSO deliveredPlant = playerBehavior.HeldPlantData;
+        PlantSO deliveredPlant = playerBehavior.heldPlantData;
 
         if (deliveredPlant == null)
         {
@@ -129,15 +131,15 @@ public class CashRegister : MonoBehaviour
         if (deliveredPlant == currentPlantRequest)
         {
             Debug.Log("In CashRegister: Correct plant! Tip added.");
-            cash.AddMoney(deliveredPlant.Price);
-            cash.AddTip(5);
+            cash.AddMoney(deliveredPlant.price);
+            cash.AddTip(tip);
             shiftManager.AddCustomerServed();
-            shiftManager.AddRevenue(deliveredPlant.Price);
+            shiftManager.AddRevenue(deliveredPlant.price);
         }
         else
         {
-            Debug.Log("Wrong plant! -10$");
-            cash.SubtractMoney(10);
+            Debug.Log("Wrong plant!");
+            cash.SubtractMoney(penalty);
         }      
         ResetCashRegister();
     }

@@ -1,7 +1,7 @@
 // Ignore Spelling: Dialogue Npc Endnpc Pdialogue
 using UnityEngine;
 using System;
-public class DialogueManager : MonoBehaviour
+public class DialogueEvents : MonoBehaviour
 {
     public event Action OnPlayerDialogue;
     public event Action<PlantSO> OnNpcDialogue;

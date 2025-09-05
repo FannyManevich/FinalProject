@@ -201,12 +201,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2448437470324316484}
   - component: {fileID: 7885024189506975412}
+  - component: {fileID: 7308198310856913237}
   - component: {fileID: 3172409584684854021}
   - component: {fileID: 3452712840568201755}
   - component: {fileID: 3540985005080990080}
   - component: {fileID: 2581657126148209889}
   - component: {fileID: 3945025627511453370}
-  - component: {fileID: 7308198310856913237}
   m_Layer: 3
   m_Name: Sansi
   m_TagString: Sansi
@@ -282,6 +282,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7308198310856913237
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246296473204041928}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 970260013e12afb4d91344df2798bfe7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &3172409584684854021
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -374,10 +395,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e86f38f6656b2943882c12c844f94b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerBar: {fileID: 6583394894738241726}
+  timerBar: {fileID: 6583394894738241726}
   WaitTimePlant: 500
   WaitTimeLine: 5000
-  CurrentState: 0
+  currentState: 0
   customerType: 0
 --- !u!114 &2581657126148209889
 MonoBehaviour:
@@ -391,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0250fcf1b35853c4cbe0532f2633d098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
+  Speed: 3
 --- !u!50 &3945025627511453370
 Rigidbody2D:
   serializedVersion: 4
@@ -419,27 +440,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &7308198310856913237
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246296473204041928}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 970260013e12afb4d91344df2798bfe7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3446920658394853491
 GameObject:
   m_ObjectHideFlags: 0

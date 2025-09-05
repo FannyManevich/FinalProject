@@ -10,7 +10,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] BeaconSO beacon;
 
     [Header("Plant Prefab & Holding Position:")]
-    [SerializeField] private GameObject PlantHoldPos;
+    [SerializeField] private GameObject plantHoldPos;
     [SerializeField] private GameObject plantPrefab;
 
     [Header("Tags:")]
@@ -19,9 +19,9 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private string plantTag = "Plant";
 
     public PlayerState CurrentState { get; private set; }
-    public PlantSO HeldPlantData;
-    private GameObject PlantYouAreOn;
-    private GameObject HoldingPlant;
+    public PlantSO heldPlantData;
+    private GameObject plantYouAreOn;
+    private GameObject holdingPlant;
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (other.CompareTag(plantTag))
         {
-            PlantYouAreOn = other.gameObject;
+            plantYouAreOn = other.gameObject;
         }
         else if (other.CompareTag(cashRegisterTag))
         {
@@ -56,15 +56,15 @@ public class PlayerBehavior : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == PlantYouAreOn)
+        if (other.gameObject == plantYouAreOn)
         {
-            PlantYouAreOn = null;
+            plantYouAreOn = null;
         }
         else if (other.CompareTag(cashRegisterTag))
         {
             if (CurrentState == PlayerState.InRegister)
             {
-                if (HoldingPlant != null)
+                if (holdingPlant != null)
                 {
                     ChangeState(PlayerState.HoldPlant);
                 }
@@ -78,7 +78,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             if (CurrentState == PlayerState.InRestock)
             {
-                if (HoldingPlant != null)
+                if (holdingPlant != null)
                 {
                     ChangeState(PlayerState.HoldPlant);
                 }
@@ -118,28 +118,29 @@ public class PlayerBehavior : MonoBehaviour
     }
     private void TryPickUpPlant()
     {
-        if (PlantYouAreOn != null && HoldingPlant == null)
+        if (plantYouAreOn != null && holdingPlant == null)
         {
-            HoldingPlant = PlantYouAreOn;
-            HeldPlantData = PlantYouAreOn.GetComponent<Plant>().currentPlantType;
-            HoldingPlant.transform.SetParent(PlantHoldPos.transform);
-            HoldingPlant.transform.localPosition = Vector3.zero;
-            HoldingPlant.GetComponent<Collider2D>().enabled = false;
+            holdingPlant = plantYouAreOn;
+            heldPlantData = plantYouAreOn.GetComponent<Plant>().CurrentPlantType;
+            holdingPlant.transform.SetParent(plantHoldPos.transform);
+            holdingPlant.transform.localPosition = Vector3.zero;
+            holdingPlant.GetComponent<Collider2D>().enabled = false;
 
-            PlantYouAreOn = null;         
+            plantYouAreOn = null;         
             ChangeState(PlayerState.HoldPlant);
         }
     }
     private void DropPlant()
     {
-        if (HoldingPlant != null)
+        if (holdingPlant != null)
         {
-            HoldingPlant.transform.SetParent(null); 
-            HoldingPlant.transform.position = this.transform.position;
+            holdingPlant.transform.SetParent(null); 
+            holdingPlant.transform.position = this.transform.position;
 
-            HoldingPlant.GetComponent<Collider2D>().enabled = true;
+            holdingPlant.GetComponent<Collider2D>().enabled = true;
 
-            HoldingPlant = null;        
+            holdingPlant = null;
+            heldPlantData = null;
             ChangeState(PlayerState.Moving);
         }
     }
@@ -153,12 +154,12 @@ public class PlayerBehavior : MonoBehaviour
 
         if (plantData != null)
         {
-            HoldingPlant = Instantiate(plantPrefab, PlantHoldPos.transform.position, Quaternion.identity);
-            HoldingPlant.GetComponent<Plant>().Initialize(plantData);
+            holdingPlant = Instantiate(plantPrefab, plantHoldPos.transform.position, Quaternion.identity);
+            holdingPlant.GetComponent<Plant>().Initialize(plantData);
 
-            HoldingPlant.transform.SetParent(PlantHoldPos.transform);
-            HoldingPlant.transform.localPosition = Vector3.zero;
-            HoldingPlant.GetComponent<Collider2D>().enabled = false;
+            holdingPlant.transform.SetParent(plantHoldPos.transform);
+            holdingPlant.transform.localPosition = Vector3.zero;
+            holdingPlant.GetComponent<Collider2D>().enabled = false;
         }           
         ChangeState(PlayerState.HoldPlant);
     }

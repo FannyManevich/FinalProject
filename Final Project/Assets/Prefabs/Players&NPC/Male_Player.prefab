@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5179512680032281568}
   - component: {fileID: 3872344987370552385}
   - component: {fileID: 3844279600968699117}
-  - component: {fileID: 1542100153526282184}
   - component: {fileID: 8315155219231710213}
+  - component: {fileID: 7379893168582447276}
   m_Layer: 3
   m_Name: Male_Player
   m_TagString: Player
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -1576704785
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cab88eb8927d0cd4f85ff54eda045cb8, type: 3}
+  m_Sprite: {fileID: 1293844084, guid: 352928a79bf30f6418ebcbced7766b63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,9 +171,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.032692555, y: -0.58133996}
+  m_Offset: {x: -0.03269255, y: -0.22757292}
   serializedVersion: 2
-  m_Radius: 1.2069694
+  m_Radius: 0.8532023
 --- !u!61 &3844279600968699117
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,38 +206,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05742669, y: -1.9587915}
+  m_Offset: {x: -0.014108211, y: -1.2079389}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.14, y: 6.67}
+    oldSize: {x: 2, y: 3.5}
     newSize: {x: 5.14, y: 6.67}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.3078249, y: 1.8458371}
+  m_Size: {x: 0.8746405, y: 0.77731603}
   m_EdgeRadius: 0
---- !u!114 &1542100153526282184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142853794412593448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9599c92a33b4f4e4a9355213030aaa34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 475f5aa10abcc8e429da87fa91703d6e, type: 2}
-  beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
-  PlantHoldPos: {fileID: 3480954104359111407}
-  plantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
-  cashRegisterTag: Register
-  restockTag: Restock
-  plantTag: Plant
 --- !u!114 &8315155219231710213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +235,26 @@ MonoBehaviour:
   animator: {fileID: 3861428005593640616}
   sr: {fileID: 5159289302578261548}
   moveSpeed: 5
+--- !u!114 &7379893168582447276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142853794412593448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9599c92a33b4f4e4a9355213030aaa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 475f5aa10abcc8e429da87fa91703d6e, type: 2}
+  beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
+  plantHoldPos: {fileID: 3480954104359111407}
+  plantPrefab: {fileID: 979060039617683111, guid: 12e7814fd9e03044a8b3fd1903c82769, type: 3}
+  cashRegisterTag: Register
+  restockTag: Restock
+  plantTag: Plant
+  heldPlantData: {fileID: 0}
 --- !u!1 &3480954104359111407
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 3480954104359111407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -0.95, z: 0}
+  m_LocalPosition: {x: -0.17, y: -0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

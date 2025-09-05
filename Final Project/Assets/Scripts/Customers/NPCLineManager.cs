@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class NPC_LineManagement : MonoBehaviour
+public class NPCLineManager : MonoBehaviour
 {
     public int CustomerNumber = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        NPCLineManager.LineEnterEvent += CustomerEnterLine;
-        NPCLineManager.LineLeaveEvent += CustomerLeaveLine;
+        NPCLineEvents.LineEnterEvent += CustomerEnterLine;
+        NPCLineEvents.LineLeaveEvent += CustomerLeaveLine;
     }
 
     // Update is called once per frame

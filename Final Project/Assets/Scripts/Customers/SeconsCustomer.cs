@@ -23,7 +23,7 @@ public class SeconsCustomer : MonoBehaviour
 
     GameObject UiManager;
 
-    NPC_LineManagement LineManager;
+    NPCLineManager lineManager;
     public int CurrentCustomerNumber = 0;
 
     public Animator animator;
@@ -65,12 +65,12 @@ public class SeconsCustomer : MonoBehaviour
         Plants = GameObject.FindGameObjectsWithTag("Plant");
 
         //line
-        LineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPC_LineManagement>();
-        NPCLineManager.LineLeaveEvent += ProgInLine;
-        NPCLineManager.RegisterReleaseEvent += RegisterInteraction;
+        lineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPCLineManager>();
+        NPCLineEvents.LineLeaveEvent += ProgInLine;
+        NPCLineEvents.RegisterReleaseEvent += RegisterInteraction;
 
-        NPCLineManager.EnterLine();
-        CurrentCustomerNumber = LineManager.CustomerNumber;
+        NPCLineEvents.EnterLine();
+        CurrentCustomerNumber = lineManager.CustomerNumber;
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
     }
@@ -134,7 +134,7 @@ public class SeconsCustomer : MonoBehaviour
 
     public void OnDestroy()
     {
-        NPCLineManager.LineLeaveEvent -= ProgInLine;
+        NPCLineEvents.LineLeaveEvent -= ProgInLine;
       //  NPCEventManager.RegisterReleaseEvent -= RegisterInteraction;
     }
 
@@ -156,12 +156,12 @@ public class SeconsCustomer : MonoBehaviour
             //    cash.SubtractMoney(impatiencePenalty);
             //}
             TimerBar.gameObject.SetActive(false);
-            NPCLineManager.LeaveLine();
+            NPCLineEvents.LeaveLine();
             CurrentState = NPC_State.Exit;
         }
         else
         {
-            NPCLineManager.LeaveLine();
+            NPCLineEvents.LeaveLine();
         }
         //
     }
@@ -265,7 +265,7 @@ public class SeconsCustomer : MonoBehaviour
                 //Fany
                 //if((PlantMatching.CheckPlantMatch(PlantYouPick, requestedPlant))
                 //{
-                    x = PlantYouPick.GetComponent<Plant>().currentPlantType.Price;
+                    x = PlantYouPick.GetComponent<Plant>().CurrentPlantType.price;
                     cash.AddMoney(x);
                     Destroy(PlantYouPick);
                // }

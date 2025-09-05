@@ -6,81 +6,81 @@ public class CustomerBehavior : MonoBehaviour
     public enum CustomerType { Roaming, AskForHelp }
 
     [Header("UI:")]
-    [SerializeField] private Slider TimerBar;
+    [SerializeField] private Slider timerBar;
     [SerializeField] private int WaitTimePlant;
     [SerializeField] private int WaitTimeLine;
 
     [Header("Customer:")]
-    [SerializeField] private NPC_State CurrentState;
+    [SerializeField] private NPC_State currentState;
     [SerializeField] private CustomerType customerType;
 
     private Animator animator;
     private SpriteRenderer sr;
-    private int WaitTime;
+    private int waitTime;
 
-    private GameObject FlowerPoint;
-    private GameObject StartPoint;
-    private GameObject RegisterPoint;
+    private GameObject flowerPoint;
+    private GameObject startPoint;
+    private GameObject registerPoint;
 
-    private Vector3 LineOffset = Vector3.zero;
-    private int CurrentWaitTimer = 0;
+    private Vector3 lineOffset = Vector3.zero;
+    private int currentWaitTimer = 0;
 
-    private GameObject[] Plants;
+    private GameObject[] plants;
 
     private bool onPlant;
-    private GameObject PlantYouPick;
+    private GameObject plantYouPick;
 
-    private GameObject UiManager;
-    private CustomerMovement CustomerMovement;
+    private GameObject uiManager;
+    private CustomerMovement customerMovement;
 
-    private NPC_LineManagement LineManager;
-    private int CurrentCustomerNumber = 0;
+    private NPCLineManager lineManager;
+    private int currentCustomerNumber = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (UiManager == null)
+        if (uiManager == null)
         {
-            UiManager = GameObject.FindGameObjectWithTag("UIManager");
+            uiManager = GameObject.FindGameObjectWithTag("UIManager");
         }
 
-        CustomerMovement = gameObject.GetComponent<CustomerMovement>();
+        customerMovement = gameObject.GetComponent<CustomerMovement>();
 
-        Plants = GameObject.FindGameObjectsWithTag("Plant");
+        plants = GameObject.FindGameObjectsWithTag("Plant");
 
         if (customerType == CustomerType.Roaming)
         {
             SetRandomPlantToWalkTo();
-            CurrentState = NPC_State.WalkToFlower;
+            currentState = NPC_State.WalkToFlower;
         }
         else
         {
-            CurrentState = NPC_State.WalkToLine;
+            currentState = NPC_State.WalkToLine;
         }
 
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-        StartPoint = GameObject.FindGameObjectWithTag("NPC");
-        RegisterPoint = GameObject.FindGameObjectWithTag("Register");
+        startPoint = GameObject.FindGameObjectWithTag("NPC");
+        registerPoint = GameObject.FindGameObjectWithTag("Register");
 
-        TimerBar.gameObject.SetActive(false);
-        transform.position.Set(StartPoint.transform.position.x, StartPoint.transform.position.y, 0);
+        timerBar.gameObject.SetActive(false);
+        transform.position.Set(startPoint.transform.position.x, startPoint.transform.position.y, 0);
 
         //line
-        LineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPC_LineManagement>();
-        NPCLineManager.LineLeaveEvent += ProgInLine;
-        NPCLineManager.RegisterReleaseEvent += RegisterInteraction;
+        lineManager = GameObject.FindGameObjectWithTag("LineManager").GetComponent<NPCLineManager>();
+        NPCLineEvents.LineLeaveEvent += ProgInLine;
+        NPCLineEvents.RegisterReleaseEvent += RegisterInteraction;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (CurrentState)
+        switch (currentState)
         {
             case NPC_State.WalkToFlower:
-                CustomerMovement.MoveToPointXFirst(FlowerPoint.transform.position, true);
+                customerMovement.MoveToPointXFirst(flowerPoint.transform.position, true);
                 break;
             case NPC_State.Wait:
                 if (onPlant)
@@ -89,21 +89,21 @@ public class CustomerBehavior : MonoBehaviour
                 }
                 else
                 {
-                    CurrentState = NPC_State.WalkToFlower;
+                    currentState = NPC_State.WalkToFlower;
                     SetRandomPlantToWalkTo();
-                    TimerBar.gameObject.SetActive(false);
-                    CurrentWaitTimer = 0;
+                    timerBar.gameObject.SetActive(false);
+                    currentWaitTimer = 0;
                 }
                 break;
             case NPC_State.WalkToLine:
-                CustomerMovement.MoveToPointYFirst(RegisterPoint.transform.position + LineOffset,true);
+                customerMovement.MoveToPointYFirst(registerPoint.transform.position + lineOffset,true);
                 break;
             case NPC_State.InLine:
                 WalkInLine();
                 break;
             case NPC_State.Exit:
-                CustomerMovement.MoveToPointXFirst(StartPoint.transform.position, false);
-                if (transform.position == StartPoint.transform.position)
+                customerMovement.MoveToPointXFirst(startPoint.transform.position, false);
+                if (transform.position == startPoint.transform.position)
                 {
                     Destroy(this.gameObject);
                 }
@@ -115,7 +115,7 @@ public class CustomerBehavior : MonoBehaviour
         if (collider.gameObject.CompareTag("Plant"))
         {
             onPlant = true;
-            PlantYouPick = collider.gameObject;
+            plantYouPick = collider.gameObject;
         }
     }
 
@@ -129,67 +129,67 @@ public class CustomerBehavior : MonoBehaviour
 
     public void OnDestroy()
     {
-        NPCLineManager.LineLeaveEvent -= ProgInLine;
-        NPCLineManager.RegisterReleaseEvent -= RegisterInteraction;
+        NPCLineEvents.LineLeaveEvent -= ProgInLine;
+        NPCLineEvents.RegisterReleaseEvent -= RegisterInteraction;
     }
     public void NextState()
     {
-        switch (CurrentState)
+        switch (currentState)
         {
             case NPC_State.WalkToFlower:
-                WaitTime = WaitTimePlant;
-                CurrentState = NPC_State.Wait;
+                waitTime = WaitTimePlant;
+                currentState = NPC_State.Wait;
                 break;
             case NPC_State.WalkToLine:
-                WaitTime = WaitTimeLine;
-                CurrentState = NPC_State.InLine;
+                waitTime = WaitTimeLine;
+                currentState = NPC_State.InLine;
                 break;
             case NPC_State.InLine:
-                TimerBar.gameObject.SetActive(false);
-                NPCLineManager.LeaveLine();
-                CurrentState = NPC_State.Exit;
+                timerBar.gameObject.SetActive(false);
+                NPCLineEvents.LeaveLine();
+                currentState = NPC_State.Exit;
                 break;
             case NPC_State.Wait:
-                PlantYouPick.SetActive(false);
-                TimerBar.gameObject.SetActive(false);
-                NPCLineManager.EnterLine();
-                CurrentCustomerNumber = LineManager.CustomerNumber;
-                LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
-                CurrentState = NPC_State.WalkToLine;
+                plantYouPick.SetActive(false);
+                timerBar.gameObject.SetActive(false);
+                NPCLineEvents.EnterLine();
+                currentCustomerNumber = lineManager.CustomerNumber;
+                lineOffset = new Vector2(0 - currentCustomerNumber, 0);
+                currentState = NPC_State.WalkToLine;
                 break;
         }
     }
 
     private void RegisterInteraction()
     {
-        if (CurrentState == NPC_State.InLine && CurrentCustomerNumber == 1)
+        if (currentState == NPC_State.InLine && currentCustomerNumber == 1)
         {
-            UiManager.GetComponent<MoneyManager>().AddMoney(PlantYouPick.GetComponent<Plant>().currentPlantType.Price); 
+            uiManager.GetComponent<MoneyManager>().AddMoney(plantYouPick.GetComponent<Plant>().CurrentPlantType.price); 
             NextState();
         }
     }
 
     private void ProgInLine()
     {
-        if (CurrentCustomerNumber > 1)
+        if (currentCustomerNumber > 1)
         {
-            CurrentCustomerNumber -= 1;
+            currentCustomerNumber -= 1;
         }
-        LineOffset = new Vector2(-1*CurrentCustomerNumber, 0);
+        lineOffset = new Vector2(-1*currentCustomerNumber, 0);
     }
     private void SetRandomPlantToWalkTo()
     {
-        if (Plants.Length == 0)
+        if (plants.Length == 0)
         {
-            CurrentState = NPC_State.Exit;
+            currentState = NPC_State.Exit;
         }
-        else if (CheckPlants(Plants))
+        else if (CheckPlants(plants))
         {
-            FlowerPoint = Plants[Random.Range(0, Plants.Length)];
+            flowerPoint = plants[Random.Range(0, plants.Length)];
         }
         else
         {
-            CurrentState = NPC_State.Exit;
+            currentState = NPC_State.Exit;
         }
     }
     private bool CheckPlants(GameObject[] Plants)
@@ -206,38 +206,38 @@ public class CustomerBehavior : MonoBehaviour
 
     private void WaitOnPlant()
     {
-        TimerBar.gameObject.SetActive(true);
-        if (CurrentWaitTimer < WaitTime)
+        timerBar.gameObject.SetActive(true);
+        if (currentWaitTimer < waitTime)
         {
-            CurrentWaitTimer += 1;
-            TimerBar.value = (1 - (float)CurrentWaitTimer / (float)WaitTime);
+            currentWaitTimer += 1;
+            timerBar.value = (1 - (float)currentWaitTimer / (float)waitTime);
         }
         else
         {
-            CurrentWaitTimer = 0;
+            currentWaitTimer = 0;
             NextState();
         }
     }
 
     private void WalkInLine()
     {
-        TimerBar.gameObject.SetActive(true);
-        if (new Vector3(transform.position.x, transform.position.y, 0) != RegisterPoint.transform.position + LineOffset)
+        timerBar.gameObject.SetActive(true);
+        if (new Vector3(transform.position.x, transform.position.y, 0) != registerPoint.transform.position + lineOffset)
         {
-            CustomerMovement.MoveToPointYFirst(RegisterPoint.transform.position + LineOffset,false);
+            customerMovement.MoveToPointYFirst(registerPoint.transform.position + lineOffset,false);
         }
         else
         {
             animator.SetBool("isWalking", false);
         }
-        if (CurrentWaitTimer < WaitTime)
+        if (currentWaitTimer < waitTime)
         {
-            CurrentWaitTimer += 1;
-            TimerBar.value = (1 - (float)CurrentWaitTimer / (float)WaitTime);
+            currentWaitTimer += 1;
+            timerBar.value = (1 - (float)currentWaitTimer / (float)waitTime);
         }
         else
         {
-            CurrentWaitTimer = 0;
+            currentWaitTimer = 0;
             NextState();
         }
     }

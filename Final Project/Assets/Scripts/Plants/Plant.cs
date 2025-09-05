@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
-    [SerializeField] private PlantSO[] PlantTypes;
-    [SerializeField] public PlantSO currentPlantType { get; private set; }
+    [SerializeField] private PlantSO[] plantTypes;
+    [SerializeField] public PlantSO CurrentPlantType { get; private set; }
 
     private SpriteRenderer spriteRenderer;
     void Start()
     {
-        if (currentPlantType == null)
+        if (CurrentPlantType == null)
         {
-            currentPlantType = PlantTypes[Random.Range(0,PlantTypes.Length)];
+            CurrentPlantType = plantTypes[Random.Range(0,plantTypes.Length)];
         }
-        GetComponent<SpriteRenderer>().sprite = currentPlantType.Image;
+        GetComponent<SpriteRenderer>().sprite = CurrentPlantType.image;
     }
     private void Awake()
     {
@@ -20,11 +20,11 @@ public class Plant : MonoBehaviour
     }
     public void Initialize(PlantSO newPlantData)
     {
-        currentPlantType = newPlantData;
+        CurrentPlantType = newPlantData;
 
-        if (currentPlantType != null && spriteRenderer != null)
+        if (CurrentPlantType != null && spriteRenderer != null)
         {
-            spriteRenderer.sprite = currentPlantType.Image;
+            spriteRenderer.sprite = CurrentPlantType.image;
         }
     }
 }
