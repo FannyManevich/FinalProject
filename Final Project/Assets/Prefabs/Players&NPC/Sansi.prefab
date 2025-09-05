@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 3172409584684854021}
   - component: {fileID: 3452712840568201755}
   - component: {fileID: 3540985005080990080}
+  - component: {fileID: 2581657126148209889}
   - component: {fileID: 3945025627511453370}
   - component: {fileID: 7308198310856913237}
   m_Layer: 3
@@ -377,6 +378,19 @@ MonoBehaviour:
   WaitTimePlant: 500
   WaitTimeLine: 5000
   CurrentState: 0
+  customerType: 0
+--- !u!114 &2581657126148209889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246296473204041928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0250fcf1b35853c4cbe0532f2633d098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Speed: 4
 --- !u!50 &3945025627511453370
 Rigidbody2D:
