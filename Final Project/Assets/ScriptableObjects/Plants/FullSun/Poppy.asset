@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
   m_Name: Poppy
   m_EditorClassIdentifier: 
-  Price: 35
+  price: 0
   waterRequirement: 1
   sunRequirement: 0
   difficultyLevel: 1
-  Image: {fileID: 21300000, guid: 1288e0f09ea134a4f875a12c4c1f7340, type: 3}
-  UI: {fileID: 0}
-  GetTransform: {fileID: 0}
+  image: {fileID: 21300000, guid: 1288e0f09ea134a4f875a12c4c1f7340, type: 3}
+  getTransform: {fileID: 0}

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
   m_Name: RedCordyline
   m_EditorClassIdentifier: 
-  Price: 100
+  price: 0
   waterRequirement: 2
   sunRequirement: 1
   difficultyLevel: 1
-  Image: {fileID: 21300000, guid: 6339110c4b1aa17488211020aff85935, type: 3}
-  UI: {fileID: 0}
-  GetTransform: {fileID: 0}
+  image: {fileID: 21300000, guid: 6339110c4b1aa17488211020aff85935, type: 3}
+  getTransform: {fileID: 0}

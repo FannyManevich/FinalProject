@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
   m_Name: Nepenthes
   m_EditorClassIdentifier: 
-  Price: 160
+  price: 0
   waterRequirement: 2
   sunRequirement: 1
   difficultyLevel: 2
-  Image: {fileID: 21300000, guid: ab20bccc8a6d51c4b9cf08263da41050, type: 3}
-  UI: {fileID: 0}
-  GetTransform: {fileID: 0}
+  image: {fileID: 21300000, guid: ab20bccc8a6d51c4b9cf08263da41050, type: 3}
+  getTransform: {fileID: 0}
