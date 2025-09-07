@@ -30195,7 +30195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ce51183e17d444abd4a326f816c34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerNumber: 0
+  customerNumber: 0
 --- !u!4 &915724648
 Transform:
   m_ObjectHideFlags: 0
@@ -30228,11 +30228,11 @@ MonoBehaviour:
   - {fileID: 3246296473204041928, guid: b8980c5ff293e8748a6456b6335bbe9d, type: 3}
   - {fileID: 3246296473204041928, guid: ab697bcc1648e064cac06a66c4082d68, type: 3}
   npcList:
-  - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
-  - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
   - {fileID: 11400000, guid: b8e6cba29df286c4c9d85f180d983179, type: 2}
-  minSpawnTime: 0
-  maxSpawnTime: 30
+  - {fileID: 11400000, guid: 5c94474bc0893f24baac3123083cab5f, type: 2}
+  - {fileID: 11400000, guid: 40ba40d4e96a6a243b6a2d38e3127904, type: 2}
+  minSpawnTime: 1
+  maxSpawnTime: 100
 --- !u!1 &953723262
 GameObject:
   m_ObjectHideFlags: 0
@@ -41120,6 +41120,7 @@ MonoBehaviour:
   beacon: {fileID: 11400000, guid: 7cd2f474788595c42928c95f50e3be6c, type: 2}
   shiftManager: {fileID: 145998868}
   timerController: {fileID: 145998870}
+  inputReader: {fileID: 2090011930}
   bookButton: {fileID: 1287650364}
   helpButton: {fileID: 319743818}
   homeButton: {fileID: 1297985941}

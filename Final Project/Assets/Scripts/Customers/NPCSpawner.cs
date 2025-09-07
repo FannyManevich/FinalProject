@@ -1,11 +1,8 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class NPCSpawner : MonoBehaviour
 {    
-    public static event Action<GameObject> OnCustomerSpawnedEvent;
-
     [Header("Prefabs and data:")]
     [SerializeField] private GameObject[] customerPrefabs;
     [SerializeField] private NPC_SO[] npcList;
@@ -46,12 +43,15 @@ public class NPCSpawner : MonoBehaviour
         GameObject newCustomer = Instantiate(customerPrefab, transform.position, Quaternion.identity);
 
         NPC_SO currentNpcData = npcList[npcIndex];
-        newCustomer.GetComponent<SpriteRenderer>().sprite = currentNpcData.NPC_portrait;
+
+        var customerBehavior = newCustomer.GetComponent<CustomerBehavior>();
+        if (customerBehavior != null)
+        {
+            customerBehavior.Initialize(currentNpcData);
+        }
+
         npcIndex = (npcIndex + 1) % npcList.Length;
-
-        OnCustomerSpawnedEvent?.Invoke(newCustomer);
     }
-
     private void SetNewSpawnTime()
     {
         spawnTimer = Random.Range(minSpawnTime, maxSpawnTime);

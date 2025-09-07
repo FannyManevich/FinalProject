@@ -70,7 +70,7 @@ public class SeconsCustomer : MonoBehaviour
         NPCLineEvents.RegisterReleaseEvent += RegisterInteraction;
 
         NPCLineEvents.EnterLine();
-        CurrentCustomerNumber = lineManager.CustomerNumber;
+        CurrentCustomerNumber = lineManager.customerNumber;
         LineOffset = new Vector2(0 - CurrentCustomerNumber, 0);
         CurrentState = NPC_State.WalkToLine;
     }

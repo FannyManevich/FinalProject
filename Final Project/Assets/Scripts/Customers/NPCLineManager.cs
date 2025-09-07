@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NPCLineManager : MonoBehaviour
 {
-    public int CustomerNumber = 0;
+    public int customerNumber = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,11 @@ public class NPCLineManager : MonoBehaviour
 
     private void CustomerEnterLine()
     {
-        CustomerNumber++;
+        customerNumber++;
     }
 
     private void CustomerLeaveLine()
     {
-        CustomerNumber--;
+        customerNumber--;
     }
 }

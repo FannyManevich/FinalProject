@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Managers;
-using System;
 
 public class UIManager : MonoBehaviour
 {   
@@ -9,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private BeaconSO beacon;     
     [SerializeField] private ShiftManager shiftManager;
     [SerializeField] private TimerController timerController;
+    [SerializeField] private InputReader inputReader;
 
     [Header("Buttons:")]
     [SerializeField] Button bookButton;
@@ -50,8 +50,8 @@ public class UIManager : MonoBehaviour
         quitButton.onClick.AddListener(OnQuitClicked);
         closeBookButton.onClick.AddListener(CloseAllPanels);
         closeHelpButton.onClick.AddListener(CloseAllPanels);
+        inputReader.EnableUIInput();
     }
-
     private void OnDisable()
     {
         if (beacon?.inputChannel != null)
@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
         quitButton.onClick.RemoveListener(OnQuitClicked);
         closeBookButton.onClick.RemoveListener(CloseAllPanels);
         closeHelpButton.onClick.RemoveListener(CloseAllPanels);
+        inputReader.DisableUIInput();
     }
     public void OpenBook()
     {
