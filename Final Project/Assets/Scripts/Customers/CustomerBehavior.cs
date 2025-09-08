@@ -77,6 +77,8 @@ public class CustomerBehavior : MonoBehaviour
         switch (currentState)
         {
             case NPC_State.WalkToFlower:
+                if (flowerPoint == null)
+                    SetRandomPlantToWalkTo();
                 customerMovement.MoveToPointXFirst(flowerPoint.transform.position, true);
                 break;
             case NPC_State.Wait:

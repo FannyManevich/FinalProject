@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89eec7b3463f95b43963994055c2dac4, type: 3}
   m_Name: Fern
   m_EditorClassIdentifier: 
-  price: 0
+  price: 30
   waterRequirement: 2
   sunRequirement: 1
   difficultyLevel: 2

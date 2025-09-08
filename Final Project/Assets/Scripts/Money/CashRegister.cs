@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Assets.Scripts.Managers;
 using System;
+using System.Collections.Generic;
 
 public class CashRegister : MonoBehaviour
 {
@@ -25,9 +26,9 @@ public class CashRegister : MonoBehaviour
     [SerializeField] int penalty = 20;
 
     private PlantSO currentPlantRequest;
-    private CustomerBehavior currentCustomer;
+    [SerializeField] private CustomerBehavior currentCustomer;
     private bool playerInZone = false;
-
+    [SerializeField] Queue<CustomerBehavior> npcQueue = new();
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -94,11 +95,18 @@ public class CashRegister : MonoBehaviour
     }
     public void HandleNpcArrival(CustomerBehavior arrivingCustomer)
     {
+        if (currentState != RegisterState.Free)
+        {
+            npcQueue.Enqueue(arrivingCustomer);
+            return;
+        }
+
+        currentCustomer = arrivingCustomer;
+
         if (currentState == RegisterState.Free && arrivingCustomer.GetCustomerType() == CustomerBehavior.CustomerType.AskForHelp)
         {
             Debug.Log("In CashRegister:  Boris has arrived. Waiting for Player.");
             SetState(RegisterState.WaitingForPlayer);
-            currentCustomer = arrivingCustomer;
 
             if (playerInZone)
             {
@@ -107,7 +115,8 @@ public class CashRegister : MonoBehaviour
         }
         else
         {
-
+            Debug.Log("In CashRegister:  Roaming NPC has arrived. Waiting for Player.");
+            SetState(RegisterState.Processing);
         }
     }
     public void PlayerInteraction()
@@ -129,6 +138,9 @@ public class CashRegister : MonoBehaviour
                     PlantPayment();
                 }
                 break;
+            case RegisterState.Processing:
+                PlantPayment();
+                break;
         }
     }
     private void PlantPayment()
@@ -136,10 +148,13 @@ public class CashRegister : MonoBehaviour
         GameObject plantPicked = currentCustomer.GetPickedPlant(); 
         if (plantPicked != null)
         {
+            PlantSO plantData = plantPicked.GetComponent<Plant>().CurrentPlantType;
+
             Debug.Log($"In CashRegister: Processing payment for {plantPicked.name}.");
-            cash.AddMoney(plantPicked.GetComponent<PlantSO>().price);
+
+            cash.AddMoney(plantData.price);
             shiftManager.AddCustomerServed();
-            shiftManager.AddRevenue(plantPicked.GetComponent<PlantSO>().price);
+            shiftManager.AddRevenue(plantData.price);
 
             currentCustomer.ForceExit();
             ResetCashRegister();
@@ -161,9 +176,10 @@ public class CashRegister : MonoBehaviour
             return;
         }
 
-        if (deliveredPlant == currentPlantRequest)
+        if (deliveredPlant.name == currentPlantRequest.name)
         {
             Debug.Log("In CashRegister: Correct plant! Tip added.");
+            FindObjectOfType<PlayerBehavior>().ChoseRightPlantForCustomer();
             cash.AddMoney(deliveredPlant.price);
             cash.AddTip(tip);
             shiftManager.AddCustomerServed();
@@ -171,13 +187,15 @@ public class CashRegister : MonoBehaviour
             if (currentCustomer != null)
             {
                 currentCustomer.ForceExit();
-            }
+            } 
+            ResetCashRegister();
         }
         else
         {
+            Debug.Log($"Comparison failed. Requested: '{currentPlantRequest.name}', Delivered: '{deliveredPlant.name}'");
             ApplyLeavingPenalty();            
         }
-        ResetCashRegister();  
+         
     }
     public void ApplyLeavingPenalty()
     {     
@@ -187,15 +205,11 @@ public class CashRegister : MonoBehaviour
         {
             currentCustomer.ForceExit();
         }
-
-        if (currentState != RegisterState.Free)
-        {
-            cash.SubtractMoney(penalty);
-            ResetCashRegister();
-        }
+        ResetCashRegister();
     }
     private void ResetCashRegister()
     {
+        SetState(RegisterState.Free);
         dialogueManager.EndnpcDialogue(); 
         currentPlantRequest = null;
         currentCustomer = null;
@@ -203,7 +217,11 @@ public class CashRegister : MonoBehaviour
         OnInteractionEnded?.Invoke();
         NPCLineEvents.LeaveLine();
 
-        SetState(RegisterState.Free);
+        if(npcQueue.Count > 0)
+        {
+            HandleNpcArrival(npcQueue.Dequeue());
+        }
+
         Debug.Log("In CashRegister: Cash Register Reset.");
     }
     private void SetState(RegisterState newState)

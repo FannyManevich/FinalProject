@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, Input.IPlayerActions, Input.IUIActions
     [SerializeField] BeaconSO beacon;
     public Input inputActions;
     public void EnablePlayerInput() => inputActions.Player.Enable();
+    public void DisablePlayerInput() => inputActions.Player.Disable();
     public void EnableUIInput() => inputActions.UI.Enable();
     public void DisableUIInput() => inputActions.UI.Disable();
 

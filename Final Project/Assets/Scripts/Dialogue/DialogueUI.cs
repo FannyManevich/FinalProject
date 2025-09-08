@@ -35,7 +35,6 @@ public class DialogueUI : MonoBehaviour
     {
         cancelButton.onClick.AddListener(EndNpcDialogue);
     }
-
     private void OnEnable()
     {
         //dm = FindObjectOfType<DialogueManager>();
@@ -45,7 +44,6 @@ public class DialogueUI : MonoBehaviour
         dm.EndNpcDialogue += EndNpcDialogue;
         playerInput = new();
     }
-
     private void OnDisable()
     {
         if (dm != null)
@@ -59,7 +57,6 @@ public class DialogueUI : MonoBehaviour
     public void DisplayPlantRequest(PlantSO randomPlantSO)
     {
         if (randomPlantSO == null)
-       // if(requestedPlant == null)
         {
             Debug.LogWarning("In DialougeUI: PlantRequest is null.");
             return;
@@ -100,14 +97,6 @@ public class DialogueUI : MonoBehaviour
             Debug.LogError($"In DialougeUI: Invalid waterIndex: {waterIndex} or waterIcons array is not set up correctly.");
         }
     }
-    //sunImage = sunIcons[sunLevel];
-    //difficultyImage = diffIcons[diffLevel];
-    //waterImage = waterIcons[waterLevel];
-
-    //emptyPlant.difficultyLevel = diffLevel;
-    //    //emptyPlant.sunRequirement = sunLevel;
-    //    emptyPlant.waterRequirement = waterLevel;
-    //}
     public void DisplayPlayerDialogue()
     {
        // Debug.Log("In DialougeUI: DisplayPlayerDialogue");
@@ -135,8 +124,6 @@ public class DialogueUI : MonoBehaviour
             //Debug.Log("In DialogueUI: PlantRequest: Sun: " +  randomPlantSO.sunRequirement + " diff:  "+ randomPlantSO.difficultyLevel + " water: " + randomPlantSO.waterRequirement);
             DisplayPlantRequest(randomPlantSO);
         }
-        // portraitImage.sprite = npc.NPC_portrait;
-        // nameText.text = npc.NPC_name;
     }
     public void EndNpcDialogue()
     {

@@ -144,6 +144,13 @@ public class PlayerBehavior : MonoBehaviour
             ChangeState(PlayerState.Moving);
         }
     }
+
+    public void ChoseRightPlantForCustomer()
+    {
+        Destroy(holdingPlant);
+        holdingPlant = null;
+        heldPlantData = null;
+    }
     public void TakeFromStock(PlantSO plantData)
     {
         if (playerData.plantPicked != null)
